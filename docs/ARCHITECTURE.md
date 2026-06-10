@@ -61,9 +61,9 @@ Connection string: `postgresql://ahbar:ahbar@localhost:15432/ahbarandco` (port 1
 
 | File | Purpose |
 |------|---------|
-| `src/auth.config.ts` | Edge-safe config (used by middleware) |
+| `src/auth.config.ts` | Edge-safe config (used by proxy) |
 | `src/auth.ts` | Full config with Prisma adapter + Credentials |
-| `src/middleware.ts` | Protects `/checkout`, `/account`, `/orders` |
+| `src/proxy.ts` | Protects `/checkout`, `/account`, `/orders` |
 | `src/lib/auth-actions.ts` | Register + login server actions |
 | `src/lib/oauth-actions.ts` | Google sign-in + sign-out actions |
 
@@ -149,7 +149,7 @@ src/
 │   ├── razorpay.ts               # Payment utilities
 │   └── payment-actions.ts        # Checkout server actions
 ├── auth.ts / auth.config.ts
-└── middleware.ts
+└── proxy.ts
 prisma/
 ├── schema.prisma
 ├── seed.ts

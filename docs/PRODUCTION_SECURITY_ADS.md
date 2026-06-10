@@ -181,8 +181,8 @@ export function isRateLimited(ip: string, limit = 10, windowMs = 60000): boolean
 }
 ```
 
-#### Integrate Rate Limiting in `src/middleware.ts`
-Wrap the rate limiter logic in Next.js middleware using the request's IP header:
+#### Integrate Rate Limiting in `src/proxy.ts`
+Wrap the rate limiter logic in Next.js proxy/middleware using the request's IP header:
 ```typescript
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
