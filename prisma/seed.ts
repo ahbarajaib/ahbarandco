@@ -2,6 +2,7 @@ import "dotenv/config";
 
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
+import bcrypt from "bcryptjs";
 
 import { PrismaClient } from "../src/generated/prisma/client";
 
@@ -24,6 +25,23 @@ const chairImages = [
 ];
 
 async function main() {
+  // Seed admin user
+  const adminEmail = "admin@ahbarandco.com";
+  const adminPasswordHash = bcrypt.hashSync("adminpassword", 12);
+  await prisma.user.upsert({
+    where: { email: adminEmail },
+    update: {
+      passwordHash: adminPasswordHash,
+      role: "admin",
+    },
+    create: {
+      email: adminEmail,
+      name: "Admin User",
+      passwordHash: adminPasswordHash,
+      role: "admin",
+    },
+  });
+
   await prisma.orderItem.deleteMany();
   await prisma.order.deleteMany();
   await prisma.productImage.deleteMany();

@@ -5,6 +5,7 @@ import { AuthError } from "next-auth";
 
 import { signIn } from "@/auth";
 import { prisma } from "@/lib/prisma";
+import { RegisterSchema, LoginSchema } from "@/lib/validations";
 
 export type AuthActionState = {
   error?: string;
@@ -21,12 +22,9 @@ export async function registerUser(
     .trim();
   const password = String(formData.get("password") ?? "");
 
-  if (!name || !email || !password) {
-    return { error: "All fields are required." };
-  }
-
-  if (password.length < 8) {
-    return { error: "Password must be at least 8 characters." };
+  const validation = RegisterSchema.safeParse({ name, email, password });
+  if (!validation.success) {
+    return { error: validation.error.issues[0].message };
   }
 
   const existing = await prisma.user.findUnique({ where: { email } });
@@ -62,8 +60,9 @@ export async function loginUser(
   const password = String(formData.get("password") ?? "");
   const callbackUrl = String(formData.get("callbackUrl") ?? "/account");
 
-  if (!email || !password) {
-    return { error: "Email and password are required." };
+  const validation = LoginSchema.safeParse({ email, password });
+  if (!validation.success) {
+    return { error: validation.error.issues[0].message };
   }
 
   try {

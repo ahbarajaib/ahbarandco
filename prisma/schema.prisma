@@ -17,6 +17,7 @@ model User {
   passwordHash  String?
   image         String?
   phone         String?
+  role          String    @default("customer")
   accounts      Account[]
   sessions      Session[]
   orders        Order[]

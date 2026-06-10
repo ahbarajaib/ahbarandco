@@ -12,6 +12,8 @@ Last updated: June 9, 2026
 | Authentication (Email + Google) | ✅ Complete |
 | Ecommerce (Multi-image Products, Cart, Checkout) | ✅ Complete |
 | Razorpay Integration | ✅ Complete |
+| Admin Dashboard & CMS | ✅ Complete |
+| VPS Security & Ads Spacing Implementation | ✅ Complete |
 | Documentation | ✅ Complete |
 | Handoff guide (`docs/HANDOFF.md`) | ✅ Complete |
 
@@ -135,20 +137,28 @@ Last updated: June 9, 2026
 | Update `AGENTS.md` | ✅ Complete | Auth, Docker, Razorpay conventions |
 | Create `docs/progress.md` | ✅ Complete | This file |
 
----
-
 ## Upcoming / Not Started
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Journal blog posts (CMS / MDX) | ⬜ Not started | Routes exist, no content yet |
 | Newsletter signup flow | ⬜ Not started | Model exists, no UI yet |
 | Cloudflare R2 image uploads | ⬜ Not started | Using Unsplash placeholders in seed |
-| Admin dashboard | ⬜ Not started | Product/order management |
 | Search functionality | ⬜ Not started | Header link is placeholder |
 | Production deployment (Vercel) | ⬜ Not started | Docker + standalone build ready |
 | Email notifications (order confirmation) | ⬜ Not started | |
-| Inventory management | ⬜ Not started | Stock field exists in schema |
+| Production VPS Hosting setup | ⬜ Not started | Audited and documented in `PRODUCTION_SECURITY_ADS.md` |
+
+---
+
+## Phase 8 — Admin Dashboard & Security Audit
+
+| Task | Status | Notes |
+|------|--------|-------|
+| Admin login & middleware authentication | ✅ Complete | Separate auth flow from customer accounts |
+| Product & collection management forms | ✅ Complete | Dynamic image lists, slug auto-generation |
+| Order management & status fulfillment dropdown | ✅ Complete | Instant status revalidations |
+| Journal/Blog CMS editor | ✅ Complete | Full article creation, deletion, and edits |
+| VPS hosting & Ads layout implementation | ✅ Complete | Implemented security headers, secure cookies, rate-limiting middleware, Zod schemas, and AdBlock-safe Google AdSense component |
 
 ---
 

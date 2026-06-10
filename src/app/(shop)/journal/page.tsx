@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { AdBanner } from "@/components/ads/ad-banner";
 import { Section } from "@/components/layout/section";
 
 export const metadata: Metadata = {
@@ -17,6 +18,8 @@ export default function JournalPage() {
       <p className="mt-3 max-w-xl text-sm text-text-secondary sm:mt-4 sm:text-base md:text-lg">
         Editorial content coming soon.
       </p>
+      
+      <AdBanner slotId="journal-index-top-ad" />
     </Section>
   );
 }

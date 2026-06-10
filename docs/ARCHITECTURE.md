@@ -180,3 +180,7 @@ Mobile navigation uses a Sheet drawer (`md:hidden`). Desktop nav visible at `lg:
 - Edge-safe `auth.config.ts` for middleware (no Prisma import)
 - Prisma client only in server context
 - All prices in paise (integers)
+
+## Production & VPS Hosting
+
+For detailed guidelines on VPS deployments, self-hosted proxy rate-limiting, database backup scripts, local media uploads, and Google Ads responsive spacing, please refer to the [Production Security & Ads Placement Guide](./PRODUCTION_SECURITY_ADS.md).

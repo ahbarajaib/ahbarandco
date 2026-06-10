@@ -250,29 +250,14 @@ Open Prisma Studio to edit data visually:
 npm run db:studio
 ```
 
----
-
 ### Step 5 — Production deployment (when ready)
 
-Not yet deployed. When you are ready:
+For the absolute best, most secure, and 100% free production deployment using Docker Compose and Caddy Server on a standalone Linux VPS, please follow the step-by-step instructions in the [VPS Deployment Guide](./VPS_DEPLOYMENT_GUIDE.md).
 
-| Task | Action |
-|------|--------|
-| **Hosting** | Deploy to [Vercel](https://vercel.com) (recommended for Next.js) |
-| **Database** | Use a managed Postgres (Neon, Supabase, or Railway free tier) — or self-host |
-| **Environment** | Set all `.env` variables in Vercel dashboard |
-| **Google OAuth** | Add production redirect URI |
-| **Razorpay** | Switch to Live Mode keys |
-| **Webhooks** | Point Razorpay webhook to `https://yourdomain.com/api/webhooks/razorpay` |
-| **Images** | Set up Cloudflare R2 (variables in `.env.example`) or use another CDN |
-| **Domain** | Point `ahbarandco.com` (or your domain) to Vercel |
-| **AUTH_SECRET** | Generate a new production secret — do not reuse the dev one |
-
-Docker full-stack option:
-
-```bash
-docker compose up --build   # Runs DB + app together
-```
+Alternatively, if you deploy the frontend to Vercel and only database/uploads to a VPS:
+1. Configure database accessibility over the network.
+2. Link environment variables on Vercel.
+3. Keep Google OAuth redirect URIs and Razorpay webhooks in sync.
 
 ---
 
@@ -282,14 +267,11 @@ These are planned but not built. See [progress.md](./progress.md) for the full l
 
 | Feature | Status |
 |---------|--------|
-| Journal / blog posts | Placeholder page only |
 | Newsletter signup | Database model exists, no UI |
 | Search | Header link is a placeholder |
-| Admin dashboard | No product/order management UI |
-| Cloudflare R2 uploads | Using external image URLs in seed |
 | Real product photography | Placeholder images only |
 | Email order confirmations | Not implemented |
-| Production deployment | Not deployed |
+| Production deployment | Deploy instructions ready (Caddy + Docker) |
 
 ---
 
@@ -366,7 +348,7 @@ If something breaks:
 | Google login | ✅ Code ready | Add Google OAuth credentials |
 | Products & cart | ✅ | Replace seed data with real catalog |
 | Razorpay checkout | ✅ Code ready | Add Razorpay test/live keys |
-| Production deploy | ❌ | Deploy to Vercel + managed DB when ready |
+| Production deploy | ✅ VPS guide ready | Deploy using Docker + Caddy (see `docs/VPS_DEPLOYMENT_GUIDE.md`) |
 
 **Minimum to start developing today:** Docker running + `AUTH_SECRET` in `.env` + `npm run dev`.
 

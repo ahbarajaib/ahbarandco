@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { AdBanner } from "@/components/ads/ad-banner";
 import { ProductCard } from "@/components/ecommerce/product-card";
 import { Section } from "@/components/layout/section";
 import { getPublishedProducts } from "@/lib/products";
@@ -20,6 +21,8 @@ export default async function ShopPage() {
       <p className="mt-3 max-w-xl text-sm text-text-secondary sm:text-base md:text-lg">
         Handcrafted furniture designed for calm and intentional spaces.
       </p>
+
+      <AdBanner slotId="shop-listing-top-ad" />
 
       {products.length === 0 ? (
         <p className="mt-10 text-text-secondary">
