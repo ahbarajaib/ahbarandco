@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} h-full`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         {children}
       </body>

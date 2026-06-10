@@ -14,7 +14,7 @@ type LoginFormProps = {
   callbackUrl?: string;
 };
 
-export function LoginForm({ callbackUrl = "/account" }: LoginFormProps) {
+export function LoginForm({ callbackUrl = "/" }: LoginFormProps) {
   const [state, formAction, isPending] = useActionState<
     AuthActionState,
     FormData
@@ -26,16 +26,15 @@ export function LoginForm({ callbackUrl = "/account" }: LoginFormProps) {
 
       <div className="flex items-center gap-4">
         <Separator className="flex-1" />
-        <span className="text-xs uppercase tracking-widest text-text-secondary">
-          or
-        </span>
+        <span className="text-[11px] uppercase tracking-widest text-text-secondary">or</span>
         <Separator className="flex-1" />
       </div>
 
-      <form action={formAction} className="space-y-4">
+      <form action={formAction} className="space-y-5">
         <input type="hidden" name="callbackUrl" value={callbackUrl} />
+
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
+          <Label htmlFor="email" className="text-sm font-medium">Email</Label>
           <Input
             id="email"
             name="email"
@@ -43,10 +42,13 @@ export function LoginForm({ callbackUrl = "/account" }: LoginFormProps) {
             autoComplete="email"
             required
             disabled={isPending}
+            className="h-11 bg-white"
+            placeholder="your@email.com"
           />
         </div>
+
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password" className="text-sm font-medium">Password</Label>
           <Input
             id="password"
             name="password"
@@ -54,21 +56,39 @@ export function LoginForm({ callbackUrl = "/account" }: LoginFormProps) {
             autoComplete="current-password"
             required
             disabled={isPending}
+            className="h-11 bg-white"
+            placeholder="••••••••"
           />
         </div>
+
+        {/* Error state */}
         {state.error && (
-          <p className="text-sm text-destructive" role="alert">
-            {state.error}
-          </p>
+          <div className="flex items-start gap-2 rounded-sm border border-destructive/30 bg-destructive/5 px-3 py-2.5" role="alert">
+            <span className="mt-0.5 text-destructive">✕</span>
+            <p className="text-sm text-destructive">{state.error}</p>
+          </div>
         )}
-        <Button type="submit" className="h-11 w-full" disabled={isPending}>
-          {isPending ? "Signing in..." : "Sign In"}
+
+        {/* Loading/pending state inline feedback */}
+        {isPending && (
+          <div className="flex items-center gap-2 rounded-sm border border-wood-medium/20 bg-wood-medium/5 px-3 py-2.5">
+            <span className="inline-block size-3.5 animate-spin rounded-full border-2 border-wood-medium border-t-transparent" />
+            <p className="text-sm text-wood-medium">Signing you in…</p>
+          </div>
+        )}
+
+        <Button
+          type="submit"
+          className="h-11 w-full bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200"
+          disabled={isPending}
+        >
+          {isPending ? "Signing in…" : "Sign In"}
         </Button>
       </form>
 
       <p className="text-center text-sm text-text-secondary">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-wood-medium hover:underline">
+        <Link href="/register" className="font-medium text-wood-medium hover:text-wood-dark hover:underline underline-offset-2 transition-colors">
           Create one
         </Link>
       </p>

@@ -2,6 +2,7 @@
 
 import bcrypt from "bcryptjs";
 import { AuthError } from "next-auth";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 import { signIn } from "@/auth";
 import { prisma } from "@/lib/prisma";
@@ -10,6 +11,7 @@ import { RegisterSchema, LoginSchema } from "@/lib/validations";
 export type AuthActionState = {
   error?: string;
   success?: boolean;
+  message?: string;
 };
 
 export async function registerUser(
@@ -39,15 +41,17 @@ export async function registerUser(
   });
 
   try {
-    await signIn("credentials", { email, password, redirectTo: "/account" });
+    await signIn("credentials", { email, password, redirectTo: "/" });
   } catch (error) {
+    // NextAuth throws a NEXT_REDIRECT for successful redirects — re-throw it
+    if (isRedirectError(error)) throw error;
     if (error instanceof AuthError) {
       return { error: "Account created but sign-in failed. Please log in." };
     }
     throw error;
   }
 
-  return { success: true };
+  return { success: true, message: "Welcome to Ahbar & Co." };
 }
 
 export async function loginUser(
@@ -58,7 +62,7 @@ export async function loginUser(
     .toLowerCase()
     .trim();
   const password = String(formData.get("password") ?? "");
-  const callbackUrl = String(formData.get("callbackUrl") ?? "/account");
+  const callbackUrl = String(formData.get("callbackUrl") ?? "/");
 
   const validation = LoginSchema.safeParse({ email, password });
   if (!validation.success) {
@@ -72,11 +76,13 @@ export async function loginUser(
       redirectTo: callbackUrl,
     });
   } catch (error) {
+    // NextAuth throws a NEXT_REDIRECT for successful redirects — re-throw it
+    if (isRedirectError(error)) throw error;
     if (error instanceof AuthError) {
       return { error: "Invalid email or password." };
     }
     throw error;
   }
 
-  return { success: true };
+  return { success: true, message: "Signed in successfully." };
 }

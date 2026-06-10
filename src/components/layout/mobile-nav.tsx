@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, XIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,10 +16,12 @@ import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
 type MobileNavProps = {
   isAuthenticated: boolean;
+  userName?: string | null;
 };
 
-export function MobileNav({ isAuthenticated }: MobileNavProps) {
+export function MobileNav({ isAuthenticated, userName }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const userInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -36,37 +38,53 @@ export function MobileNav({ isAuthenticated }: MobileNavProps) {
       >
         <MenuIcon className="size-5" />
       </SheetTrigger>
-      <SheetContent side="left" className="w-full max-w-xs bg-wood-dark text-background-primary">
-        <SheetHeader>
-          <SheetTitle className="font-heading text-left text-sm uppercase tracking-[0.15em] text-background-primary">
+      <SheetContent side="left" className="w-full max-w-xs bg-wood-dark text-background-primary flex flex-col">
+        <SheetHeader className="border-b border-background-primary/10 pb-4">
+          <SheetTitle className="font-heading text-left text-sm uppercase tracking-[0.2em] text-background-primary">
             {SITE_NAME}
           </SheetTitle>
         </SheetHeader>
-        <nav className="mt-8 flex flex-col gap-1" aria-label="Mobile">
+
+        {/* User greeting if signed in */}
+        {isAuthenticated && (
+          <div className="mt-4 flex items-center gap-3 rounded-sm bg-background-primary/10 px-3 py-3">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-wood-medium text-sm font-semibold text-background-primary">
+              {userInitial}
+            </span>
+            <div>
+              <p className="text-sm font-medium text-background-primary leading-tight truncate max-w-[160px]">
+                {userName || "My Account"}
+              </p>
+              <p className="text-[10px] uppercase tracking-wider text-background-primary/50 mt-0.5">Signed in</p>
+            </div>
+          </div>
+        )}
+
+        <nav className="mt-6 flex flex-col gap-0.5 flex-1" aria-label="Mobile">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded px-2 py-3 text-base font-medium text-background-primary/90 transition-colors hover:bg-background-primary/10 hover:text-background-primary"
+              className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 transition-colors hover:bg-background-primary/10 hover:text-background-primary"
             >
               {link.label}
             </Link>
           ))}
-          <div className="my-4 border-t border-background-primary/10" />
+          <div className="my-3 border-t border-background-primary/10" />
           <Link
             href="/cart"
             onClick={() => setOpen(false)}
-            className="rounded px-2 py-3 text-base font-medium text-background-primary/90 hover:bg-background-primary/10"
+            className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
           >
             Cart
           </Link>
           <Link
             href={isAuthenticated ? "/account" : "/login"}
             onClick={() => setOpen(false)}
-            className="rounded px-2 py-3 text-base font-medium text-background-primary/90 hover:bg-background-primary/10"
+            className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
           >
-            {isAuthenticated ? "Account" : "Sign In"}
+            {isAuthenticated ? "My Orders & Account" : "Sign In"}
           </Link>
         </nav>
       </SheetContent>
