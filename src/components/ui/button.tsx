@@ -46,9 +46,13 @@ function Button({
   size = "default",
   ...props
 }: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+  // Disable nativeButton to prevent warnings when a custom node (like Link) is rendered
+  const nativeButton = props.render ? false : props.nativeButton;
+
   return (
     <ButtonPrimitive
       data-slot="button"
+      nativeButton={nativeButton}
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
