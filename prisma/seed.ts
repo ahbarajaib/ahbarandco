@@ -11,7 +11,7 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 const shelfImages = [
-  "https://images.unsplash.com/photo-1615529182905-7917b1318370?w=1200&q=80",
+  "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=80",
   "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200&q=80",
   "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
   "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
