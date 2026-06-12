@@ -28,12 +28,17 @@ jobs:
             echo "📦 Pulling latest code..."
             cd /opt/ahbarandco
 
-            # Clone on first deploy, pull on subsequent
+            # First deploy: git init in the existing dir (avoids clone failing on non-empty dir)
+            # Subsequent deploys: just git pull
             if [ ! -d ".git" ]; then
-              git clone https://x-access-token:${GH_PAT}@github.com/ahbarajaib/ahbarandco.git .
+              git init
+              git remote add origin https://x-access-token:${GH_PAT}@github.com/ahbarajaib/ahbarandco.git
+              git fetch origin main
+              git checkout -f -B main origin/main
             else
               git remote set-url origin https://x-access-token:${GH_PAT}@github.com/ahbarajaib/ahbarandco.git
-              git pull origin main
+              git fetch origin main
+              git reset --hard origin/main
             fi
 
             echo "🔒 Checking .env file..."
