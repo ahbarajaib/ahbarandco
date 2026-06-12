@@ -13,10 +13,20 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const primaryImage = product.images[0];
+  const isOnSale = product.compareAtPrice && product.compareAtPrice > product.price;
 
   return (
     <Link href={`/products/${product.slug}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden bg-background-secondary">
+      <div className="relative aspect-[4/5] overflow-hidden bg-background-secondary rounded-sm">
+        {/* Sale Badge */}
+        {isOnSale && (
+          <div className="absolute left-3 top-3 z-10">
+            <span className="inline-flex items-center rounded-sm bg-wood-dark px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-background-primary uppercase shadow-sm">
+              Sale
+            </span>
+          </div>
+        )}
+
         {primaryImage ? (
           <Image
             src={primaryImage.url}
@@ -42,12 +52,19 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.collection.name}
           </p>
         )}
-        <h3 className="mt-1 font-heading text-lg font-medium sm:text-xl">
+        <h3 className="mt-1 font-heading text-lg font-medium sm:text-xl text-wood-dark group-hover:text-wood-medium transition-colors">
           {product.name}
         </h3>
-        <p className="mt-1 text-sm text-text-secondary sm:text-base">
-          {formatPrice(product.price, product.currency)}
-        </p>
+        <div className="mt-1 flex items-baseline gap-2">
+          <span className="text-sm font-medium text-text-primary sm:text-base">
+            {formatPrice(product.price, product.currency)}
+          </span>
+          {isOnSale && (
+            <span className="text-xs line-through text-text-secondary">
+              {formatPrice(product.compareAtPrice!, product.currency)}
+            </span>
+          )}
+        </div>
       </div>
     </Link>
   );

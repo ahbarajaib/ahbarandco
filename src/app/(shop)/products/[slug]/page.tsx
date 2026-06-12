@@ -58,9 +58,21 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <h1 className="mt-2 font-heading text-3xl font-medium sm:text-4xl lg:text-5xl">
               {product.name}
             </h1>
-            <p className="mt-4 text-xl text-text-primary sm:text-2xl">
-              {formatPrice(product.price, product.currency)}
-            </p>
+            <div className="mt-4 flex flex-wrap items-baseline gap-3">
+              <span className="text-xl font-medium text-text-primary sm:text-2xl">
+                {formatPrice(product.price, product.currency)}
+              </span>
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <>
+                  <span className="text-sm line-through text-text-secondary sm:text-base">
+                    {formatPrice(product.compareAtPrice, product.currency)}
+                  </span>
+                  <span className="inline-flex items-center rounded-sm bg-wood-medium/10 px-2.5 py-0.5 text-xs font-semibold tracking-wider text-wood-medium uppercase">
+                    Save {Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)}%
+                  </span>
+                </>
+              )}
+            </div>
             {product.shortDesc && (
               <p className="mt-6 text-base leading-relaxed text-text-secondary sm:text-lg">
                 {product.shortDesc}

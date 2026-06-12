@@ -1,36 +1,53 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { AdBanner } from "@/components/ads/ad-banner";
 import { ProductCard } from "@/components/ecommerce/product-card";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
-import { COLLECTIONS } from "@/lib/constants";
+import { prisma } from "@/lib/prisma";
+import { getPageAssets } from "@/lib/page-assets";
 import { getFeaturedProducts } from "@/lib/products";
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts(4);
+  const assets = await getPageAssets("home");
+  const collections = await prisma.collection.findMany({
+    where: { published: true },
+    orderBy: { sortOrder: "asc" },
+  });
 
   return (
     <>
-      <section className="relative flex min-h-[60vh] items-end bg-background-secondary sm:min-h-[70vh]">
-        <div className="absolute inset-0 bg-wood-dark/20" aria-hidden="true" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
-          <p className="text-xs font-medium uppercase tracking-widest text-wood-medium sm:text-sm">
+      <section className="relative flex min-h-[60vh] items-end bg-background-secondary sm:min-h-[70vh] overflow-hidden">
+        {assets.hero_bg && (
+          <Image
+            src={assets.hero_bg}
+            alt="Handcrafted minimalist modern furniture showcase"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        )}
+        <div className="absolute inset-0 bg-wood-dark/40" aria-hidden="true" />
+        <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 text-background-primary">
+          <p className="text-xs font-medium uppercase tracking-widest text-background-primary/80 sm:text-sm">
             Handcrafted Furniture
           </p>
-          <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-tight sm:mt-4 sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-tight sm:mt-4 sm:text-5xl md:text-6xl lg:text-7xl text-background-primary">
             Modern Furniture
             <br />
             Made By Hand.
           </h1>
-          <p className="mt-4 max-w-lg text-base text-text-secondary sm:mt-6 sm:text-lg">
+          <p className="mt-4 max-w-lg text-base text-background-primary/95 sm:mt-6 sm:text-lg">
             Thoughtfully crafted furniture designed for calm and intentional
             spaces.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
               size="lg"
-              className="h-11 w-full sm:h-12 sm:w-auto sm:px-8"
+              className="h-11 w-full bg-background-primary text-wood-dark hover:bg-background-primary/90 sm:h-12 sm:w-auto sm:px-8 cursor-pointer"
               render={<Link href="/shop" />}
             >
               Shop Collection
@@ -38,7 +55,7 @@ export default async function HomePage() {
             <Button
               variant="outline"
               size="lg"
-              className="h-11 w-full border-wood-dark/20 bg-transparent sm:h-12 sm:w-auto sm:px-8 hover:bg-background-primary"
+              className="h-11 w-full border-background-primary/30 text-background-primary bg-transparent sm:h-12 sm:w-auto sm:px-8 hover:bg-background-primary/10 hover:border-background-primary cursor-pointer"
               render={<Link href="/about#craft" />}
             >
               Our Craft
@@ -56,14 +73,26 @@ export default async function HomePage() {
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          {COLLECTIONS.map((collection) => (
+          {collections.map((collection) => (
             <Link
               key={collection.slug}
-              href={collection.href}
+              href={`/${collection.slug}`}
               className="group block"
             >
-              <div className="aspect-[4/5] bg-background-secondary transition-transform duration-500 group-hover:scale-[1.01]" />
-              <h3 className="mt-3 font-heading text-xl font-medium sm:mt-4 sm:text-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden bg-background-secondary rounded-sm border border-border/10">
+                {collection.imageUrl ? (
+                  <Image
+                    src={collection.imageUrl}
+                    alt={collection.name}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-background-secondary" />
+                )}
+              </div>
+              <h3 className="mt-3 font-heading text-xl font-medium sm:mt-4 sm:text-2xl text-wood-dark group-hover:text-wood-medium transition-colors">
                 {collection.name}
               </h3>
             </Link>
@@ -73,7 +102,19 @@ export default async function HomePage() {
 
       <Section variant="secondary" id="craft-preview">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-          <div className="aspect-[4/3] bg-background-primary" />
+          <div className="relative aspect-[4/3] overflow-hidden bg-background-primary rounded-sm border border-border/10">
+            {assets.craft_image ? (
+              <Image
+                src={assets.craft_image}
+                alt="Woodworking process detail"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            ) : (
+              <div className="h-full w-full bg-background-primary" />
+            )}
+          </div>
           <div>
             <h2 className="font-heading text-2xl font-medium sm:text-3xl md:text-4xl">
               Crafted With Intention

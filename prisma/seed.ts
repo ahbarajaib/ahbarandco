@@ -21,7 +21,7 @@ const chairImages = [
   "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=1200&q=80",
   "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=1200&q=80",
   "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80",
-  "https://images.unsplash.com/photo-1617098907768-60c5c8c0b0e8?w=1200&q=80",
+  "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80",
 ];
 
 async function main() {
@@ -53,6 +53,7 @@ async function main() {
       name: "Floating Shelves",
       slug: "floating-shelves",
       description: "Handcrafted wall-mounted shelves in solid walnut.",
+      imageUrl: shelfImages[0],
       published: true,
       sortOrder: 1,
     },
@@ -63,6 +64,7 @@ async function main() {
       name: "Lounge Chairs",
       slug: "lounge-chairs",
       description: "Comfortable lounge chairs with solid wood frames.",
+      imageUrl: chairImages[0],
       published: true,
       sortOrder: 2,
     },
@@ -77,6 +79,7 @@ async function main() {
       description:
         "Handcrafted from a single piece of American walnut, this floating shelf brings warmth and utility to any wall. Finished with a natural oil that highlights the wood grain.",
       price: 849900,
+      compareAtPrice: 999900,
       material: "Solid American Walnut",
       dimensions: '36" W × 8" D × 2" H',
       careGuide:
@@ -112,6 +115,7 @@ async function main() {
       description:
         "Designed for reading and relaxation, this lounge chair pairs a sculpted oak frame with breathable natural linen. Built with traditional joinery for lasting durability.",
       price: 2499900,
+      compareAtPrice: 2999900,
       material: "Solid Oak, Natural Linen",
       dimensions: '28" W × 32" D × 30" H',
       careGuide: "Vacuum upholstery regularly. Wipe wood with a dry cloth.",
@@ -153,6 +157,37 @@ async function main() {
           })),
         },
       },
+    });
+  }
+
+  // Seed default PageAsset values for CMS
+  const defaultPageAssets = [
+    {
+      page: "home",
+      slot: "hero_bg",
+      imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=2400&q=80",
+    },
+    {
+      page: "home",
+      slot: "craft_image",
+      imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
+    },
+    {
+      page: "about",
+      slot: "about_hero",
+      imageUrl: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1600&q=80",
+    },
+    {
+      page: "about",
+      slot: "about_craft",
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+    },
+  ];
+
+  await prisma.pageAsset.deleteMany();
+  for (const asset of defaultPageAssets) {
+    await prisma.pageAsset.create({
+      data: asset,
     });
   }
 

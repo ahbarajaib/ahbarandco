@@ -2,12 +2,13 @@
 
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 import { auth, signIn } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { OrderStatus } from "@/generated/prisma/client";
 import { ProductSchema, CollectionSchema, JournalPostSchema } from "@/lib/validations";
+import { uploadImage, deleteImage } from "@/lib/storage";
 
 // Ensure current user is an admin helper
 async function ensureAdmin() {
@@ -62,6 +63,9 @@ export async function loginAdmin(
       redirectTo: callbackUrl,
     });
   } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     if (error instanceof AuthError) {
       return { error: "Invalid email or password." };
     }
@@ -85,19 +89,37 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
   const collectionId = String(formData.get("collectionId") ?? "") || null;
 
   const priceFloat = parseFloat(String(formData.get("price") ?? "0"));
+  const compareAtPriceVal = String(formData.get("compareAtPrice") ?? "").trim();
+  const compareAtPriceFloat = compareAtPriceVal && !isNaN(parseFloat(compareAtPriceVal)) ? parseFloat(compareAtPriceVal) : null;
   const stock = parseInt(String(formData.get("stock") ?? "0"), 10);
   const featured = formData.get("featured") === "true";
   const published = formData.get("published") === "true";
 
-  // Parse image URLs (comma-separated or multiple inputs)
-  const imagesRaw = String(formData.get("images") ?? "").trim();
-  const imageUrls = imagesRaw ? imagesRaw.split("\n").map(url => url.trim()).filter(Boolean) : [];
+  // Upload new image files
+  const files = (formData.getAll("imageFiles") as File[]).filter(f => f.size > 0);
+  const uploadedUrls: string[] = [];
+  try {
+    for (const file of files) {
+      const url = await uploadImage(file, "products");
+      uploadedUrls.push(url);
+    }
+  } catch {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
+    return { error: "Failed to upload product images." };
+  }
+
+  // Get existing images (manually added external URLs or kept existing ones)
+  const existingImages = formData.getAll("existingImages").map(val => String(val).trim()).filter(Boolean);
+  const imageUrls = [...existingImages, ...uploadedUrls];
 
   const validation = ProductSchema.safeParse({
     name,
     shortDesc,
     description,
     price: priceFloat,
+    compareAtPrice: compareAtPriceFloat,
     stock,
     material,
     dimensions,
@@ -109,12 +131,28 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
   });
 
   if (!validation.success) {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
     return { error: validation.error.issues[0].message };
   }
 
   const validated = validation.data;
   const price = Math.round(validated.price * 100); // convert to paise
-  const { price: _, images: __, ...productData } = validated;
+  const compareAtPrice = validated.compareAtPrice ? Math.round(validated.compareAtPrice * 100) : null;
+  const productData = {
+    name: validated.name,
+    shortDesc: validated.shortDesc,
+    description: validated.description,
+    stock: validated.stock,
+    material: validated.material,
+    dimensions: validated.dimensions,
+    careGuide: validated.careGuide,
+    featured: validated.featured,
+    published: validated.published,
+    collectionId: validated.collectionId,
+    compareAtPrice,
+  };
 
   let slug = slugify(validated.name);
   // Ensure slug uniqueness
@@ -141,9 +179,13 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
 
     revalidateProductPaths(slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
     console.error("Create Product Error:", error);
-    return { error: error.message || "Failed to create product." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to create product.";
+    return { error: errorMessage };
   }
 }
 
@@ -159,19 +201,37 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
   const collectionId = String(formData.get("collectionId") ?? "") || null;
 
   const priceFloat = parseFloat(String(formData.get("price") ?? "0"));
+  const compareAtPriceVal = String(formData.get("compareAtPrice") ?? "").trim();
+  const compareAtPriceFloat = compareAtPriceVal && !isNaN(parseFloat(compareAtPriceVal)) ? parseFloat(compareAtPriceVal) : null;
   const stock = parseInt(String(formData.get("stock") ?? "0"), 10);
   const featured = formData.get("featured") === "true";
   const published = formData.get("published") === "true";
 
-  // Parse image URLs (newline separated)
-  const imagesRaw = String(formData.get("images") ?? "").trim();
-  const imageUrls = imagesRaw ? imagesRaw.split("\n").map(url => url.trim()).filter(Boolean) : [];
+  // Upload new image files
+  const files = (formData.getAll("imageFiles") as File[]).filter(f => f.size > 0);
+  const uploadedUrls: string[] = [];
+  try {
+    for (const file of files) {
+      const url = await uploadImage(file, "products");
+      uploadedUrls.push(url);
+    }
+  } catch {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
+    return { error: "Failed to upload product images." };
+  }
+
+  // Get existing images from form
+  const existingImages = formData.getAll("existingImages").map(val => String(val).trim()).filter(Boolean);
+  const imageUrls = [...existingImages, ...uploadedUrls];
 
   const validation = ProductSchema.safeParse({
     name,
     shortDesc,
     description,
     price: priceFloat,
+    compareAtPrice: compareAtPriceFloat,
     stock,
     material,
     dimensions,
@@ -183,16 +243,38 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
   });
 
   if (!validation.success) {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
     return { error: validation.error.issues[0].message };
   }
 
   const validated = validation.data;
   const price = Math.round(validated.price * 100); // convert to paise
-  const { price: _, images: __, ...productData } = validated;
+  const compareAtPrice = validated.compareAtPrice ? Math.round(validated.compareAtPrice * 100) : null;
+  const productData = {
+    name: validated.name,
+    shortDesc: validated.shortDesc,
+    description: validated.description,
+    stock: validated.stock,
+    material: validated.material,
+    dimensions: validated.dimensions,
+    careGuide: validated.careGuide,
+    featured: validated.featured,
+    published: validated.published,
+    collectionId: validated.collectionId,
+    compareAtPrice,
+  };
 
   try {
-    const originalProduct = await prisma.product.findUnique({ where: { id } });
+    const originalProduct = await prisma.product.findUnique({
+      where: { id },
+      include: { images: true },
+    });
     if (!originalProduct) {
+      for (const url of uploadedUrls) {
+        await deleteImage(url);
+      }
       return { error: "Product not found." };
     }
 
@@ -208,7 +290,7 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
 
     // Wrap in transaction to delete and recreate images clean
     await prisma.$transaction(async (tx) => {
-      // Delete old images
+      // Delete old images relation
       await tx.productImage.deleteMany({ where: { productId: id } });
 
       // Update product details and create new images
@@ -229,15 +311,26 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
       });
     });
 
+    // Clean up physically deleted local images (original URLs not in existingImages)
+    const originalUrls = originalProduct.images.map(img => img.url);
+    const deletedUrls = originalUrls.filter(url => !existingImages.includes(url));
+    for (const url of deletedUrls) {
+      await deleteImage(url);
+    }
+
     revalidateProductPaths(slug);
     if (originalProduct.slug !== slug) {
       revalidateProductPaths(originalProduct.slug);
     }
 
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    for (const url of uploadedUrls) {
+      await deleteImage(url);
+    }
     console.error("Update Product Error:", error);
-    return { error: error.message || "Failed to update product." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to update product.";
+    return { error: errorMessage };
   }
 }
 
@@ -245,18 +338,27 @@ export async function deleteProduct(id: string): Promise<ActionResponse> {
   await ensureAdmin();
 
   try {
-    const product = await prisma.product.findUnique({ where: { id } });
+    const product = await prisma.product.findUnique({
+      where: { id },
+      include: { images: true }
+    });
     if (!product) {
       return { error: "Product not found." };
+    }
+
+    // Delete physical files
+    for (const img of product.images) {
+      await deleteImage(img.url);
     }
 
     await prisma.product.delete({ where: { id } });
 
     revalidateProductPaths(product.slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Delete Product Error:", error);
-    return { error: error.message || "Failed to delete product." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to delete product.";
+    return { error: errorMessage };
   }
 }
 
@@ -275,9 +377,21 @@ export async function createCollection(formData: FormData): Promise<ActionRespon
 
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim() || null;
-  const imageUrl = String(formData.get("imageUrl") ?? "").trim() || null;
   const sortOrder = parseInt(String(formData.get("sortOrder") ?? "0"), 10);
   const published = formData.get("published") === "true";
+
+  let imageUrl = String(formData.get("imageUrl") ?? "").trim() || null;
+  const file = formData.get("imageUrl_file") as File | null;
+  let uploadedUrl: string | null = null;
+
+  if (file && file.size > 0) {
+    try {
+      uploadedUrl = await uploadImage(file, "collections");
+      imageUrl = uploadedUrl;
+    } catch {
+      return { error: "Failed to upload collection cover image." };
+    }
+  }
 
   const validation = CollectionSchema.safeParse({
     name,
@@ -288,6 +402,9 @@ export async function createCollection(formData: FormData): Promise<ActionRespon
   });
 
   if (!validation.success) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     return { error: validation.error.issues[0].message };
   }
 
@@ -306,9 +423,13 @@ export async function createCollection(formData: FormData): Promise<ActionRespon
 
     revalidateCollectionPaths(slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     console.error("Create Collection Error:", error);
-    return { error: error.message || "Failed to create collection." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to create collection.";
+    return { error: errorMessage };
   }
 }
 
@@ -317,9 +438,26 @@ export async function updateCollection(id: string, formData: FormData): Promise<
 
   const name = String(formData.get("name") ?? "").trim();
   const description = String(formData.get("description") ?? "").trim() || null;
-  const imageUrl = String(formData.get("imageUrl") ?? "").trim() || null;
   const sortOrder = parseInt(String(formData.get("sortOrder") ?? "0"), 10);
   const published = formData.get("published") === "true";
+
+  let imageUrl = String(formData.get("imageUrl") ?? "").trim() || null;
+
+  const original = await prisma.collection.findUnique({ where: { id } });
+  if (!original) {
+    return { error: "Collection not found." };
+  }
+
+  const file = formData.get("imageUrl_file") as File | null;
+  let uploadedUrl: string | null = null;
+  if (file && file.size > 0) {
+    try {
+      uploadedUrl = await uploadImage(file, "collections");
+      imageUrl = uploadedUrl;
+    } catch {
+      return { error: "Failed to upload collection cover image." };
+    }
+  }
 
   const validation = CollectionSchema.safeParse({
     name,
@@ -330,17 +468,15 @@ export async function updateCollection(id: string, formData: FormData): Promise<
   });
 
   if (!validation.success) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     return { error: validation.error.issues[0].message };
   }
 
   const validated = validation.data;
 
   try {
-    const original = await prisma.collection.findUnique({ where: { id } });
-    if (!original) {
-      return { error: "Collection not found." };
-    }
-
     let slug = original.slug;
     if (original.name !== validated.name) {
       slug = slugify(validated.name);
@@ -348,6 +484,10 @@ export async function updateCollection(id: string, formData: FormData): Promise<
       if (existing) {
         slug = `${slug}-${Date.now().toString().slice(-4)}`;
       }
+    }
+
+    if (original.imageUrl && original.imageUrl !== validated.imageUrl) {
+      await deleteImage(original.imageUrl);
     }
 
     await prisma.collection.update({
@@ -361,9 +501,13 @@ export async function updateCollection(id: string, formData: FormData): Promise<
     }
 
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     console.error("Update Collection Error:", error);
-    return { error: error.message || "Failed to update collection." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to update collection.";
+    return { error: errorMessage };
   }
 }
 
@@ -376,6 +520,10 @@ export async function deleteCollection(id: string): Promise<ActionResponse> {
       return { error: "Collection not found." };
     }
 
+    if (collection.imageUrl) {
+      await deleteImage(collection.imageUrl);
+    }
+
     // Set referencing products collectionId to null first
     await prisma.product.updateMany({
       where: { collectionId: id },
@@ -386,9 +534,10 @@ export async function deleteCollection(id: string): Promise<ActionResponse> {
 
     revalidateCollectionPaths(collection.slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Delete Collection Error:", error);
-    return { error: error.message || "Failed to delete collection." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to delete collection.";
+    return { error: errorMessage };
   }
 }
 
@@ -418,9 +567,10 @@ export async function updateOrderStatus(id: string, status: OrderStatus): Promis
     revalidatePath("/admin/orders");
     revalidatePath(`/orders/${order.orderNumber}`);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Update Order Status Error:", error);
-    return { error: error.message || "Failed to update order status." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to update order status.";
+    return { error: errorMessage };
   }
 }
 
@@ -432,8 +582,20 @@ export async function createJournalPost(formData: FormData): Promise<ActionRespo
   const title = String(formData.get("title") ?? "").trim();
   const excerpt = String(formData.get("excerpt") ?? "").trim() || null;
   const content = String(formData.get("content") ?? "").trim();
-  const coverImageUrl = String(formData.get("coverImageUrl") ?? "").trim() || null;
   const published = formData.get("published") === "true";
+
+  let coverImageUrl = String(formData.get("coverImageUrl") ?? "").trim() || null;
+  const file = formData.get("coverImageUrl_file") as File | null;
+  let uploadedUrl: string | null = null;
+
+  if (file && file.size > 0) {
+    try {
+      uploadedUrl = await uploadImage(file, "journal");
+      coverImageUrl = uploadedUrl;
+    } catch {
+      return { error: "Failed to upload cover image." };
+    }
+  }
 
   const validation = JournalPostSchema.safeParse({
     title,
@@ -444,6 +606,9 @@ export async function createJournalPost(formData: FormData): Promise<ActionRespo
   });
 
   if (!validation.success) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     return { error: validation.error.issues[0].message };
   }
 
@@ -466,9 +631,13 @@ export async function createJournalPost(formData: FormData): Promise<ActionRespo
 
     revalidateJournalPaths(slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     console.error("Create Journal Post Error:", error);
-    return { error: error.message || "Failed to create journal post." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to create journal post.";
+    return { error: errorMessage };
   }
 }
 
@@ -478,8 +647,25 @@ export async function updateJournalPost(id: string, formData: FormData): Promise
   const title = String(formData.get("title") ?? "").trim();
   const excerpt = String(formData.get("excerpt") ?? "").trim() || null;
   const content = String(formData.get("content") ?? "").trim();
-  const coverImageUrl = String(formData.get("coverImageUrl") ?? "").trim() || null;
   const published = formData.get("published") === "true";
+
+  let coverImageUrl = String(formData.get("coverImageUrl") ?? "").trim() || null;
+
+  const original = await prisma.journalPost.findUnique({ where: { id } });
+  if (!original) {
+    return { error: "Journal post not found." };
+  }
+
+  const file = formData.get("coverImageUrl_file") as File | null;
+  let uploadedUrl: string | null = null;
+  if (file && file.size > 0) {
+    try {
+      uploadedUrl = await uploadImage(file, "journal");
+      coverImageUrl = uploadedUrl;
+    } catch {
+      return { error: "Failed to upload cover image." };
+    }
+  }
 
   const validation = JournalPostSchema.safeParse({
     title,
@@ -490,17 +676,15 @@ export async function updateJournalPost(id: string, formData: FormData): Promise
   });
 
   if (!validation.success) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     return { error: validation.error.issues[0].message };
   }
 
   const validated = validation.data;
 
   try {
-    const original = await prisma.journalPost.findUnique({ where: { id } });
-    if (!original) {
-      return { error: "Journal post not found." };
-    }
-
     let slug = original.slug;
     if (original.title !== validated.title) {
       slug = slugify(validated.title);
@@ -512,6 +696,10 @@ export async function updateJournalPost(id: string, formData: FormData): Promise
 
     const wasPublished = original.published;
     const publishedAt = validated.published ? (wasPublished ? original.publishedAt : new Date()) : null;
+
+    if (original.coverImageUrl && original.coverImageUrl !== validated.coverImageUrl) {
+      await deleteImage(original.coverImageUrl);
+    }
 
     await prisma.journalPost.update({
       where: { id },
@@ -528,9 +716,13 @@ export async function updateJournalPost(id: string, formData: FormData): Promise
     }
 
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
+    if (uploadedUrl) {
+      await deleteImage(uploadedUrl);
+    }
     console.error("Update Journal Post Error:", error);
-    return { error: error.message || "Failed to update journal post." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to update journal post.";
+    return { error: errorMessage };
   }
 }
 
@@ -543,13 +735,18 @@ export async function deleteJournalPost(id: string): Promise<ActionResponse> {
       return { error: "Journal post not found." };
     }
 
+    if (post.coverImageUrl) {
+      await deleteImage(post.coverImageUrl);
+    }
+
     await prisma.journalPost.delete({ where: { id } });
 
     revalidateJournalPaths(post.slug);
     return { success: true };
-  } catch (error: any) {
+  } catch (error) {
     console.error("Delete Journal Post Error:", error);
-    return { error: error.message || "Failed to delete journal post." };
+    const errorMessage = error instanceof Error ? error.message : "Failed to delete journal post.";
+    return { error: errorMessage };
   }
 }
 
@@ -557,4 +754,61 @@ function revalidateJournalPaths(slug: string) {
   revalidatePath("/journal");
   revalidatePath(`/journal/${slug}`);
   revalidatePath("/admin/journal");
+}
+
+// ─── Page Assets CMS ─────────────────────────────────────────────────────────
+
+const PAGE_SLOTS: Record<string, string[]> = {
+  home: ["hero_bg", "craft_image"],
+  about: ["about_hero", "about_craft"],
+};
+
+export async function updatePageAssets(page: string, formData: FormData): Promise<ActionResponse> {
+  await ensureAdmin();
+
+  const slots = PAGE_SLOTS[page];
+  if (!slots) {
+    return { error: "Invalid page specified." };
+  }
+
+  try {
+    for (const slot of slots) {
+      const file = formData.get(`${slot}_file`) as File | null;
+      let imageUrl = String(formData.get(slot) ?? "").trim();
+      const existingAsset = await prisma.pageAsset.findUnique({
+        where: { page_slot: { page, slot } },
+      });
+
+      if (file && file.size > 0) {
+        if (existingAsset?.imageUrl) {
+          await deleteImage(existingAsset.imageUrl);
+        }
+        imageUrl = await uploadImage(file, "pages");
+      } else if (existingAsset && existingAsset.imageUrl !== imageUrl) {
+        await deleteImage(existingAsset.imageUrl);
+      }
+
+      if (imageUrl) {
+        await prisma.pageAsset.upsert({
+          where: { page_slot: { page, slot } },
+          update: { imageUrl },
+          create: { page, slot, imageUrl },
+        });
+      } else if (existingAsset) {
+        await prisma.pageAsset.delete({
+          where: { page_slot: { page, slot } },
+        });
+      }
+    }
+
+    revalidatePath("/");
+    revalidatePath("/about");
+    revalidatePath("/admin/pages");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Update Page Assets Error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Failed to update page assets.";
+    return { error: errorMessage };
+  }
 }

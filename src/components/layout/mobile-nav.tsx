@@ -1,10 +1,9 @@
 "use client";
 
-import { MenuIcon, XIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -13,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { signOutUser } from "@/lib/oauth-actions";
 
 type MobileNavProps = {
   isAuthenticated: boolean;
@@ -26,15 +26,8 @@ export function MobileNav({ isAuthenticated, userName }: MobileNavProps) {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="md:hidden"
-        render={
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-background-primary hover:bg-background-primary/10"
-            aria-label="Open menu"
-          />
-        }
+        className="lg:hidden inline-flex size-8 items-center justify-center rounded-lg text-background-primary hover:bg-background-primary/10 transition-colors duration-200"
+        aria-label="Open menu"
       >
         <MenuIcon className="size-5" />
       </SheetTrigger>
@@ -86,6 +79,16 @@ export function MobileNav({ isAuthenticated, userName }: MobileNavProps) {
           >
             {isAuthenticated ? "My Orders & Account" : "Sign In"}
           </Link>
+          {isAuthenticated && (
+            <form action={signOutUser} className="w-full">
+              <button
+                type="submit"
+                className="w-full text-left rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary cursor-pointer"
+              >
+                Sign Out
+              </button>
+            </form>
+          )}
         </nav>
       </SheetContent>
     </Sheet>

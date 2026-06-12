@@ -8,17 +8,27 @@ type AdBannerProps = {
 };
 
 export function AdBanner({ slotId }: AdBannerProps) {
-  const [adBlocked, setAdBlocked] = useState(false);
+  // Hide by default in development to keep layouts clean on localhost
+  const [adBlocked, setAdBlocked] = useState(process.env.NODE_ENV !== "production");
 
   useEffect(() => {
+    if (process.env.NODE_ENV !== "production") {
+      return;
+    }
+
     try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      const win = window as unknown as { adsbygoogle?: unknown[] };
+      win.adsbygoogle = win.adsbygoogle || [];
+      win.adsbygoogle.push({});
     } catch (err) {
       console.warn("AdSense failed to initialize (AdBlocker may be active): ", err);
-      setAdBlocked(true);
+      setTimeout(() => setAdBlocked(true), 0);
     }
   }, []);
+
+  if (adBlocked) {
+    return null;
+  }
 
   return (
     <>
@@ -38,24 +48,16 @@ export function AdBanner({ slotId }: AdBannerProps) {
           - Desktop (>=1024px): 250px min-height
         */}
         <div 
-          className={`w-full max-w-7xl flex items-center justify-center overflow-hidden min-h-[100px] sm:min-h-[90px] lg:min-h-[250px] transition-all duration-300 ${
-            adBlocked ? "opacity-35 border border-dashed border-border py-4" : ""
-          }`}
+          className="w-full max-w-7xl flex items-center justify-center overflow-hidden min-h-[100px] sm:min-h-[90px] lg:min-h-[250px] transition-all duration-300"
         >
-          {adBlocked ? (
-            <div className="text-[10px] uppercase tracking-wider text-text-secondary font-sans font-medium">
-              Editorial Advertisement Slot
-            </div>
-          ) : (
-            <ins
-              className="adsbygoogle"
-              style={{ display: "block", width: "100%" }}
-              data-ad-client="ca-pub-5491176214539864"
-              data-ad-slot={slotId}
-              data-ad-format="auto"
-              data-full-width-responsive="true"
-            />
-          )}
+          <ins
+            className="adsbygoogle"
+            style={{ display: "block", width: "100%" }}
+            data-ad-client="ca-pub-5491176214539864"
+            data-ad-slot={slotId}
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          />
         </div>
       </div>
     </>

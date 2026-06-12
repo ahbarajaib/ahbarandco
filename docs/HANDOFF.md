@@ -86,7 +86,25 @@ Payment integration is built but needs your API keys:
 - Updates order status to `PAID`
 - Webhook handler at `POST /api/webhooks/razorpay`
 
-### 7. Documentation
+### 7. Admin Dashboard & Content Management
+
+A comprehensive, secure administrative portal `/admin` has been created:
+- **Login Portal:** Isolated credentials-based login flow at `/admin/login` restricted to users with the `admin` role.
+- **Overview Dashboard:** Visual metrics displaying total revenue, active orders, low-stock warnings, and published articles, along with recent order lists.
+- **Product Catalog Management:** Add, edit, and delete products, set prices, assign categories, manage stock, and link multi-image URLs.
+- **Collection Management:** Create and edit product collections to group items under custom categories.
+- **Order Management:** View orders and dynamically update fulfillment statuses (Pending, Paid, Processing, Shipped, Delivered, Cancelled) with instant revalidations.
+- **Journal/Blog Editor:** Write, edit, publish/draft, or delete editorial blog stories under `/admin/journal`.
+
+### 8. Security Upgrades & Core Web Vitals (VPS Readiness)
+
+Production-ready safeguards implemented to support self-hosting on a VPS:
+- **Security Headers:** Custom HTTP headers configured in `next.config.ts` enforcing XSS protection, Frame prevention, Strict transport security (HSTS), and a CSP whitelisting Razorpay and Google Ads.
+- **Rate-Limiting Middleware:** Memory-safe proxy routing that blocks brute-force authentication requests on `/login`, `/register`, `/admin/login`, and `/checkout` with HTTP 429 when limits are breached.
+- **Zod Input Validation:** Tight type checking schemas for register, login, product, collection, and journal forms to block malformed inputs.
+- **CLS-Safe Ad Placement:** A responsive Google Ads script wrapper (`AdBanner`) that allocates heights beforehand to prevent Cumulative Layout Shifts (CLS), with adblocker detection showing clean editorial frames.
+
+### 9. Documentation
 
 | File | Purpose |
 |------|---------|
@@ -96,6 +114,9 @@ Payment integration is built but needs your API keys:
 | [ARCHITECTURE.md](./ARCHITECTURE.md) | Technical architecture |
 | [ROUTES.md](./ROUTES.md) | All URLs |
 | [PHOTOGRAPHY.md](./PHOTOGRAPHY.md) | Image direction |
+| [PRODUCTION_SECURITY_ADS.md](./PRODUCTION_SECURITY_ADS.md) | Security audit and Google AdSense config |
+| [VPS_DEPLOYMENT_GUIDE.md](./VPS_DEPLOYMENT_GUIDE.md) | Self-hosted Linux VPS setup using Docker and Caddy |
+| [ADMIN_GUIDE.md](./ADMIN_GUIDE.md) | Admin Panel and Content Management user manual |
 | **This file** | What you need to do |
 
 ---
@@ -298,20 +319,27 @@ src/
 │   ├── products/[slug]/    # Product detail + image gallery
 │   ├── shop/ cart/ checkout/
 │   ├── login/ register/ account/
-│   └── api/auth/           # Auth.js
+│   ├── admin/              # Admin login & dashboard portal
+│   │   ├── login/          # Isolated admin sign-in
+│   │   └── (dashboard)/    # Admin catalog, collections, orders, journal CMS
+│   └── api/auth/           # Auth.js routes
 │       api/webhooks/razorpay/
 ├── components/
+│   ├── ads/                # AdBlock-safe AdSense Container
 │   ├── auth/               # Login, register, Google button
 │   ├── ecommerce/          # ProductCard, Gallery, Razorpay
 │   └── layout/             # Header, Footer, MobileNav
 ├── lib/                    # Business logic
 │   ├── prisma.ts           # Database client
+│   ├── rate-limiter.ts     # Memory-safe GC request tracker
+│   ├── validations.ts      # Zod validation schemas
 │   ├── products.ts         # Catalog queries
 │   ├── cart.ts             # Cart cookie logic
 │   ├── razorpay.ts         # Payment utilities
 │   └── payment-actions.ts  # Checkout server actions
 ├── auth.ts                 # Auth.js (full config)
-└── auth.config.ts          # Auth.js (edge/middleware config)
+├── auth.config.ts          # Auth.js (edge/middleware config)
+├── proxy.ts                # Middleware rate limiter & router
 prisma/
 ├── schema.prisma           # Database models
 └── seed.ts                 # Sample data
@@ -348,6 +376,8 @@ If something breaks:
 | Google login | ✅ Code ready | Add Google OAuth credentials |
 | Products & cart | ✅ | Replace seed data with real catalog |
 | Razorpay checkout | ✅ Code ready | Add Razorpay test/live keys |
+| Admin Dashboard | ✅ | Manage products, collections, orders, and blog posts |
+| Security & VPS Rate Limits | ✅ | Automatic rate-limiting on sensitive auth routes |
 | Production deploy | ✅ VPS guide ready | Deploy using Docker + Caddy (see `docs/VPS_DEPLOYMENT_GUIDE.md`) |
 
 **Minimum to start developing today:** Docker running + `AUTH_SECRET` in `.env` + `npm run dev`.

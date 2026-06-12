@@ -1,4 +1,4 @@
-export const SITE_NAME = "AHBAR & CO.";
+export const SITE_NAME = "Ahbar & Co.";
 export const SITE_TAGLINE = "Modern Furniture Made By Hand.";
 export const SITE_DESCRIPTION =
   "Thoughtfully crafted minimalist modern furniture designed for calm and intentional spaces.";

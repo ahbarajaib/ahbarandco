@@ -62,6 +62,15 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model PasswordResetToken {
+  id      String   @id @default(cuid())
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
 // ─── Catalog ────────────────────────────────────────────────────────────────
 
 model Collection {
@@ -84,6 +93,7 @@ model Product {
   description  String?
   shortDesc    String?
   price        Int
+  compareAtPrice Int?
   currency     String         @default("INR")
   material     String?
   dimensions   String?
@@ -181,4 +191,17 @@ model NewsletterSubscriber {
   id        String   @id @default(cuid())
   email     String   @unique
   createdAt DateTime @default(now())
+}
+
+// ─── CMS Assets ──────────────────────────────────────────────────────────────
+
+model PageAsset {
+  id        String   @id @default(cuid())
+  page      String   // e.g. "home", "about"
+  slot      String   // e.g. "hero_bg", "craft_image"
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([page, slot])
 }

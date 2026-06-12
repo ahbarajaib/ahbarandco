@@ -47,6 +47,7 @@ Below the stats you'll see:
 | **Short Description** | No | 1–2 sentence summary shown on cards |
 | **Long Description** | No | Full narrative, materials, craftsmanship story |
 | **Price (INR)** | ✅ Yes | Enter in rupees (e.g. `24999`). System stores in paise automatically. |
+| **Compare At Price (INR)** | No | Original pre-discount price (e.g. `29999`). Shows strikethrough price and sale tag on store. |
 | **Stock / Inventory** | ✅ Yes | Enter number of units available |
 | **Collection** | No | Select from dropdown — assigns to a collection page |
 | **Material** | No | e.g. `Solid American Walnut` |

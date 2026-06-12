@@ -13,6 +13,7 @@ export type Product = {
   description: string | null;
   shortDesc?: string | null;
   price: number;
+  compareAtPrice?: number | null;
   currency: string;
   collectionId: string | null;
   material: string | null;

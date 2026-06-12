@@ -20,15 +20,20 @@ export async function SiteHeader() {
           <MobileNav isAuthenticated={isAuthenticated} userName={userName} />
           <Link
             href="/"
-            className="font-heading text-xs font-medium uppercase tracking-[0.2em] transition-opacity hover:opacity-80 sm:text-sm"
+            className="transition-opacity hover:opacity-80 flex items-center"
           >
-            {SITE_NAME}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo.png"
+              alt={SITE_NAME}
+              className="h-11 sm:h-14 w-auto object-contain rounded-sm"
+            />
           </Link>
         </div>
 
         {/* Center: Desktop nav */}
         <nav
-          className="hidden items-center gap-6 lg:flex lg:gap-8"
+          className="hidden items-center lg:flex lg:gap-8"
           aria-label="Main"
         >
           {NAV_LINKS.map((link) => (

@@ -76,8 +76,8 @@ All tokens are defined as CSS custom properties in `src/app/globals.css`.
 - **Font:** Cormorant Garamond
 - **Weight:** 500–600
 - **Letter spacing:** `0.15em`
-- **Case:** Uppercase
-- **Example:** `AHBAR & CO.`
+- **Case:** Mixed Case
+- **Example:** `Ahbar & Co.`
 
 ### Headings
 

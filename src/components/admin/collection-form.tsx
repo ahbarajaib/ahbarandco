@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ActionResponse } from "@/lib/admin-actions";
+import { ImagePreviewInput } from "@/components/admin/image-preview-input";
 
 type CollectionFormProps = {
   initialData?: {
@@ -42,7 +43,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
         <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
       </div>
 
-      <form action={formAction} className="space-y-6">
+      <form action={formAction} className="space-y-6" encType="multipart/form-data">
         {/* Name */}
         <div className="space-y-2">
           <Label htmlFor="name">Collection Name *</Label>
@@ -70,19 +71,17 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
           />
         </div>
 
-        {/* Cover Image URL & Sort Order */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="imageUrl">Cover Image URL</Label>
-            <Input
-              id="imageUrl"
-              name="imageUrl"
-              defaultValue={initialData?.imageUrl || ""}
-              disabled={isPending}
-              placeholder="e.g. https://images.unsplash.com/..."
-            />
-          </div>
-          <div className="space-y-2">
+        {/* Cover Image & Sort Order */}
+        <div className="space-y-4">
+          <ImagePreviewInput
+            id="imageUrl"
+            name="imageUrl"
+            label="Collection Cover Image"
+            defaultValue={initialData?.imageUrl || ""}
+            aspectRatio="portrait"
+          />
+
+          <div className="space-y-2 max-w-xs">
             <Label htmlFor="sortOrder">Sort Order</Label>
             <Input
               id="sortOrder"

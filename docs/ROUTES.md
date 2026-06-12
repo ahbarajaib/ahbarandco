@@ -60,8 +60,19 @@ Handled automatically by Auth.js at `/api/auth/callback/google`.
 
 | Page | Path | Status |
 |------|------|--------|
-| Index | `/journal` | Placeholder |
-| Post | `/journal/[slug]` | Not started |
+| Index | `/journal` | ✅ Live (Prisma database driven) |
+| Post | `/journal/[slug]` | ✅ Live (Rendered markdown content) |
+
+## Administrative Portal
+
+| Page | Path | Auth |
+|------|------|------|
+| Admin Login | `/admin/login` | Public |
+| Dashboard Overview | `/admin` | **Required Admin** |
+| Products CMS | `/admin/products` | **Required Admin** |
+| Collections CMS | `/admin/collections` | **Required Admin** |
+| Orders CMS | `/admin/orders` | **Required Admin** |
+| Journal CMS | `/admin/journal` | **Required Admin** |
 
 ## API Routes
 
@@ -72,7 +83,7 @@ Handled automatically by Auth.js at `/api/auth/callback/google`.
 
 ## SEO Conventions
 
-- Page titles: `{Page Title} | AHBAR & CO.`
+- Page titles: `{Page Title} | Ahbar & Co.`
 - Collection pages target material + product type keywords
 - Product pages include material, dimensions in metadata
 - All images require descriptive `alt` text

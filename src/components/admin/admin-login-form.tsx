@@ -30,8 +30,8 @@ export function AdminLoginForm() {
       <Card className="w-full max-w-md border-border bg-white shadow-sm">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">
-            <Link href="/" className="font-heading text-xl font-semibold tracking-widest text-wood-dark uppercase">
-              AHBAR & CO.
+            <Link href="/" className="font-heading text-xl font-semibold tracking-widest text-wood-dark">
+              Ahbar & Co.
             </Link>
           </div>
           <CardTitle className="font-heading text-2xl font-medium text-text-primary">

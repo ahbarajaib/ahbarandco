@@ -11,7 +11,9 @@ const protectedRoutes = ["/checkout", "/account", "/orders"];
 export default auth((req) => {
   const { pathname } = req.nextUrl;
   const isPost = req.method === "POST";
-  const ip = (req as any).ip || req.headers.get("x-forwarded-for") || "127.0.0.1";
+  const ip = (req as { ip?: string }).ip || req.headers.get("x-forwarded-for") || "127.0.0.1";
+
+  console.log("DEBUG: proxy.ts - pathname:", pathname, "auth:", req.auth);
 
   // Rate limit sensitive POST operations (brute-force prevention)
   if (

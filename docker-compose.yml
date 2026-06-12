@@ -4,15 +4,17 @@ services:
     container_name: ahbarandco-db
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ahbar
-      POSTGRES_PASSWORD: ahbar
-      POSTGRES_DB: ahbarandco
+      POSTGRES_USER: ${POSTGRES_USER:-ahbar}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ahbar}
+      POSTGRES_DB: ${POSTGRES_DB:-ahbarandco}
     ports:
-      - "15432:5432"
+      # Expose only to localhost (127.0.0.1) for secure administrative access (e.g. pgAdmin/DBeaver via SSH tunnel)
+      # This prevents direct access from the public internet.
+      - "127.0.0.1:15432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ahbar -d ahbarandco"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-ahbar} -d ${POSTGRES_DB:-ahbarandco}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -25,20 +27,29 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    volumes:
+      # Persistent named volume to keep uploaded images safe across container rebuilds/redeploys
+      - uploads_data:/app/public/uploads
     environment:
-      DATABASE_URL: postgresql://ahbar:ahbar@db:5432/ahbarandco?schema=public
-      AUTH_SECRET: ${AUTH_SECRET:-change-me-in-production}
-      AUTH_URL: http://localhost:3000
-      NEXT_PUBLIC_SITE_URL: http://localhost:3000
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
-      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
-      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID:-}
-      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET:-}
-      RAZORPAY_WEBHOOK_SECRET: ${RAZORPAY_WEBHOOK_SECRET:-}
-      NEXT_PUBLIC_RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID:-}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-ahbar}:${POSTGRES_PASSWORD:-ahbar}@db:5432/${POSTGRES_DB:-ahbarandco}?schema=public
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_URL: ${AUTH_URL}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET}
+      RAZORPAY_WEBHOOK_SECRET: ${RAZORPAY_WEBHOOK_SECRET}
+      NEXT_PUBLIC_RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_FROM: ${SMTP_FROM}
     depends_on:
       db:
         condition: service_healthy
 
 volumes:
   postgres_data:
+  uploads_data:

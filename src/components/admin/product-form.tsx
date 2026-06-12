@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState, startTransition } from "react";
+import React, { useActionState, useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,7 @@ type ProductFormProps = {
     shortDesc: string | null;
     description: string | null;
     price: number;
+    compareAtPrice: number | null;
     stock: number;
     material: string | null;
     dimensions: string | null;
@@ -38,9 +39,50 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
 
   // Price conversion (initialData.price is in paise, so divide by 100 for user display)
   const displayPrice = initialData ? (initialData.price / 100).toString() : "";
-  const initialImagesText = initialData
-    ? initialData.images.map((img) => img.url).join("\n")
+  const displayCompareAtPrice = initialData?.compareAtPrice 
+    ? (initialData.compareAtPrice / 100).toString() 
     : "";
+  const [existingImages, setExistingImages] = useState<string[]>(
+    initialData ? initialData.images.map((img) => img.url) : []
+  );
+  const [newUrlInput, setNewUrlInput] = useState("");
+  const [stagedFiles, setStagedFiles] = useState<{ name: string; previewUrl: string }[]>([]);
+
+  useEffect(() => {
+    return () => {
+      stagedFiles.forEach((f) => URL.revokeObjectURL(f.previewUrl));
+    };
+  }, [stagedFiles]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (!files) return;
+
+    // Revoke old object URLs first
+    stagedFiles.forEach((f) => URL.revokeObjectURL(f.previewUrl));
+
+    const newStaged: { name: string; previewUrl: string }[] = [];
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      newStaged.push({
+        name: file.name,
+        previewUrl: URL.createObjectURL(file),
+      });
+    }
+    setStagedFiles(newStaged);
+  };
+
+  const handleAddUrl = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (newUrlInput.trim()) {
+      setExistingImages((prev) => [...prev, newUrlInput.trim()]);
+      setNewUrlInput("");
+    }
+  };
+
+  const handleRemoveExisting = (indexToRemove: number) => {
+    setExistingImages((prev) => prev.filter((_, idx) => idx !== indexToRemove));
+  };
 
   const [state, formAction, isPending] = useActionState<ActionResponse, FormData>(
     async (prevState, formData) => {
@@ -60,7 +102,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
       </div>
 
-      <form action={formAction} className="space-y-6">
+      <form action={formAction} className="space-y-6" encType="multipart/form-data">
         {/* Name */}
         <div className="space-y-2">
           <Label htmlFor="name">Product Name *</Label>
@@ -101,7 +143,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         </div>
 
         {/* Pricing, Stock, and Collection */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
           <div className="space-y-2">
             <Label htmlFor="price">Price (INR) *</Label>
             <Input
@@ -113,6 +155,18 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
               required
               disabled={isPending}
               placeholder="e.g. 24999.00"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="compareAtPrice">Compare At Price (INR)</Label>
+            <Input
+              id="compareAtPrice"
+              name="compareAtPrice"
+              type="number"
+              step="0.01"
+              defaultValue={displayCompareAtPrice}
+              disabled={isPending}
+              placeholder="e.g. 29999.00"
             />
           </div>
           <div className="space-y-2">
@@ -181,21 +235,101 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           </div>
         </div>
 
-        {/* Product Images List */}
-        <div className="space-y-2">
-          <Label htmlFor="images">Product Images (one URL per line)</Label>
-          <textarea
-            id="images"
-            name="images"
-            defaultValue={initialImagesText}
-            disabled={isPending}
-            rows={4}
-            placeholder="https://example.com/image1.jpg&#10;https://example.com/image2.jpg"
-            className="flex w-full rounded-sm border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 font-mono text-xs"
-          />
-          <p className="text-[10px] text-text-secondary">
-            Provide public URLs for lifestyle or product angles. Seed uses Unsplash URLs.
-          </p>
+        {/* Product Images Uploader */}
+        <div className="space-y-4 p-4 bg-background-primary/30 border border-border/50 rounded-sm">
+          <Label className="font-medium text-wood-dark block">Product Images</Label>
+          
+          {/* Grid of existing/added images */}
+          {existingImages.length > 0 && (
+            <div className="space-y-2">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Current & Linked Images</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {existingImages.map((url, idx) => (
+                  <div key={idx} className="relative aspect-square group border border-border bg-white rounded-sm overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={url}
+                      alt={`Product image ${idx + 1}`}
+                      className="h-full w-full object-cover"
+                    />
+                    <input type="hidden" name="existingImages" value={url} />
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveExisting(idx)}
+                      className="absolute top-1 right-1 bg-red-600/90 text-white rounded-full p-1 text-xs hover:bg-red-700 transition shadow-sm opacity-0 group-hover:opacity-100 focus:opacity-100"
+                      title="Remove image"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                    <span className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[9px] px-1 py-0.5 text-center truncate">
+                      {url.startsWith("/uploads/") ? "Local Storage" : "External URL"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Staged file uploads preview */}
+          {stagedFiles.length > 0 && (
+            <div className="space-y-2">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-wood-medium">Staged For Upload</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {stagedFiles.map((file, idx) => (
+                  <div key={idx} className="relative aspect-square border border-dashed border-wood-medium/50 bg-wood-medium/5 rounded-sm overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={file.previewUrl}
+                      alt={`Staged upload ${idx + 1}`}
+                      className="h-full w-full object-cover opacity-80"
+                    />
+                    <span className="absolute bottom-0 inset-x-0 bg-wood-medium/80 text-background-primary text-[9px] px-1 py-0.5 text-center truncate font-medium">
+                      Upload Staged
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-2 border-t border-border/40">
+            {/* File Upload Selector */}
+            <div className="space-y-1.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Upload New Images</span>
+              <input
+                id="product-image-files"
+                name="imageFiles"
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleFileChange}
+                disabled={isPending}
+                className="flex h-9 w-full rounded-sm border border-input bg-white px-3 py-1.5 text-xs shadow-sm file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed"
+              />
+            </div>
+
+            {/* Add external URL */}
+            <div className="space-y-1.5">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Add Image URL (External)</span>
+              <div className="flex gap-2">
+                <Input
+                  value={newUrlInput}
+                  onChange={(e) => setNewUrlInput(e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  disabled={isPending}
+                  className="bg-white text-xs h-9"
+                />
+                <Button
+                  type="button"
+                  onClick={handleAddUrl}
+                  disabled={isPending || !newUrlInput.trim()}
+                  className="bg-wood-medium hover:bg-wood-dark text-background-primary h-9 px-3 text-xs animate-none"
+                >
+                  Add
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Toggles (Published & Featured) */}
