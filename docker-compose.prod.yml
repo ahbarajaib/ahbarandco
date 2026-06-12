@@ -1,0 +1,88 @@
+# Production Docker Compose — VPS deployment
+# Used by: .github/workflows/deploy.yml
+# Runs on: /opt/ahbarandco on the VPS
+#
+# Key differences from docker-compose.yml (local dev):
+#   - PostgreSQL port NOT exposed publicly (internal only)
+#   - App port NOT exposed publicly (Traefik or Nginx handles routing)
+#   - All secrets come from /opt/ahbarandco/.env on VPS
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: ahbarandco-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # No ports exposed — only accessible within internal Docker network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - internal
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ahbarandco-app
+    restart: unless-stopped
+    expose:
+      - "3000"
+    volumes:
+      # Persistent volume — uploaded images survive container rebuilds
+      - uploads_data:/app/public/uploads
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}?schema=public
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_URL: https://ahbarandco.com
+      NEXT_PUBLIC_SITE_URL: https://ahbarandco.com
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      RAZORPAY_KEY_SECRET: ${RAZORPAY_KEY_SECRET}
+      RAZORPAY_WEBHOOK_SECRET: ${RAZORPAY_WEBHOOK_SECRET}
+      NEXT_PUBLIC_RAZORPAY_KEY_ID: ${RAZORPAY_KEY_ID}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_FROM: ${SMTP_FROM}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+      # Connect to Traefik's shared network (add labels below when Traefik is set up)
+      # - traefik-public
+
+    # --- Traefik labels (uncomment when Traefik is running) ---
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.docker.network=traefik-public"
+    #   - "traefik.http.routers.ahbarandco.rule=Host(`ahbarandco.com`) || Host(`www.ahbarandco.com`)"
+    #   - "traefik.http.routers.ahbarandco.entrypoints=websecure"
+    #   - "traefik.http.routers.ahbarandco.tls=true"
+    #   - "traefik.http.routers.ahbarandco.tls.certresolver=letsencrypt"
+    #   - "traefik.http.services.ahbarandco.loadbalancer.server.port=3000"
+
+    # --- Direct port exposure (use this instead of Traefik for simple setups) ---
+    ports:
+      - "127.0.0.1:3000:3000"  # Only localhost — put Nginx/Traefik in front
+
+volumes:
+  postgres_data:
+  uploads_data:
+
+networks:
+  internal:
+    driver: bridge
+  # traefik-public:
+  #   external: true

@@ -69,3 +69,16 @@ export const ResetPasswordSchema = z.object({
   password: z.string().min(8, "Password must be at least 8 characters"),
 });
 
+export const AddressSchema = z.object({
+  title: z.string().max(50, "Title must not exceed 50 characters").optional().nullable().or(z.literal("")),
+  fullName: z.string().min(2, "Full name must be at least 2 characters").max(100, "Full name must not exceed 100 characters"),
+  phone: z.string().regex(/^[0-9]{10}$/, "Phone number must be exactly 10 digits"),
+  street: z.string().min(5, "Street address must be at least 5 characters").max(200, "Street address must not exceed 200 characters"),
+  apartment: z.string().max(100, "Apartment/Suite must not exceed 100 characters").optional().nullable().or(z.literal("")),
+  city: z.string().min(2, "City name must be at least 2 characters").max(100, "City name must not exceed 100 characters"),
+  state: z.string().min(2, "State name must be at least 2 characters").max(100, "State name must not exceed 100 characters"),
+  postalCode: z.string().regex(/^[1-9][0-9]{5}$/, "PIN code must be exactly 6 digits"),
+  country: z.string().default("India"),
+});
+
+

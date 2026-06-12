@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { emptyCart, getCartWithProducts } from "@/lib/cart-actions";
 import { prisma } from "@/lib/prisma";
+import { AddressSchema } from "@/lib/validations";
 import {
   getRazorpayClient,
   verifyRazorpayPaymentSignature,
@@ -16,10 +17,15 @@ function generateOrderNumber() {
   return `AHB-${timestamp}-${random}`;
 }
 
-export async function createCheckoutOrder() {
+export async function createCheckoutOrder(shippingAddress: any) {
   const session = await auth();
   if (!session?.user?.id) {
     return { error: "You must be signed in to checkout." };
+  }
+
+  const validation = AddressSchema.safeParse(shippingAddress);
+  if (!validation.success) {
+    return { error: `Invalid shipping address: ${validation.error.issues[0].message}` };
   }
 
   const cartItems = await getCartWithProducts();
@@ -42,6 +48,7 @@ export async function createCheckoutOrder() {
       subtotal,
       shipping,
       total,
+      shippingAddress: validation.data as any,
       items: {
         create: cartItems.map((item) => ({
           productId: item.productId,
@@ -134,4 +141,38 @@ export async function verifyPayment({
   revalidatePath("/orders");
 
   return { success: true, orderNumber: order.orderNumber };
+}
+
+export async function cancelOrder(orderNumber: string) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return { error: "You must be signed in to cancel an order." };
+  }
+
+  const order = await prisma.order.findFirst({
+    where: {
+      orderNumber,
+      userId: session.user.id,
+    },
+  });
+
+  if (!order) {
+    return { error: "Order not found." };
+  }
+
+  if (order.status !== "PENDING") {
+    return { error: "Only pending orders can be cancelled." };
+  }
+
+  await prisma.order.update({
+    where: { id: order.id },
+    data: {
+      status: "CANCELLED",
+    },
+  });
+
+  revalidatePath("/account");
+  revalidatePath(`/orders/${orderNumber}`);
+
+  return { success: true };
 }

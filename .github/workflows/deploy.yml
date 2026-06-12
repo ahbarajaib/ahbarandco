@@ -3,33 +3,60 @@ name: Deploy to VPS
 on:
   push:
     branches: [main]
+  workflow_dispatch: # Allow manual trigger from GitHub UI
 
 jobs:
   deploy:
+    name: Deploy ahbarandco to VPS
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
+          username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT || 22 }}
+          port: 22
+          envs: GH_PAT
           script: |
-            # Navigate to the project directory
-            cd /var/www/ahbarandco
-            
-            # Pull the latest code changes
-            git pull origin main
-            
-            # Rebuild the standalone Next.js App image (database remains active)
-            docker compose build --no-cache app
-            
-            # Update and replace only the app container with near-zero downtime
-            docker compose up -d --no-deps app
-            
-            # Run database push to apply new migrations/schema updates automatically
-            docker compose exec -T app npx prisma db push
-            
-            # Clean up old unused builder/cache images to prevent disk fillup
+            set -e
+
+            echo "📦 Pulling latest code..."
+            cd /opt/ahbarandco
+
+            # Clone on first deploy, pull on subsequent
+            if [ ! -d ".git" ]; then
+              git clone https://x-access-token:${GH_PAT}@github.com/ahbarajaib/ahbarandco.git .
+            else
+              git remote set-url origin https://x-access-token:${GH_PAT}@github.com/ahbarajaib/ahbarandco.git
+              git pull origin main
+            fi
+
+            echo "🔒 Checking .env file..."
+            if [ ! -f ".env" ]; then
+              echo "❌ ERROR: /opt/ahbarandco/.env not found! Create it on the VPS first."
+              exit 1
+            fi
+
+            echo "🐳 Rebuilding and restarting containers..."
+            docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
+
+            echo "⏳ Waiting for app to be healthy (30s)..."
+            sleep 30
+
+            echo "🔄 Running database migrations..."
+            docker compose -f docker-compose.prod.yml exec -T app npx prisma migrate deploy
+
+            echo "✅ Running health check..."
+            curl -sf http://localhost:3000 -o /dev/null || (echo "❌ Health check failed!" && exit 1)
+
+            echo "🧹 Cleaning up unused Docker images..."
             docker image prune -f
+
+            echo "🎉 Deployment complete! ahbarandco is live."
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}

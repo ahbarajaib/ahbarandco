@@ -15,13 +15,15 @@ export default auth((req) => {
 
   console.log("DEBUG: proxy.ts - pathname:", pathname, "auth:", req.auth);
 
-  // Rate limit sensitive POST operations (brute-force prevention)
+  // Rate limit sensitive POST operations (brute-force and spam prevention)
   if (
     isPost &&
     (pathname === "/login" ||
       pathname === "/register" ||
       pathname === "/admin/login" ||
-      pathname === "/checkout")
+      pathname === "/checkout" ||
+      pathname === "/forgot-password" ||
+      pathname === "/reset-password")
   ) {
     if (isRateLimited(ip, 5, 60000)) {
       return new NextResponse("Too many requests. Please try again in 1 minute.", {
@@ -66,5 +68,7 @@ export const config = {
     "/admin/:path*",
     "/login",
     "/register",
+    "/forgot-password",
+    "/reset-password",
   ],
 };

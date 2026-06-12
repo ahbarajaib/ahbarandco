@@ -66,10 +66,4 @@ export async function getRelatedProducts(
   });
 }
 
-export function formatPrice(amountInPaise: number, currency = "INR") {
-  return new Intl.NumberFormat("en-IN", {
-    style: "currency",
-    currency,
-    maximumFractionDigits: 0,
-  }).format(amountInPaise / 100);
-}
+export { formatPrice } from "./utils";
