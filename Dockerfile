@@ -8,7 +8,7 @@ FROM base AS deps
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
-RUN npm install
+RUN npm ci --frozen-lockfile
 
 # ── Stage 3: builder — compile Next.js ───────────────────────────────────────
 FROM base AS builder
@@ -39,10 +39,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Prisma runtime (client + engine only — no CLI needed at runtime)
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/prisma.config.ts ./
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
+# Prisma runtime — generated client is at src/generated/prisma (custom output path)
+# @prisma/client is the runtime package; the engine binaries come with it
 COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
 COPY --from=builder /app/src/generated ./src/generated
 

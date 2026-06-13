@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Dummy values so build doesn't fail on missing env vars
+          # Dummy values — build must not contact real services
           DATABASE_URL: "postgresql://dummy:dummy@localhost:5432/dummy"
           AUTH_SECRET: "dummy-secret-for-ci-build-only-32chars!!"
           NEXTAUTH_URL: "http://localhost:3000"
@@ -47,3 +47,8 @@ jobs:
           RAZORPAY_WEBHOOK_SECRET: "dummy"
           NEXT_PUBLIC_RAZORPAY_KEY_ID: "rzp_test_dummy"
           NEXT_PUBLIC_SITE_URL: "http://localhost:3000"
+          SMTP_HOST: "smtp.dummy.com"
+          SMTP_PORT: "587"
+          SMTP_USER: "dummy"
+          SMTP_PASSWORD: "dummy"
+          SMTP_FROM: "dummy@dummy.com"
