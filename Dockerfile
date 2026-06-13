@@ -8,7 +8,7 @@ FROM base AS deps
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
-RUN npm ci --frozen-lockfile
+RUN npm install
 
 # ── Stage 3: builder — compile Next.js ───────────────────────────────────────
 FROM base AS builder
