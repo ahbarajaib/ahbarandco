@@ -92,68 +92,66 @@ export function AddressManager({ addresses }: AddressManagerProps) {
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
+
+          // Call our own server-side proxy — required for Nominatim ToS compliance
+          // and to avoid browser CORS / rate-limit issues.
           const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=18&addressdetails=1`
+            `/api/geocode?lat=${latitude.toFixed(6)}&lon=${longitude.toFixed(6)}`
           );
-          if (!res.ok) throw new Error("Failed to fetch address details");
 
-          const data = await res.json();
-          const addr = data.address;
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            throw new Error(err.error || `Server error ${res.status}`);
+          }
 
-          if (addr) {
-            const road = addr.road || addr.street || "";
-            const suburb = addr.suburb || addr.neighbourhood || addr.village || "";
-            const computedStreet = [road, suburb].filter(Boolean).join(", ");
-            const computedCity = addr.city || addr.town || addr.city_district || addr.county || "";
-            const computedState = addr.state || "";
-            const computedPostcode = addr.postcode || "";
+          const addr = await res.json();
 
-            const form = document.getElementById("address-form") as HTMLFormElement;
-            if (form) {
-              const streetInput = form.elements.namedItem("street") as HTMLInputElement;
-              const cityInput = form.elements.namedItem("city") as HTMLInputElement;
-              const stateSelect = form.elements.namedItem("state") as HTMLSelectElement;
-              const postalCodeInput = form.elements.namedItem("postalCode") as HTMLInputElement;
+          const form = document.getElementById("address-form") as HTMLFormElement;
+          if (form) {
+            const streetInput = form.elements.namedItem("street") as HTMLInputElement;
+            const cityInput = form.elements.namedItem("city") as HTMLInputElement;
+            const stateSelect = form.elements.namedItem("state") as HTMLSelectElement;
+            const postalCodeInput = form.elements.namedItem("postalCode") as HTMLInputElement;
 
-              if (streetInput) streetInput.value = computedStreet;
-              if (cityInput) cityInput.value = computedCity;
-              if (postalCodeInput) postalCodeInput.value = computedPostcode;
+            if (streetInput && addr.street) streetInput.value = addr.street;
+            if (cityInput && addr.city) cityInput.value = addr.city;
+            if (postalCodeInput && addr.postalCode) postalCodeInput.value = addr.postalCode;
 
-              if (stateSelect && computedState) {
-                const match = INDIAN_STATES.find(
-                  (s) => s.toLowerCase() === computedState.toLowerCase() ||
-                         computedState.toLowerCase().includes(s.toLowerCase())
+            if (stateSelect && addr.state) {
+              const normalized = addr.state.toLowerCase();
+              const match =
+                INDIAN_STATES.find((s) => s.toLowerCase() === normalized) ||
+                INDIAN_STATES.find((s) => normalized.includes(s.toLowerCase())) ||
+                INDIAN_STATES.find((s) =>
+                  s.toLowerCase().startsWith(normalized.slice(0, 4))
                 );
-                if (match) {
-                  stateSelect.value = match;
-                } else {
-                  const partialMatch = INDIAN_STATES.find(s => s.toLowerCase().startsWith(computedState.toLowerCase().slice(0, 4)));
-                  if (partialMatch) stateSelect.value = partialMatch;
-                }
-              }
+              if (match) stateSelect.value = match;
             }
-          } else {
-            setDetectError("Address details not found.");
           }
         } catch (err) {
-          console.error("Reverse geocoding error:", err);
-          setDetectError("Failed to auto-detect address. Enter details manually.");
+          console.error("[address] Location detect failed:", err);
+          setDetectError(
+            err instanceof Error
+              ? err.message
+              : "Failed to auto-detect address. Please enter details manually."
+          );
         } finally {
           setDetecting(false);
         }
       },
       (err) => {
-        console.error("Geolocation error:", err);
         setDetecting(false);
-        switch (err.code) {
-          case err.PERMISSION_DENIED:
-            setDetectError("Location access denied. Please enable permission to detect.");
-            break;
-          default:
-            setDetectError("Failed to detect location.");
+        if (err.code === err.PERMISSION_DENIED) {
+          setDetectError(
+            "Location permission denied. Enable it in your browser settings."
+          );
+        } else if (err.code === err.TIMEOUT) {
+          setDetectError("Location request timed out. Try again.");
+        } else {
+          setDetectError("Could not detect location. Enter your address manually.");
         }
       },
-      { timeout: 10000 }
+      { timeout: 10000, maximumAge: 60000 }
     );
   }
 
