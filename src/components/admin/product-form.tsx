@@ -237,7 +237,12 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
 
         {/* Product Images Uploader */}
         <div className="space-y-4 p-4 bg-background-primary/30 border border-border/50 rounded-sm">
-          <Label className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block">Product Images</Label>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/20 pb-1.5 mb-1">
+            <Label className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block">Product Images</Label>
+            <span className="text-[9px] font-medium text-text-secondary/70 bg-stone-100/80 px-2 py-0.5 rounded-sm border border-stone-200/40">
+              Pref. size: 1:1 or 4:5 (Min 1600px width)
+            </span>
+          </div>
           
           {/* Grid of existing/added images */}
           {existingImages.length > 0 && (

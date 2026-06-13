@@ -11,6 +11,7 @@ type ImagePreviewInputProps = {
   defaultValue: string;
   placeholder?: string;
   aspectRatio?: "video" | "square" | "portrait" | "wide";
+  preferredDimensions?: string;
 };
 
 export function ImagePreviewInput({
@@ -20,9 +21,18 @@ export function ImagePreviewInput({
   defaultValue,
   placeholder,
   aspectRatio = "video",
+  preferredDimensions,
 }: ImagePreviewInputProps) {
   const [url, setUrl] = useState(defaultValue);
   const [filePreview, setFilePreview] = useState<string>("");
+
+  const preferredSizeDesc = preferredDimensions || (
+    aspectRatio === "portrait" ? "4:5 (e.g. 1200 × 1500 px)" :
+    aspectRatio === "square" ? "1:1 (e.g. 1600 × 1600 px)" :
+    aspectRatio === "video" ? "3:2 or 16:9 (e.g. 1600 × 1066 px or 2400 × 1350 px)" :
+    aspectRatio === "wide" ? "21:9 (e.g. 2560 × 1100 px)" :
+    undefined
+  );
 
   useEffect(() => {
     // Cleanup temporary object URLs on unmount
@@ -67,7 +77,14 @@ export function ImagePreviewInput({
 
   return (
     <div className="space-y-3 p-4 bg-background-primary/30 border border-border/50 rounded-sm">
-      <Label htmlFor={id} className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block mb-1.5">{label}</Label>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/20 pb-1.5 mb-1">
+        <Label htmlFor={id} className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block">{label}</Label>
+        {preferredSizeDesc && (
+          <span className="text-[9px] font-medium text-text-secondary/70 bg-stone-100/80 px-2 py-0.5 rounded-sm border border-stone-200/40">
+            Pref. size: {preferredSizeDesc}
+          </span>
+        )}
+      </div>
       
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* URL option */}
