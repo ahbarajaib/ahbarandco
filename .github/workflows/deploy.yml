@@ -54,9 +54,8 @@ jobs:
             sleep 30
 
             echo "🔄 Running database migrations..."
-            docker compose -f docker-compose.prod.yml run --rm --no-deps \
-              -e DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}?schema=public" \
-              migrate
+            # docker compose reads .env automatically — no need to pass DATABASE_URL manually
+            docker compose -f docker-compose.prod.yml run --rm --no-deps migrate
 
             echo "✅ Running health check..."
             curl -sf http://localhost:3000 -o /dev/null || (echo "❌ Health check failed!" && exit 1)
