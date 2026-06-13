@@ -45,7 +45,6 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
   const [existingImages, setExistingImages] = useState<string[]>(
     initialData ? initialData.images.map((img) => img.url) : []
   );
-  const [newUrlInput, setNewUrlInput] = useState("");
   const [stagedFiles, setStagedFiles] = useState<{ name: string; previewUrl: string }[]>([]);
 
   useEffect(() => {
@@ -72,13 +71,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
     setStagedFiles(newStaged);
   };
 
-  const handleAddUrl = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (newUrlInput.trim()) {
-      setExistingImages((prev) => [...prev, newUrlInput.trim()]);
-      setNewUrlInput("");
-    }
-  };
+
 
   const handleRemoveExisting = (indexToRemove: number) => {
     setExistingImages((prev) => prev.filter((_, idx) => idx !== indexToRemove));
@@ -297,43 +290,19 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             </div>
           )}
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-2 border-t border-border/40">
+          <div className="pt-2 border-t border-border/40 space-y-1.5">
             {/* File Upload Selector */}
-            <div className="space-y-1.5">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Upload New Images</span>
-              <input
-                id="product-image-files"
-                name="imageFiles"
-                type="file"
-                multiple
-                accept="image/*"
-                onChange={handleFileChange}
-                disabled={isPending}
-                className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-xs shadow-xs file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:border-wood-medium disabled:cursor-not-allowed"
-              />
-            </div>
-
-            {/* Add external URL */}
-            <div className="space-y-1.5">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Add Image URL (External)</span>
-              <div className="flex gap-2">
-                <Input
-                  value={newUrlInput}
-                  onChange={(e) => setNewUrlInput(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
-                  disabled={isPending}
-                  className="bg-white text-xs h-10"
-                />
-                <Button
-                  type="button"
-                  onClick={handleAddUrl}
-                  disabled={isPending || !newUrlInput.trim()}
-                  className="bg-wood-medium hover:bg-wood-dark text-background-primary h-10 px-4 text-xs font-semibold uppercase tracking-wider rounded-sm cursor-pointer"
-                >
-                  Add
-                </Button>
-              </div>
-            </div>
+            <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Upload New Images</span>
+            <input
+              id="product-image-files"
+              name="imageFiles"
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleFileChange}
+              disabled={isPending}
+              className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-xs shadow-xs file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:border-wood-medium disabled:cursor-not-allowed"
+            />
           </div>
         </div>
 
