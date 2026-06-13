@@ -67,12 +67,12 @@ export function ImagePreviewInput({
 
   return (
     <div className="space-y-3 p-4 bg-background-primary/30 border border-border/50 rounded-sm">
-      <Label htmlFor={id} className="font-medium text-wood-dark block">{label}</Label>
+      <Label htmlFor={id} className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block mb-1.5">{label}</Label>
       
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {/* URL option */}
         <div className="space-y-1.5">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Option 1: Image URL</span>
+          <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Option 1: Image URL</span>
           <Input
             id={id}
             name={name}
@@ -85,7 +85,7 @@ export function ImagePreviewInput({
 
         {/* File upload option */}
         <div className="space-y-1.5">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Option 2: Upload File</span>
+          <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Option 2: Upload File</span>
           <div className="relative">
             <input
               id={`${id}-file`}
@@ -93,15 +93,15 @@ export function ImagePreviewInput({
               type="file"
               accept="image/*"
               onChange={handleFileChange}
-              className="flex h-9 w-full rounded-sm border border-input bg-white px-3 py-1.5 text-xs shadow-sm file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+              className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-xs shadow-xs file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:border-wood-medium disabled:cursor-not-allowed"
             />
           </div>
         </div>
       </div>
 
       {activePreviewUrl && (activePreviewUrl.startsWith("http") || activePreviewUrl.startsWith("blob:")) ? (
-        <div className="mt-2 space-y-1.5">
-          <span className="text-[10px] uppercase tracking-wider text-text-secondary font-semibold">Live Preview</span>
+        <div className="mt-3 space-y-1.5">
+          <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Live Preview</span>
           <div className={`relative overflow-hidden rounded-sm border border-border bg-background-secondary w-full max-w-sm ${aspectClasses[aspectRatio]}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

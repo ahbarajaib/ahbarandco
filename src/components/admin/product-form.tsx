@@ -97,7 +97,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
   );
 
   return (
-    <div className="space-y-6 max-w-2xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-sm">
+    <div className="space-y-6 max-w-2xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-xs">
       <div className="border-b border-border pb-4">
         <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
       </div>
@@ -105,7 +105,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
       <form action={formAction} className="space-y-6" encType="multipart/form-data">
         {/* Name */}
         <div className="space-y-2">
-          <Label htmlFor="name">Product Name *</Label>
+          <Label htmlFor="name" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Product Name *</Label>
           <Input
             id="name"
             name="name"
@@ -119,7 +119,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         {/* Short & Long Description */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="shortDesc">Short Description</Label>
+            <Label htmlFor="shortDesc" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Short Description</Label>
             <Input
               id="shortDesc"
               name="shortDesc"
@@ -129,7 +129,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2 sm:col-span-2">
-            <Label htmlFor="description">Long/Detailed Description</Label>
+            <Label htmlFor="description" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Long/Detailed Description</Label>
             <textarea
               id="description"
               name="description"
@@ -137,7 +137,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
               disabled={isPending}
               rows={4}
               placeholder="Write detailed specifications, narrative, and craftsman details..."
-              className="flex w-full rounded-sm border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex w-full rounded-sm border border-border bg-white px-3.5 py-2.5 text-sm shadow-xs transition-all placeholder:text-text-secondary/40 outline-none hover:border-wood-medium/20 focus-visible:border-wood-medium focus-visible:ring-2 focus-visible:ring-wood-medium/10 disabled:cursor-not-allowed disabled:bg-background-secondary/50 disabled:opacity-50"
             />
           </div>
         </div>
@@ -145,7 +145,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         {/* Pricing, Stock, and Collection */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
           <div className="space-y-2">
-            <Label htmlFor="price">Price (INR) *</Label>
+            <Label htmlFor="price" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Price (INR) *</Label>
             <Input
               id="price"
               name="price"
@@ -158,7 +158,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="compareAtPrice">Compare At Price (INR)</Label>
+            <Label htmlFor="compareAtPrice" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Compare At Price (INR)</Label>
             <Input
               id="compareAtPrice"
               name="compareAtPrice"
@@ -170,7 +170,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="stock">Inventory / Stock *</Label>
+            <Label htmlFor="stock" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Inventory / Stock *</Label>
             <Input
               id="stock"
               name="stock"
@@ -183,13 +183,13 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="collectionId">Collection</Label>
+            <Label htmlFor="collectionId" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Collection</Label>
             <select
               id="collectionId"
               name="collectionId"
               defaultValue={initialData?.collectionId || ""}
               disabled={isPending}
-              className="flex h-9 w-full rounded-sm border border-input bg-transparent px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-sm shadow-xs transition-all focus-visible:border-wood-medium focus-visible:ring-2 focus-visible:ring-wood-medium/10 outline-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
             >
               <option value="">Select collection...</option>
               {collections.map((col) => (
@@ -204,7 +204,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         {/* Details: Material, Dimensions, Care */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           <div className="space-y-2">
-            <Label htmlFor="material">Material</Label>
+            <Label htmlFor="material" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Material</Label>
             <Input
               id="material"
               name="material"
@@ -214,7 +214,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dimensions">Dimensions</Label>
+            <Label htmlFor="dimensions" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Dimensions</Label>
             <Input
               id="dimensions"
               name="dimensions"
@@ -224,7 +224,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="careGuide">Care Guide</Label>
+            <Label htmlFor="careGuide" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Care Guide</Label>
             <Input
               id="careGuide"
               name="careGuide"
@@ -237,12 +237,12 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
 
         {/* Product Images Uploader */}
         <div className="space-y-4 p-4 bg-background-primary/30 border border-border/50 rounded-sm">
-          <Label className="font-medium text-wood-dark block">Product Images</Label>
+          <Label className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block">Product Images</Label>
           
           {/* Grid of existing/added images */}
           {existingImages.length > 0 && (
             <div className="space-y-2">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Current & Linked Images</span>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Current & Linked Images</span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {existingImages.map((url, idx) => (
                   <div key={idx} className="relative aspect-square group border border-border bg-white rounded-sm overflow-hidden">
@@ -256,7 +256,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
                     <button
                       type="button"
                       onClick={() => handleRemoveExisting(idx)}
-                      className="absolute top-1 right-1 bg-red-600/90 text-white rounded-full p-1 text-xs hover:bg-red-700 transition shadow-sm opacity-0 group-hover:opacity-100 focus:opacity-100"
+                      className="absolute top-1 right-1 bg-red-600/90 text-white rounded-full p-1 text-xs hover:bg-red-700 transition shadow-sm opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer"
                       title="Remove image"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -273,7 +273,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           {/* Staged file uploads preview */}
           {stagedFiles.length > 0 && (
             <div className="space-y-2">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-wood-medium">Staged For Upload</span>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-wood-medium">Staged For Upload</span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {stagedFiles.map((file, idx) => (
                   <div key={idx} className="relative aspect-square border border-dashed border-wood-medium/50 bg-wood-medium/5 rounded-sm overflow-hidden">
@@ -295,7 +295,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 pt-2 border-t border-border/40">
             {/* File Upload Selector */}
             <div className="space-y-1.5">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Upload New Images</span>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Upload New Images</span>
               <input
                 id="product-image-files"
                 name="imageFiles"
@@ -304,26 +304,26 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
                 accept="image/*"
                 onChange={handleFileChange}
                 disabled={isPending}
-                className="flex h-9 w-full rounded-sm border border-input bg-white px-3 py-1.5 text-xs shadow-sm file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed"
+                className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-xs shadow-xs file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:border-wood-medium disabled:cursor-not-allowed"
               />
             </div>
 
             {/* Add external URL */}
             <div className="space-y-1.5">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">Add Image URL (External)</span>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Add Image URL (External)</span>
               <div className="flex gap-2">
                 <Input
                   value={newUrlInput}
                   onChange={(e) => setNewUrlInput(e.target.value)}
                   placeholder="https://images.unsplash.com/..."
                   disabled={isPending}
-                  className="bg-white text-xs h-9"
+                  className="bg-white text-xs h-10"
                 />
                 <Button
                   type="button"
                   onClick={handleAddUrl}
                   disabled={isPending || !newUrlInput.trim()}
-                  className="bg-wood-medium hover:bg-wood-dark text-background-primary h-9 px-3 text-xs animate-none"
+                  className="bg-wood-medium hover:bg-wood-dark text-background-primary h-10 px-4 text-xs font-semibold uppercase tracking-wider rounded-sm cursor-pointer"
                 >
                   Add
                 </Button>
@@ -334,25 +334,25 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
 
         {/* Toggles (Published & Featured) */}
         <div className="flex flex-wrap gap-6 pt-2">
-          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+          <label className="flex items-center gap-2.5 text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer select-none">
             <input
               type="checkbox"
               name="published"
               value="true"
               defaultChecked={initialData?.published ?? true}
               disabled={isPending}
-              className="h-4 w-4 rounded-sm border-border text-wood-medium focus:ring-wood-medium"
+              className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
             />
             <span>Published (make visible to catalog)</span>
           </label>
-          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+          <label className="flex items-center gap-2.5 text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer select-none">
             <input
               type="checkbox"
               name="featured"
               value="true"
               defaultChecked={initialData?.featured ?? false}
               disabled={isPending}
-              className="h-4 w-4 rounded-sm border-border text-wood-medium focus:ring-wood-medium"
+              className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
             />
             <span>Featured (displays on home page)</span>
           </label>
@@ -364,12 +364,12 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           </p>
         )}
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
+        <div className="flex items-center justify-end gap-3 pt-6 border-t border-border">
           <Button
             type="button"
             variant="outline"
             disabled={isPending}
-            className="border-border hover:bg-background-secondary"
+            className="h-10 px-5 border-border hover:bg-background-secondary text-text-primary transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
             render={<Link href="/admin/products" />}
           >
             Cancel
@@ -377,7 +377,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-wood-dark text-background-primary hover:bg-wood-medium"
+            className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
           >
             {isPending ? "Saving changes..." : "Save Product"}
           </Button>

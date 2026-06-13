@@ -61,6 +61,7 @@ export default async function AdminProductsPage() {
                   <tr key={product.id} className="hover:bg-background-primary/30 transition-colors">
                     <td className="px-6 py-4 font-medium flex items-center gap-3">
                       {firstImage ? (
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img src={firstImage} alt={product.name} className="h-10 w-10 object-cover rounded-sm bg-background-secondary" />
                       ) : (
                         <div className="h-10 w-10 bg-background-secondary rounded-sm border border-border flex items-center justify-center text-[10px] text-text-secondary">No img</div>
@@ -77,26 +78,26 @@ export default async function AdminProductsPage() {
                       {formatPrice(product.price)}
                     </td>
                     <td className="px-6 py-4">
-                      <span className={`inline-block rounded px-2 py-0.5 text-xs font-bold ${
-                        product.stock === 0 ? "bg-red-100 text-red-800" :
-                        product.stock <= 5 ? "bg-amber-100 text-amber-800" :
-                        "bg-green-100 text-green-800"
+                      <span className={`inline-block rounded-sm px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider border ${
+                        product.stock === 0 ? "bg-red-50 text-red-700 border-red-200/50" :
+                        product.stock <= 5 ? "bg-amber-50 text-amber-700 border-amber-200/50" :
+                        "bg-stone-100/50 text-stone-700 border-stone-200/60"
                       }`}>
-                        {product.stock} units
+                        {product.stock} {product.stock === 1 ? "unit" : "units"}
                       </span>
                     </td>
-                    <td className="px-6 py-4 space-x-1">
+                    <td className="px-6 py-4 space-x-1.5">
                       {product.published ? (
-                        <span className="inline-block rounded bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-800">
+                        <span className="inline-block rounded-sm bg-stone-100 text-stone-800 border border-stone-200 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider">
                           Published
                         </span>
                       ) : (
-                        <span className="inline-block rounded bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-800">
+                        <span className="inline-block rounded-sm bg-stone-50 text-stone-400 border border-stone-200/40 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider">
                           Draft
                         </span>
                       )}
                       {product.featured && (
-                        <span className="inline-block rounded bg-indigo-100 px-2 py-0.5 text-xs font-semibold text-indigo-800">
+                        <span className="inline-block rounded-sm bg-wood-medium/10 text-wood-medium border border-wood-medium/20 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider">
                           Featured
                         </span>
                       )}

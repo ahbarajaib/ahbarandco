@@ -67,7 +67,7 @@ export function PageAssetsForm({
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-wood-dark text-background-primary hover:bg-wood-medium cursor-pointer"
+            className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
           >
             {isPending ? "Saving changes..." : "Save Images"}
           </Button>

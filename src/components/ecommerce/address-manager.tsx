@@ -168,18 +168,16 @@ export function AddressManager({ addresses }: AddressManagerProps) {
     };
 
     return (
-      <div className="rounded-sm border border-border bg-white p-5 shadow-sm">
-        <div className="flex justify-between items-center mb-4 gap-2">
-          <h3 className="font-heading text-lg font-medium">
+      <div className="rounded-sm border border-border bg-white p-6 sm:p-8 shadow-xs">
+        <div className="flex justify-between items-center mb-6 gap-2">
+          <h3 className="font-heading text-lg font-medium text-wood-dark">
             {editingAddress ? "Edit Address" : "Add New Address"}
           </h3>
-          <Button
+          <button
             type="button"
-            variant="outline"
-            size="xs"
             onClick={handleDetectLocation}
             disabled={detecting}
-            className="flex items-center gap-1"
+            className="text-[10px] font-semibold uppercase tracking-wider text-wood-medium hover:text-wood-dark border-b border-wood-medium/20 hover:border-wood-medium pb-0.5 transition-all disabled:opacity-50 flex items-center gap-1 cursor-pointer"
           >
             {detecting ? (
               <>
@@ -189,19 +187,19 @@ export function AddressManager({ addresses }: AddressManagerProps) {
             ) : (
               <>📍 Use Location</>
             )}
-          </Button>
+          </button>
         </div>
 
         {detectError && (
-          <p className="text-[10px] text-destructive bg-destructive/5 border border-destructive/20 p-2 rounded mb-3" role="alert">
+          <p className="text-[10px] text-destructive bg-destructive/5 border border-destructive/20 p-2.5 rounded-sm mb-4" role="alert">
             ⚠️ {detectError}
           </p>
         )}
 
-        <form id="address-form" onSubmit={handleSubmit} className="space-y-4">
+        <form id="address-form" onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="title">Label (e.g. Home, Office)</Label>
+              <Label htmlFor="title" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Label (e.g. Home, Office)</Label>
               <Input
                 id="title"
                 name="title"
@@ -211,7 +209,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
               />
             </div>
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="fullName">Full Name / Recipient</Label>
+              <Label htmlFor="fullName" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Full Name / Recipient</Label>
               <Input
                 id="fullName"
                 name="fullName"
@@ -224,7 +222,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="phone">10-Digit Mobile Number</Label>
+              <Label htmlFor="phone" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">10-Digit Mobile Number</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -237,7 +235,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
               />
             </div>
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="postalCode">PIN Code</Label>
+              <Label htmlFor="postalCode" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">PIN Code</Label>
               <Input
                 id="postalCode"
                 name="postalCode"
@@ -252,7 +250,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="street">Street Address</Label>
+            <Label htmlFor="street" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Street Address</Label>
             <Input
               id="street"
               name="street"
@@ -263,7 +261,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
           </div>
 
           <div className="space-y-1.5">
-            <Label htmlFor="apartment">Apartment, Suite, Unit, etc. (Optional)</Label>
+            <Label htmlFor="apartment" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Apartment, Suite, Unit, etc. (Optional)</Label>
             <Input
               id="apartment"
               name="apartment"
@@ -274,7 +272,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="city">City</Label>
+              <Label htmlFor="city" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">City</Label>
               <Input
                 id="city"
                 name="city"
@@ -284,12 +282,12 @@ export function AddressManager({ addresses }: AddressManagerProps) {
               />
             </div>
             <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="state">State</Label>
+              <Label htmlFor="state" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">State</Label>
               <select
                 id="state"
                 name="state"
                 defaultValue={defaultVals.state}
-                className="flex h-8 w-full rounded-lg border border-border bg-background px-2.5 py-1 text-sm shadow-sm transition-all focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 outline-none"
+                className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-sm shadow-xs transition-all focus-visible:border-wood-medium focus-visible:ring-2 focus-visible:ring-wood-medium/10 outline-none cursor-pointer"
                 required
               >
                 {INDIAN_STATES.map((st) => (
@@ -301,16 +299,16 @@ export function AddressManager({ addresses }: AddressManagerProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 pt-2">
+          <div className="flex items-center gap-2.5 pt-1">
             <input
               id="isDefault"
               name="isDefault"
               type="checkbox"
               value="true"
               defaultChecked={defaultVals.isDefault}
-              className="size-4 rounded border-border"
+              className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
             />
-            <Label htmlFor="isDefault" className="text-sm cursor-pointer select-none">
+            <Label htmlFor="isDefault" className="text-xs cursor-pointer select-none text-text-secondary hover:text-text-primary transition-colors">
               Set as default shipping address
             </Label>
           </div>
@@ -321,19 +319,23 @@ export function AddressManager({ addresses }: AddressManagerProps) {
             </p>
           )}
 
-          <div className="flex gap-3 pt-2">
-            <Button type="submit" disabled={isPending} size="sm">
+          <div className="flex gap-3 pt-3">
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
+            >
               {isPending ? "Saving..." : "Save Address"}
             </Button>
             <Button
               type="button"
               variant="outline"
-              size="sm"
               onClick={() => {
                 setIsAdding(false);
                 setEditingAddress(null);
                 setFormError(null);
               }}
+              className="h-10 px-5 border-border hover:bg-background-secondary text-text-primary transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
             >
               Cancel
             </Button>

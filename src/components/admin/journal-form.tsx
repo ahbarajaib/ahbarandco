@@ -118,8 +118,8 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
 
       <form action={formAction} className="space-y-6" encType="multipart/form-data">
         {/* Title */}
-        <div className="space-y-2">
-          <Label htmlFor="title">Article Title *</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="title" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Article Title *</Label>
           <Input
             id="title"
             name="title"
@@ -131,8 +131,8 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
         </div>
 
         {/* Excerpt */}
-        <div className="space-y-2">
-          <Label htmlFor="excerpt">Excerpt / Summary</Label>
+        <div className="space-y-1.5">
+          <Label htmlFor="excerpt" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Excerpt / Summary</Label>
           <Input
             id="excerpt"
             name="excerpt"
@@ -143,9 +143,9 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
         </div>
 
         {/* Content Wrapper */}
-        <div className="space-y-2">
+        <div className="space-y-1.5">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-2">
-            <Label htmlFor="content" className="pt-1">Body Content *</Label>
+            <Label htmlFor="content" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block pt-1">Body Content *</Label>
             
             {/* Tabs & Toolbar */}
             <div className="flex items-center gap-4">
@@ -180,7 +180,7 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
 
           {/* Formatting Toolbar */}
           {activeTab === "write" && (
-            <div className="flex flex-wrap items-center gap-1 p-1 bg-background-secondary/10 border border-input border-b-0 rounded-t-sm">
+            <div className="flex flex-wrap items-center gap-1 p-1 bg-background-secondary/5 border border-border border-b-0 rounded-t-sm">
               <button
                 type="button"
                 onClick={() => insertMarkdown("bold")}
@@ -254,11 +254,11 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
               rows={16}
               placeholder="Write article content in Markdown format. Use toolbar above to style your content."
               style={{ display: activeTab === "write" ? "block" : "none" }}
-              className="flex w-full rounded-b-sm rounded-t-none border border-input bg-transparent px-3 py-3 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 font-serif leading-relaxed"
+              className="flex w-full rounded-b-sm rounded-t-none border border-border bg-white px-3.5 py-3 text-sm shadow-xs placeholder:text-text-secondary/40 outline-none hover:border-wood-medium/20 focus-visible:border-wood-medium focus-visible:ring-2 focus-visible:ring-wood-medium/10 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-background-secondary/50 disabled:opacity-50 font-serif leading-relaxed"
             />
 
             {activeTab === "preview" && (
-              <div className="min-h-[354px] w-full rounded-sm border border-input bg-background-secondary/5 px-4 py-4 overflow-y-auto max-h-[500px]">
+              <div className="min-h-[354px] w-full rounded-sm border border-border bg-background-secondary/5 px-4 py-4 overflow-y-auto max-h-[500px]">
                 {content.trim() ? (
                   <article 
                     className="prose prose-stone max-w-none text-left"
@@ -282,18 +282,19 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
         />
 
         {/* Published Toggle */}
-        <div className="pt-2">
-          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
-            <input
-              type="checkbox"
-              name="published"
-              value="true"
-              defaultChecked={initialData?.published ?? true}
-              disabled={isPending}
-              className="h-4 w-4 rounded-sm border-border text-wood-medium focus:ring-wood-medium"
-            />
-            <span>Published (make visible in the Journal list)</span>
-          </label>
+        <div className="flex items-center gap-2.5 pt-1">
+          <input
+            id="published"
+            type="checkbox"
+            name="published"
+            value="true"
+            defaultChecked={initialData?.published ?? true}
+            disabled={isPending}
+            className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
+          />
+          <Label htmlFor="published" className="text-xs cursor-pointer select-none text-text-secondary hover:text-text-primary transition-colors">
+            Published (make visible in the Journal list)
+          </Label>
         </div>
 
         {state.error && (
@@ -307,7 +308,7 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
             type="button"
             variant="outline"
             disabled={isPending}
-            className="border-border hover:bg-background-secondary"
+            className="h-10 px-5 border-border hover:bg-background-secondary text-text-primary transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
             render={<Link href="/admin/journal" />}
           >
             Cancel
@@ -315,7 +316,7 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-wood-dark text-background-primary hover:bg-wood-medium"
+            className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
           >
             {isPending ? "Saving article..." : "Save Article"}
           </Button>

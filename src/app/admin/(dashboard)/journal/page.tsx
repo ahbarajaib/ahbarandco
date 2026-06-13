@@ -50,6 +50,7 @@ export default async function AdminJournalPage() {
                 <tr key={post.id} className="hover:bg-background-primary/30 transition-colors">
                   <td className="px-6 py-4 font-medium flex items-center gap-3">
                     {post.coverImageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={post.coverImageUrl} alt={post.title} className="h-10 w-10 object-cover rounded-sm bg-background-secondary" />
                     ) : (
                       <div className="h-10 w-10 bg-background-secondary rounded-sm border border-border flex items-center justify-center text-[10px] text-text-secondary">No img</div>
@@ -75,11 +76,11 @@ export default async function AdminJournalPage() {
                   </td>
                   <td className="px-6 py-4">
                     {post.published ? (
-                      <span className="inline-block rounded bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-800">
+                      <span className="inline-block rounded-sm bg-stone-100 text-stone-800 border border-stone-200 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider">
                         Published
                       </span>
                     ) : (
-                      <span className="inline-block rounded bg-gray-100 px-2 py-0.5 text-xs font-semibold text-gray-800">
+                      <span className="inline-block rounded-sm bg-stone-50 text-stone-400 border border-stone-200/40 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider">
                         Draft
                       </span>
                     )}

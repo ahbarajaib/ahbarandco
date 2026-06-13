@@ -38,7 +38,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
   );
 
   return (
-    <div className="space-y-6 max-w-2xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-sm">
+    <div className="space-y-6 max-w-2xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-xs">
       <div className="border-b border-border pb-4">
         <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
       </div>
@@ -46,7 +46,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
       <form action={formAction} className="space-y-6" encType="multipart/form-data">
         {/* Name */}
         <div className="space-y-2">
-          <Label htmlFor="name">Collection Name *</Label>
+          <Label htmlFor="name" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Collection Name *</Label>
           <Input
             id="name"
             name="name"
@@ -59,7 +59,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
 
         {/* Description */}
         <div className="space-y-2">
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Description</Label>
           <textarea
             id="description"
             name="description"
@@ -67,12 +67,12 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
             disabled={isPending}
             rows={3}
             placeholder="Short description highlighting the collection theme and materials..."
-            className="flex w-full rounded-sm border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex w-full rounded-sm border border-border bg-white px-3.5 py-2.5 text-sm shadow-xs transition-all placeholder:text-text-secondary/40 outline-none hover:border-wood-medium/20 focus-visible:border-wood-medium focus-visible:ring-2 focus-visible:ring-wood-medium/10 disabled:cursor-not-allowed disabled:bg-background-secondary/50 disabled:opacity-50"
           />
         </div>
 
         {/* Cover Image & Sort Order */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           <ImagePreviewInput
             id="imageUrl"
             name="imageUrl"
@@ -82,7 +82,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
           />
 
           <div className="space-y-2 max-w-xs">
-            <Label htmlFor="sortOrder">Sort Order</Label>
+            <Label htmlFor="sortOrder" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Sort Order</Label>
             <Input
               id="sortOrder"
               name="sortOrder"
@@ -96,15 +96,15 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
         </div>
 
         {/* Published Toggle */}
-        <div className="pt-2">
-          <label className="flex items-center gap-2 text-sm font-medium cursor-pointer">
+        <div className="pt-1">
+          <label className="flex items-center gap-2.5 text-xs text-text-secondary hover:text-text-primary transition-colors cursor-pointer select-none">
             <input
               type="checkbox"
               name="published"
               value="true"
               defaultChecked={initialData?.published ?? true}
               disabled={isPending}
-              className="h-4 w-4 rounded-sm border-border text-wood-medium focus:ring-wood-medium"
+              className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
             />
             <span>Published (make collection pages active)</span>
           </label>
@@ -116,12 +116,12 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
           </p>
         )}
 
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
+        <div className="flex items-center justify-end gap-3 pt-6 border-t border-border">
           <Button
             type="button"
             variant="outline"
             disabled={isPending}
-            className="border-border hover:bg-background-secondary"
+            className="h-10 px-5 border-border hover:bg-background-secondary text-text-primary transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
             render={<Link href="/admin/collections" />}
           >
             Cancel
@@ -129,7 +129,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
           <Button
             type="submit"
             disabled={isPending}
-            className="bg-wood-dark text-background-primary hover:bg-wood-medium"
+            className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
           >
             {isPending ? "Saving changes..." : "Save Collection"}
           </Button>
