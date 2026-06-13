@@ -14,6 +14,8 @@ export type AuthActionState = {
   error?: string;
   success?: boolean;
   message?: string;
+  email?: string;
+  name?: string;
 };
 
 export async function registerUser(
@@ -28,7 +30,7 @@ export async function registerUser(
 
   const validation = RegisterSchema.safeParse({ name, email, password });
   if (!validation.success) {
-    return { error: validation.error.issues[0].message };
+    return { error: validation.error.issues[0].message, email, name };
   }
 
   const existing = await prisma.user.findUnique({ where: { email } });
@@ -49,7 +51,7 @@ export async function registerUser(
       }
       return { success: true, message: "Your Google account has been linked with password access!" };
     }
-    return { error: "An account with this email already exists." };
+    return { error: "An account with this email already exists.", email, name };
   }
 
   const passwordHash = await bcrypt.hash(password, 12);
@@ -64,7 +66,7 @@ export async function registerUser(
     // NextAuth throws a NEXT_REDIRECT for successful redirects — re-throw it
     if (isRedirectError(error)) throw error;
     if (error instanceof AuthError) {
-      return { error: "Account created but sign-in failed. Please log in." };
+      return { error: "Account created but sign-in failed. Please log in.", email, name };
     }
     throw error;
   }
@@ -84,12 +86,12 @@ export async function loginUser(
 
   const validation = LoginSchema.safeParse({ email, password });
   if (!validation.success) {
-    return { error: validation.error.issues[0].message };
+    return { error: validation.error.issues[0].message, email };
   }
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (user && !user.passwordHash) {
-    return { error: "This account is linked with Google. Please use 'Sign in with Google'." };
+    return { error: "This account is linked with Google. Please use 'Sign in with Google'.", email };
   }
 
   try {
@@ -102,7 +104,7 @@ export async function loginUser(
     // NextAuth throws a NEXT_REDIRECT for successful redirects — re-throw it
     if (isRedirectError(error)) throw error;
     if (error instanceof AuthError) {
-      return { error: "Invalid email or password." };
+      return { error: "Invalid email or password.", email };
     }
     throw error;
   }
@@ -120,7 +122,7 @@ export async function requestPasswordReset(
   const validation = ForgotPasswordSchema.safeParse({ email });
   if (!validation.success) {
     console.log(`[PASSWORD RESET] Validation failed:`, validation.error.issues[0].message);
-    return { error: validation.error.issues[0].message };
+    return { error: validation.error.issues[0].message, email };
   }
 
   try {

@@ -54,6 +54,7 @@ export function AdminLoginForm() {
                 autoComplete="email"
                 required
                 disabled={isPending}
+                defaultValue={state.email ?? ""}
                 placeholder="admin@ahbarandco.com"
                 className="border-border focus:border-wood-medium focus:ring-wood-medium"
               />

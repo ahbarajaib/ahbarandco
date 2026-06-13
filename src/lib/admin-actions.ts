@@ -34,6 +34,7 @@ function slugify(text: string): string {
 export type ActionResponse = {
   error?: string;
   success?: boolean;
+  email?: string;
 };
 
 // ─── Admin Auth ──────────────────────────────────────────────────────────────
@@ -47,13 +48,13 @@ export async function loginAdmin(
   const callbackUrl = String(formData.get("callbackUrl") ?? "/admin");
 
   if (!email || !password) {
-    return { error: "Email and password are required." };
+    return { error: "Email and password are required.", email };
   }
 
   // Check user role in database before calling signIn
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user || user.role !== "admin") {
-    return { error: "Access denied. Only administrators are allowed." };
+    return { error: "Access denied. Only administrators are allowed.", email };
   }
 
   try {
@@ -67,7 +68,7 @@ export async function loginAdmin(
       throw error;
     }
     if (error instanceof AuthError) {
-      return { error: "Invalid email or password." };
+      return { error: "Invalid email or password.", email };
     }
     throw error; // Let Next.js handle the redirect
   }

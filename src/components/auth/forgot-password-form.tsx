@@ -43,6 +43,7 @@ export function ForgotPasswordForm() {
               autoComplete="email"
               required
               disabled={isPending}
+              defaultValue={state.email ?? ""}
               className="h-11 bg-white"
               placeholder="your@email.com"
             />

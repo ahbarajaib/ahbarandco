@@ -35,6 +35,7 @@ export function RegisterForm() {
             autoComplete="name"
             required
             disabled={isPending}
+            defaultValue={state.name ?? ""}
             className="h-11 bg-white"
             placeholder="Your full name"
           />
@@ -49,6 +50,7 @@ export function RegisterForm() {
             autoComplete="email"
             required
             disabled={isPending}
+            defaultValue={state.email ?? ""}
             className="h-11 bg-white"
             placeholder="your@email.com"
           />
