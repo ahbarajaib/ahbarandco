@@ -8,7 +8,9 @@ FROM base AS deps
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
 COPY prisma.config.ts ./
-RUN npm ci --frozen-lockfile
+# npm install (not ci) — lockfile is macOS-generated; npm ci fails on Linux
+# due to missing platform-specific optional deps (@emnapi/runtime, @emnapi/core)
+RUN npm install
 
 # ── Stage 3: builder — compile Next.js ───────────────────────────────────────
 FROM base AS builder
