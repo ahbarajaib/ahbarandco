@@ -5,7 +5,9 @@ import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { emptyCart, getCartWithProducts } from "@/lib/cart-actions";
 import { prisma } from "@/lib/prisma";
+import { z } from "zod";
 import { AddressSchema } from "@/lib/validations";
+import { Prisma } from "@/generated/prisma/client";
 import {
   getRazorpayClient,
   verifyRazorpayPaymentSignature,
@@ -17,7 +19,7 @@ function generateOrderNumber() {
   return `AHB-${timestamp}-${random}`;
 }
 
-export async function createCheckoutOrder(shippingAddress: any) {
+export async function createCheckoutOrder(shippingAddress: z.infer<typeof AddressSchema>) {
   const session = await auth();
   if (!session?.user?.id) {
     return { error: "You must be signed in to checkout." };
@@ -48,7 +50,7 @@ export async function createCheckoutOrder(shippingAddress: any) {
       subtotal,
       shipping,
       total,
-      shippingAddress: validation.data as any,
+      shippingAddress: validation.data as Prisma.InputJsonValue,
       items: {
         create: cartItems.map((item) => ({
           productId: item.productId,

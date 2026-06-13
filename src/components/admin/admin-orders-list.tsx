@@ -36,7 +36,7 @@ type Order = {
   currency: string;
   razorpayOrderId: string | null;
   razorpayPaymentId: string | null;
-  shippingAddress: any;
+  shippingAddress: unknown;
   createdAt: Date | string;
   user: {
     name: string | null;

@@ -288,7 +288,7 @@ export function CheckoutForm({
         });
 
         razorpay.open();
-      } catch (err: any) {
+      } catch (err) {
         console.error("Checkout submission error:", err);
         setError("Payment could not be completed. Check Razorpay setup.");
       }

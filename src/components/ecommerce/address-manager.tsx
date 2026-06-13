@@ -8,7 +8,6 @@ import {
   saveAddress,
   deleteAddress,
   setDefaultAddress,
-  type AddressActionState,
 } from "@/lib/address-actions";
 
 type Address = {

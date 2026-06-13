@@ -1,6 +1,6 @@
 # Deployment Guide — ahbarandco.com
 
-> **Status**: 🟡 CI/CD active — being finalized  
+> **Status**: 🟡 CI/CD active — final build running  
 > **Last updated**: 2026-06-13  
 > **Server**: Hostinger VPS — `31.97.205.18`  
 > **Domain**: `ahbarandco.com` (Cloudflare DNS + SSL)
@@ -133,6 +133,9 @@ RAZORPAY_KEY_ID=rzp_live_XXXXXXXXXXXXXXXX
 RAZORPAY_KEY_SECRET=<live-secret>
 RAZORPAY_WEBHOOK_SECRET=<from Razorpay dashboard>
 
+# Geocoding (Google Maps)
+GOOGLE_MAPS_API_KEY=<from Google Cloud Console, optional fallback to Nominatim if blank>
+
 # SMTP (Resend)
 SMTP_HOST=smtp.resend.com
 SMTP_PORT=587
@@ -233,9 +236,11 @@ server {
 ## Geocoding (`📍 Use Location`)
 
 - **API route**: [`/api/geocode`](../src/app/api/geocode/route.ts)
-- **Provider**: Nominatim (OpenStreetMap) — free, no API key
-- **Why a proxy?** Nominatim ToS requires a `User-Agent` header and prohibits direct browser calls from production apps
-- **Flow**: Browser GPS coords → `/api/geocode` (server) → Nominatim → structured address fields
+- **Providers**: Dual-provider implementation:
+  - **Google Maps Geocoding API** (Recommended for production): Used if `GOOGLE_MAPS_API_KEY` is present.
+  - **Nominatim (OpenStreetMap)**: Free fallback if `GOOGLE_MAPS_API_KEY` is absent.
+- **Why a proxy?** Secures API keys, complies with ToS, and handles server-side request caching.
+- **Flow**: Browser GPS coords → `/api/geocode` (server) → Google Maps / Nominatim → structured address fields
 - **Cache**: 60s Next.js fetch cache
 
 ---
