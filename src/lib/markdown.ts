@@ -39,14 +39,21 @@ export function parseMarkdown(markdown: string | null | undefined): string {
       /^>\s+(.*)$/gm,
       '<blockquote class="border-l-4 border-wood-medium pl-6 py-2 my-8 italic text-text-secondary font-serif text-lg leading-relaxed bg-background-secondary/5 rounded-r-sm">$1</blockquote>'
     )
-    // Unordered lists: - item
-    .replace(/^\-\s+(.*)$/gm, '<li class="list-disc ml-6 my-2 text-text-secondary leading-relaxed">$1</li>');
+    // Unordered lists: - or * or • item
+    .replace(/^[\-\*•]\s+(.*)$/gm, '<li class="list-disc-item">$1</li>')
+    // Ordered lists: 1. or 2. item
+    .replace(/^\d+\.\s+(.*)$/gm, '<li class="list-decimal-item">$1</li>');
 
-  // 4. Wrap adjacent <li> tags inside a single <ul> block
-  // We match block of list items and wrap them in <ul>
-  html = html.replace(/(<li class="[^"]+">[\s\S]*?<\/li>\s*)+/g, (match) => {
-    return `<ul class="my-6 space-y-1">${match}</ul>`;
-  });
+  // 4. Wrap adjacent <li> tags inside a single <ul> or <ol> block
+  html = html
+    .replace(/(<li class="list-disc-item">[\s\S]*?<\/li>\s*)+/g, (match) => {
+      const cleanHtml = match.replace(/class="list-disc-item"/g, 'class="my-2 text-text-secondary leading-relaxed"');
+      return `<ul class="my-6 space-y-1 list-disc pl-6">${cleanHtml}</ul>`;
+    })
+    .replace(/(<li class="list-decimal-item">[\s\S]*?<\/li>\s*)+/g, (match) => {
+      const cleanHtml = match.replace(/class="list-decimal-item"/g, 'class="my-2 text-text-secondary leading-relaxed"');
+      return `<ol class="my-6 space-y-1 list-decimal pl-6">${cleanHtml}</ol>`;
+    });
 
   // 5. Wrap standalone text sections inside paragraph tags <p>
   const blocks = html.split(/\n\s*\n/);
@@ -58,6 +65,7 @@ export function parseMarkdown(markdown: string | null | undefined): string {
     if (
       trimmed.startsWith("<h") ||
       trimmed.startsWith("<ul") ||
+      trimmed.startsWith("<ol") ||
       trimmed.startsWith("<li") ||
       trimmed.startsWith("<blockquote") ||
       trimmed.startsWith("<div")
@@ -65,9 +73,14 @@ export function parseMarkdown(markdown: string | null | undefined): string {
       return trimmed;
     }
 
-    // Convert single newlines to <br /> inside paragraphs
-    const withBrs = trimmed.replace(/\n/g, "<br />");
-    return `<p class="font-serif leading-relaxed text-base md:text-lg text-text-secondary mb-6">${withBrs}</p>`;
+    // Replace single newlines within a paragraph with a space to allow natural word wrapping,
+    // unless the line ends with a backslash or double spaces (standard markdown line break).
+    const formattedText = trimmed
+      .replace(/  \n/g, "<br />")
+      .replace(/\\\n/g, "<br />")
+      .replace(/\n/g, " ");
+
+    return `<p class="font-serif leading-relaxed text-base md:text-lg text-text-secondary mb-6">${formattedText}</p>`;
   });
 
   return parsedBlocks.filter(Boolean).join("\n");

@@ -57,8 +57,35 @@ export default async function JournalPostPage({ params }: Props) {
 
   const parsedContent = parseMarkdown(post.content);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    ...(post.coverImageUrl ? { "image": [post.coverImageUrl] } : {}),
+    "datePublished": (post.publishedAt || post.createdAt).toISOString(),
+    "dateModified": (post.updatedAt || post.createdAt).toISOString(),
+    "description": post.excerpt || undefined,
+    "author": {
+      "@type": "Organization",
+      "name": "Ahbar & Co.",
+      "url": process.env.NEXT_PUBLIC_SITE_URL || "https://ahbarandco.com",
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Ahbar & Co.",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://ahbarandco.com"}/logo-dark.png`
+      }
+    }
+  };
+
   return (
     <Section>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-3xl mx-auto">
         {/* Back Link */}
         <div className="mb-8 sm:mb-12">

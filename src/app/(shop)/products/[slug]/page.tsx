@@ -40,8 +40,29 @@ export default async function ProductPage({ params }: ProductPageProps) {
     4
   );
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": product.images.map((img) => img.url),
+    "description": product.description || product.shortDesc || undefined,
+    "offers": {
+      "@type": "Offer",
+      "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://ahbarandco.com"}/products/${product.slug}`,
+      "priceCurrency": product.currency,
+      "price": (product.price / 100).toFixed(2),
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+    },
+    ...(product.material ? { "material": product.material } : {}),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section variant="surface">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <ProductGallery images={product.images} productName={product.name} />
