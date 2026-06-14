@@ -24,7 +24,7 @@ export async function SiteHeader() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo.png"
+              src="/logo-light.png"
               alt={SITE_NAME}
               className="h-11 sm:h-14 w-auto object-contain rounded-sm"
             />
