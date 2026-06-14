@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ActionResponse } from "@/lib/admin-actions";
-import { UploadCloud } from "lucide-react";
+import { UploadCloud, Trash2 } from "lucide-react";
 
 type ProductImageProps = {
   url: string;
@@ -46,41 +46,60 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
   const [existingImages, setExistingImages] = useState<string[]>(
     initialData ? initialData.images.map((img) => img.url) : []
   );
-  const [stagedFiles, setStagedFiles] = useState<{ name: string; previewUrl: string }[]>([]);
+  const [uploadingFiles, setUploadingFiles] = useState<{ id: string; name: string }[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
 
-  useEffect(() => {
-    return () => {
-      stagedFiles.forEach((f) => URL.revokeObjectURL(f.previewUrl));
-    };
-  }, [stagedFiles]);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files) return;
 
     setFileError(null);
+    const maxSize = 15 * 1024 * 1024; // 15MB limit
 
-    // Revoke old object URLs first
-    stagedFiles.forEach((f) => URL.revokeObjectURL(f.previewUrl));
-
-    const maxSize = 15 * 1024 * 1024; // 15MB limit per file
-    const newStaged: { name: string; previewUrl: string }[] = [];
-    
+    // Process files in parallel
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       if (file.size > maxSize) {
-        setFileError(`File "${file.name}" is too large. Maximum size per file is 15MB.`);
-        e.target.value = ""; // Reset file selection
-        setStagedFiles([]);
-        return;
+        setFileError(`File "${file.name}" is too large. Maximum size is 15MB.`);
+        continue;
       }
-      newStaged.push({
-        name: file.name,
-        previewUrl: URL.createObjectURL(file),
-      });
+
+      // Generate a temporary unique ID for tracking progress
+      const tempId = Math.random().toString(36).substring(7);
+      
+      // Add to uploading list
+      setUploadingFiles((prev) => [...prev, { id: tempId, name: file.name }]);
+
+      // Start uploading immediately
+      (async () => {
+        try {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("folder", "products");
+
+          const res = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await res.json();
+          if (!res.ok) {
+            throw new Error(data.error || "Upload failed");
+          }
+
+          // Add newly uploaded URL to existing list
+          setExistingImages((prev) => [...prev, data.url]);
+        } catch (err: any) {
+          console.error("Product image upload error:", err);
+          setFileError(`Failed to upload "${file.name}": ${err.message || "Unknown error"}`);
+        } finally {
+          // Remove from uploading list
+          setUploadingFiles((prev) => prev.filter((f) => f.id !== tempId));
+        }
+      })();
     }
-    setStagedFiles(newStaged);
+
+    e.target.value = ""; // Clear file selector
   };
 
 
@@ -248,14 +267,14 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
               Pref. size: 1:1 or 4:5 (Min 1600px width)
             </span>
           </div>
-          
-          {/* Grid of existing/added images */}
-          {existingImages.length > 0 && (
+                   {/* Grid of existing/added images and uploading placeholders */}
+          {(existingImages.length > 0 || uploadingFiles.length > 0) && (
             <div className="space-y-2">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary">Current & Linked Images</span>
+              <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Images</span>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {/* Existing Images */}
                 {existingImages.map((url, idx) => (
-                  <div key={idx} className="relative aspect-square group border border-border bg-white rounded-sm overflow-hidden">
+                  <div key={url} className="relative aspect-square group border border-border bg-white rounded-sm overflow-hidden shadow-2xs">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={url}
@@ -266,35 +285,26 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
                     <button
                       type="button"
                       onClick={() => handleRemoveExisting(idx)}
-                      className="absolute top-1 right-1 bg-red-600/90 text-white rounded-full p-1 text-xs hover:bg-red-700 transition shadow-sm opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer"
+                      className="absolute top-1.5 right-1.5 size-7 rounded-sm bg-red-600/90 text-white flex items-center justify-center hover:bg-red-700 transition opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer shadow-sm"
                       title="Remove image"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      <Trash2 className="size-4 stroke-[1.8]" />
                     </button>
-                    <span className="absolute bottom-0 inset-x-0 bg-black/60 text-white text-[9px] px-1 py-0.5 text-center truncate">
-                      {url.startsWith("/uploads/") ? "Local Storage" : "External URL"}
+                    <span className="absolute bottom-1 left-1 right-1 text-[8px] font-semibold uppercase tracking-wider bg-wood-dark/80 text-white text-center py-0.5 rounded-xs">
+                      {url.startsWith("/uploads/") ? "Local" : "External"}
                     </span>
                   </div>
                 ))}
-              </div>
-            </div>
-          )}
 
-          {/* Staged file uploads preview */}
-          {stagedFiles.length > 0 && (
-            <div className="space-y-2">
-              <span className="text-[9px] font-bold uppercase tracking-wider text-wood-medium">Staged For Upload</span>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {stagedFiles.map((file, idx) => (
-                  <div key={idx} className="relative aspect-square border border-dashed border-wood-medium/50 bg-wood-medium/5 rounded-sm overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={file.previewUrl}
-                      alt={`Staged upload ${idx + 1}`}
-                      className="h-full w-full object-cover opacity-80"
-                    />
-                    <span className="absolute bottom-0 inset-x-0 bg-wood-medium/80 text-background-primary text-[9px] px-1 py-0.5 text-center truncate font-medium">
-                      Upload Staged
+                {/* Uploading Placeholders */}
+                {uploadingFiles.map((file) => (
+                  <div key={file.id} className="relative aspect-square border border-dashed border-wood-medium/40 bg-wood-medium/5 rounded-sm overflow-hidden flex flex-col items-center justify-center p-3 text-center">
+                    <div className="size-5 animate-spin rounded-full border-2 border-wood-medium border-t-transparent mb-2"></div>
+                    <span className="text-[9px] font-semibold text-wood-medium uppercase tracking-wider">
+                      Uploading
+                    </span>
+                    <span className="text-[8px] text-text-secondary truncate w-full mt-1">
+                      {file.name}
                     </span>
                   </div>
                 ))}
@@ -308,7 +318,6 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             <div className="relative">
               <input
                 id="product-image-files"
-                name="imageFiles"
                 type="file"
                 multiple
                 accept="image/*"

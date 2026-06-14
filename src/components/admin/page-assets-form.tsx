@@ -48,6 +48,7 @@ export function PageAssetsForm({
             label={slot.label}
             defaultValue={slot.defaultValue}
             aspectRatio={slot.aspectRatio}
+            folder="pages"
           />
         ))}
 

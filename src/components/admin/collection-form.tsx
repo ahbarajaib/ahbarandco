@@ -79,6 +79,7 @@ export function CollectionForm({ initialData, submitAction, title }: CollectionF
             label="Collection Cover Image"
             defaultValue={initialData?.imageUrl || ""}
             aspectRatio="portrait"
+            folder="collections"
           />
 
           <div className="space-y-2 max-w-xs">

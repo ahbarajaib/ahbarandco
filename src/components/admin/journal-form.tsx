@@ -279,6 +279,7 @@ export function JournalForm({ initialData, submitAction, title }: JournalFormPro
           label="Cover Image"
           defaultValue={initialData?.coverImageUrl || ""}
           aspectRatio="video"
+          folder="journal"
         />
 
         {/* Published Toggle */}
