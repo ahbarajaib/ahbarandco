@@ -17,9 +17,10 @@ import { signOutUser } from "@/lib/oauth-actions";
 type MobileNavProps = {
   isAuthenticated: boolean;
   userName?: string | null;
+  cartItemCount?: number;
 };
 
-export function MobileNav({ isAuthenticated, userName }: MobileNavProps) {
+export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const userInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
@@ -68,9 +69,14 @@ export function MobileNav({ isAuthenticated, userName }: MobileNavProps) {
           <Link
             href="/cart"
             onClick={() => setOpen(false)}
-            className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
+            className="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
           >
-            Cart
+            <span>Cart</span>
+            {cartItemCount !== undefined && cartItemCount > 0 && (
+              <span className="flex size-5 items-center justify-center rounded-full bg-wood-medium text-[10px] font-bold text-white">
+                {cartItemCount}
+              </span>
+            )}
           </Link>
           <Link
             href={isAuthenticated ? "/account" : "/login"}

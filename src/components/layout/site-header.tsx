@@ -5,6 +5,8 @@ import { signOutUser } from "@/lib/oauth-actions";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { getCart } from "@/lib/cart";
+import { ShoppingBag } from "lucide-react";
 
 export async function SiteHeader() {
   const session = await auth();
@@ -12,12 +14,15 @@ export async function SiteHeader() {
   const userName = session?.user?.name;
   const userInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
+  const cart = await getCart();
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <header className="sticky top-0 z-50 border-b border-wood-dark/80 bg-wood-dark text-background-primary backdrop-blur-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
         {/* Left: Mobile menu + Logo */}
         <div className="flex items-center gap-2 sm:gap-4">
-          <MobileNav isAuthenticated={isAuthenticated} userName={userName} />
+          <MobileNav isAuthenticated={isAuthenticated} userName={userName} cartItemCount={cartItemCount} />
           <Link
             href="/"
             className="transition-opacity hover:opacity-80 flex items-center"
@@ -57,14 +62,18 @@ export async function SiteHeader() {
           >
             Search
           </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-background-primary/70 hover:bg-background-primary/10 hover:text-background-primary"
-            render={<Link href="/cart" />}
+          <Link
+            href="/cart"
+            className="relative flex items-center justify-center rounded-full p-2 text-background-primary/70 hover:bg-background-primary/10 hover:text-background-primary transition-all duration-200 cursor-pointer"
+            aria-label={`Cart with ${cartItemCount} items`}
           >
-            Cart
-          </Button>
+            <ShoppingBag className="h-5 w-5 stroke-[1.5]" />
+            {cartItemCount > 0 && (
+              <span className="absolute top-0.5 right-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-wood-medium px-1 text-[9px] font-bold text-white ring-2 ring-wood-dark">
+                {cartItemCount}
+              </span>
+            )}
+          </Link>
 
           {/* Thin vertical separator */}
           <div className="mx-1 hidden h-5 w-px bg-background-primary/20 md:block" aria-hidden="true" />
