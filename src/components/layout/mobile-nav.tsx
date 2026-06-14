@@ -2,6 +2,7 @@
 
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import {
@@ -22,6 +23,7 @@ type MobileNavProps = {
 
 export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNavProps) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const userInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
   return (
@@ -55,16 +57,25 @@ export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNa
         )}
 
         <nav className="mt-6 flex flex-col gap-0.5 flex-1" aria-label="Mobile">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 transition-colors hover:bg-background-primary/10 hover:text-background-primary"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive =
+              pathname === link.href ||
+              (link.href !== "/" && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className={`rounded-sm px-3 py-3 text-base font-medium transition-colors ${
+                  isActive
+                    ? "bg-background-primary/10 text-background-primary font-semibold"
+                    : "text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <div className="my-3 border-t border-background-primary/10" />
           <Link
             href="/cart"

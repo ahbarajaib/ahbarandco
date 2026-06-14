@@ -1,10 +1,11 @@
 import Link from "next/link";
 
+import { DesktopNav } from "@/components/layout/desktop-nav";
 import { auth } from "@/auth";
 import { signOutUser } from "@/lib/oauth-actions";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { Button } from "@/components/ui/button";
-import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { SITE_NAME } from "@/lib/constants";
 import { getCart } from "@/lib/cart";
 import { ShoppingBag } from "lucide-react";
 
@@ -37,20 +38,7 @@ export async function SiteHeader() {
         </div>
 
         {/* Center: Desktop nav */}
-        <nav
-          className="hidden items-center lg:flex lg:gap-8"
-          aria-label="Main"
-        >
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="relative text-sm font-medium text-background-primary/70 transition-colors duration-200 hover:text-background-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-0 after:bg-background-primary/60 after:transition-all after:duration-300 hover:after:w-full"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <DesktopNav />
 
         {/* Right: User actions */}
         <div className="flex items-center gap-1 sm:gap-2">
