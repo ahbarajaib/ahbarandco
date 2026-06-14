@@ -104,7 +104,8 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
       const url = await uploadImage(file, "products");
       uploadedUrls.push(url);
     }
-  } catch {
+  } catch (err) {
+    console.error("Error uploading product images during update:", err);
     for (const url of uploadedUrls) {
       await deleteImage(url);
     }
@@ -216,7 +217,8 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
       const url = await uploadImage(file, "products");
       uploadedUrls.push(url);
     }
-  } catch {
+  } catch (err) {
+    console.error("Error uploading product images during create:", err);
     for (const url of uploadedUrls) {
       await deleteImage(url);
     }
@@ -389,7 +391,8 @@ export async function createCollection(formData: FormData): Promise<ActionRespon
     try {
       uploadedUrl = await uploadImage(file, "collections");
       imageUrl = uploadedUrl;
-    } catch {
+    } catch (err) {
+      console.error("Error uploading collection cover image during create:", err);
       return { error: "Failed to upload collection cover image." };
     }
   }
@@ -455,7 +458,8 @@ export async function updateCollection(id: string, formData: FormData): Promise<
     try {
       uploadedUrl = await uploadImage(file, "collections");
       imageUrl = uploadedUrl;
-    } catch {
+    } catch (err) {
+      console.error("Error uploading collection cover image during update:", err);
       return { error: "Failed to upload collection cover image." };
     }
   }
@@ -593,7 +597,8 @@ export async function createJournalPost(formData: FormData): Promise<ActionRespo
     try {
       uploadedUrl = await uploadImage(file, "journal");
       coverImageUrl = uploadedUrl;
-    } catch {
+    } catch (err) {
+      console.error("Error uploading journal cover image during create:", err);
       return { error: "Failed to upload cover image." };
     }
   }
@@ -663,7 +668,8 @@ export async function updateJournalPost(id: string, formData: FormData): Promise
     try {
       uploadedUrl = await uploadImage(file, "journal");
       coverImageUrl = uploadedUrl;
-    } catch {
+    } catch (err) {
+      console.error("Error uploading journal cover image during update:", err);
       return { error: "Failed to upload cover image." };
     }
   }
