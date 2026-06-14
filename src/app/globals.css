@@ -13,6 +13,10 @@
   --color-wood-medium: var(--wood-medium);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
+  --color-logo-light-text: var(--logo-light-text);
+  --color-logo-light-amp: var(--logo-light-amp);
+  --color-logo-dark-text: var(--logo-dark-text);
+  --color-logo-dark-amp: var(--logo-dark-amp);
 
   /* Shadcn semantic mappings */
   --color-background: var(--background);
@@ -68,6 +72,12 @@
   --text-primary: #1f1f1f;
   --text-secondary: #6b6b6b;
   --border: #e5ded4;
+
+  /* Logo Color Tokens */
+  --logo-light-text: #f8f5f0;
+  --logo-light-amp: #c5a880;
+  --logo-dark-text: #2d221c;
+  --logo-dark-amp: #a88660;
 
   /* Shadcn semantic tokens (mapped to brand) */
   --background: var(--background-primary);
