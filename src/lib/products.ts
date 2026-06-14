@@ -1,8 +1,19 @@
 import { prisma } from "@/lib/prisma";
 
-export async function getPublishedProducts() {
+export async function getPublishedProducts(searchQuery?: string) {
   return prisma.product.findMany({
-    where: { published: true },
+    where: {
+      published: true,
+      ...(searchQuery
+        ? {
+            OR: [
+              { name: { contains: searchQuery, mode: "insensitive" } },
+              { description: { contains: searchQuery, mode: "insensitive" } },
+              { material: { contains: searchQuery, mode: "insensitive" } },
+            ],
+          }
+        : {}),
+    },
     include: {
       images: { orderBy: { sortOrder: "asc" } },
       collection: true,
