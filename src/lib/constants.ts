@@ -1,7 +1,7 @@
 export const SITE_NAME = "Ahbar & Co.";
-export const SITE_TAGLINE = "Modern Furniture Made By Hand.";
+export const SITE_TAGLINE = "Precision Wood Art. Designed to Last.";
 export const SITE_DESCRIPTION =
-  "Thoughtfully crafted minimalist modern furniture designed for calm and intentional spaces.";
+  "Premium, meticulously engineered wood items and furniture. In an age of temporary things, we build objects of permanence.";
 
 export const NAV_LINKS = [
   { label: "Home", href: "/" },

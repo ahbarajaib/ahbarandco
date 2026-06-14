@@ -2,7 +2,7 @@
 
 ## Brand Vision
 
-Ahbar & Co. creates handcrafted minimalist modern furniture that blends timeless craftsmanship with contemporary living.
+Ahbar & Co. creates precision minimalist modern wood art and furniture that blends clean design with premium longevity.
 
 ### Brand Should Feel
 
@@ -10,7 +10,7 @@ Ahbar & Co. creates handcrafted minimalist modern furniture that blends timeless
 - Minimal
 - Modern
 - Architectural
-- Handcrafted
+- Meticulously precise
 - Intentional
 - Premium
 - Timeless
@@ -26,13 +26,13 @@ Ahbar & Co. creates handcrafted minimalist modern furniture that blends timeless
 
 ### Brand Keywords
 
-Minimalist Modern · Handcrafted · Quiet Luxury · Warm Contemporary · Natural Materials · Architectural Simplicity · Timeless Design
+Minimalist Modern · Precision Wood Art · Quiet Luxury · Warm Contemporary · Natural Materials · Architectural Simplicity · Timeless Design
 
 ---
 
 ## Design Philosophy
 
-> This furniture is carefully made by skilled craftsmen and designed for modern homes.
+> This wood art and furniture is built with precision, care, and an artistic touch for modern homes.
 
 - **Products are the hero** — the website disappears into the background
 - **Bright and usable** — inspired by warm luxury photography, but never dark or low-contrast
@@ -147,7 +147,7 @@ Quick View
 |---------|---------|
 | Hero | Large lifestyle image, headline, CTAs |
 | Featured Collections | Floating Shelves, Lounge Chairs |
-| Craftsmanship | Workshop/process photography |
+| Process | Workshop/precision tool details & process photography |
 | Featured Products | Best products grid |
 | Design Journal | Blog for SEO + storytelling |
 | Newsletter | Simple, elegant signup |
@@ -155,8 +155,8 @@ Quick View
 
 ### Hero Copy
 
-- **Headline:** Modern Furniture / Made By Hand.
-- **Subheadline:** Thoughtfully crafted furniture designed for calm and intentional spaces.
+- **Headline:** Functional Wood Art / Designed to Last.
+- **Subheadline:** In an age of temporary things, we build permanent objects of premium quality. Functional art, engineered with technical precision.
 - **Primary CTA:** Shop Collection
 - **Secondary CTA:** Our Craft
 

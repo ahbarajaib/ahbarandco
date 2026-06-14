@@ -7,7 +7,7 @@ import { getProductsByCollectionSlug } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Lounge Chairs",
   description:
-    "Handcrafted lounge chairs with timeless design and premium materials.",
+    "Premium lounge chairs with solid wood frames, timeless design, and fine materials.",
 };
 
 export default async function LoungeChairsPage() {

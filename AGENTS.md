@@ -2,7 +2,7 @@
 
 ## Project
 
-Premium ecommerce website for handcrafted minimalist modern furniture.
+Premium ecommerce website for precision minimalist modern wood art and furniture.
 
 ## Stack
 

@@ -17,8 +17,7 @@ export function SiteFooter() {
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background-primary/70">
-              Handcrafted minimalist modern furniture for calm, intentional
-              spaces.
+              Premium minimalist modern wood art and furniture designed with precision, built to endure.
             </p>
           </div>
 

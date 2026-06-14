@@ -1,12 +1,12 @@
 # Ahbar & Co.
 
-Premium ecommerce platform for handcrafted minimalist modern furniture.
+Premium ecommerce platform for precision minimalist modern wood art and furniture.
 
 ## Brand
 
-Ahbar & Co. creates furniture that blends timeless craftsmanship with contemporary living — warm, minimal, architectural, and intentional.
+Ahbar & Co. creates precision wood art and furniture that blends clean design with premium longevity — warm, minimal, architectural, and intentional.
 
-**Tagline:** Modern Furniture Made By Hand.
+**Tagline:** Precision Wood Art. Designed to Last.
 
 ## Tech Stack
 

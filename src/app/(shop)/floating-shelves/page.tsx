@@ -7,7 +7,7 @@ import { getProductsByCollectionSlug } from "@/lib/products";
 export const metadata: Metadata = {
   title: "Floating Shelves",
   description:
-    "Handcrafted floating shelves in warm walnut and oak. Minimalist modern design for intentional spaces.",
+    "Premium floating shelves precision-milled from warm walnut and oak. Minimalist modern design for intentional spaces.",
 };
 
 export default async function FloatingShelvesPage() {
@@ -19,7 +19,7 @@ export default async function FloatingShelvesPage() {
         Floating Shelves
       </h1>
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-text-secondary sm:text-base md:text-lg">
-        Wall-mounted shelves crafted from solid walnut with clean lines and
+        Wall-mounted shelves in solid walnut, defined by clean lines and
         invisible mounting hardware.
       </p>
 

@@ -15,7 +15,7 @@ export default function RegisterPage() {
           Create Account
         </h1>
         <p className="mt-3 text-sm text-text-secondary sm:text-base">
-          Join Ahbar & Co. to shop handcrafted furniture and track your orders.
+          Join Ahbar & Co. to shop premium wood art and track your orders.
         </p>
         <div className="mt-8">
           <RegisterForm />

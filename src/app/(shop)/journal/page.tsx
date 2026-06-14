@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Journal",
   description:
-    "Design stories, styling ideas, and craftsmanship insights from Ahbar & Co.",
+    "Design stories, styling ideas, and woodworking insights from Ahbar & Co.",
 };
 
 export default async function JournalPage() {
@@ -35,7 +35,7 @@ export default async function JournalPage() {
           The Journal
         </h1>
         <p className="mt-4 max-w-xl mx-auto text-sm text-text-secondary sm:text-base md:text-lg font-serif italic">
-          Design stories, styling ideas, and craftsmanship insights from our workshop.
+          Design stories, styling ideas, and woodworking insights from our workshop.
         </p>
       </div>
 

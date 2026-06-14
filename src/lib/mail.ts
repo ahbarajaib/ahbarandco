@@ -54,7 +54,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
         <hr style="border: 0; border-top: 1px solid #E8E5DF; margin-bottom: 20px;" />
         
         <div style="text-align: center; font-size: 10px; color: #9E938D; letter-spacing: 0.05em; text-transform: uppercase;">
-          Ahbar & Co. — Handcrafted Minimalist Furniture
+          Ahbar & Co. — Precision Wood Art & Fine Furniture
         </div>
       </div>
     `,

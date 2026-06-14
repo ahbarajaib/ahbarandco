@@ -36,13 +36,13 @@ Photography is the most important brand asset. The website exists to showcase th
 Full-room or contextual shots showing furniture in calm, modern living spaces. Warm light, neutral palette, minimal styling.
 
 ### Detail
-Close-ups of joinery, wood grain, sanding marks, finishing, and hardware. Communicates craftsmanship.
+Close-ups of joinery, wood grain, sanding marks, finishing, and hardware. Communicates precision and care.
 
 ### Product
 Clean product shots on neutral backgrounds for catalog/grid views. Consistent angles and lighting across a collection.
 
 ### Process
-Workshop photography — hands at work, tools, raw materials, finishing. Used in About and Craftsmanship sections.
+Workshop photography — machinery, tools, raw materials, finishing. Used in About and Process sections.
 
 ## Technical Guidelines
 
@@ -66,7 +66,7 @@ The brand mood is inspired by premium furniture photography:
 - Warm walnut wood tones
 - Natural shadows
 - Soft sunlight
-- Premium craftsmanship
+- Premium woodworking precision
 - Quiet confidence
 - Rich textures
 - Elegant typography in scene styling

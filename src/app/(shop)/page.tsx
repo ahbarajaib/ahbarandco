@@ -23,7 +23,7 @@ export default async function HomePage() {
         {assets.hero_bg && (
           <Image
             src={assets.hero_bg}
-            alt="Handcrafted minimalist modern furniture showcase"
+            alt="Precision minimalist modern furniture showcase"
             fill
             priority
             sizes="100vw"
@@ -33,16 +33,15 @@ export default async function HomePage() {
         <div className="absolute inset-0 bg-wood-dark/40" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 text-background-primary">
           <p className="text-xs font-medium uppercase tracking-widest text-background-primary/80 sm:text-sm">
-            Handcrafted Furniture
+            Precision Wood Art
           </p>
           <h1 className="mt-3 max-w-2xl font-heading text-4xl font-medium leading-tight sm:mt-4 sm:text-5xl md:text-6xl lg:text-7xl text-background-primary">
-            Modern Furniture
+            Functional Wood Art
             <br />
-            Made By Hand.
+            Designed to Last.
           </h1>
           <p className="mt-4 max-w-lg text-base text-background-primary/95 sm:mt-6 sm:text-lg">
-            Thoughtfully crafted furniture designed for calm and intentional
-            spaces.
+            In an age of temporary things, we build permanent objects of premium quality. Functional art, engineered with technical precision.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
@@ -117,11 +116,10 @@ export default async function HomePage() {
           </div>
           <div>
             <h2 className="font-heading text-2xl font-medium sm:text-3xl md:text-4xl">
-              Crafted With Intention
+              Precision as Art
             </h2>
             <p className="mt-4 text-base leading-relaxed text-text-secondary sm:mt-6 sm:text-lg">
-              Every piece is carefully built using durable materials, thoughtful
-              design, and traditional craftsmanship.
+              We use precision cutters, routers, and fine engineering to bring wood to life. Every item is built with uncompromising care, designed to be a permanent fixture in a temporary world.
             </p>
           </div>
         </div>

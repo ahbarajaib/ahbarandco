@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { S3Client, PutObjectCommand, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import sharp from "sharp";
 
 const UPLOADS_DIR = path.join(process.cwd(), "public", "uploads");
 
@@ -30,17 +31,38 @@ const s3Client = isR2Configured
  */
 export async function uploadImage(file: File, folder = ""): Promise<string> {
   const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
+  let buffer = Buffer.from(bytes);
+
+  const originalExt = path.extname(file.name) || ".jpg";
+  const ext = originalExt.toLowerCase();
+
+  let finalExt = ext;
+  let contentType = file.type || "image/jpeg";
+
+  const isOptimizable = [".jpg", ".jpeg", ".png", ".webp", ".avif", ".heic", ".heif", ".tiff"].includes(ext);
+
+  if (isOptimizable) {
+    try {
+      const optimizedBuffer = await sharp(buffer)
+        .resize({ width: 2000, withoutEnlargement: true })
+        .webp({ quality: 80 })
+        .toBuffer();
+      buffer = Buffer.from(optimizedBuffer);
+      finalExt = ".webp";
+      contentType = "image/webp";
+    } catch (err) {
+      console.error("Image optimization failed, falling back to original", err);
+    }
+  }
 
   // Generate a unique filename: clean original name + timestamp + random suffix
-  const ext = path.extname(file.name) || ".jpg";
-  const nameWithoutExt = path.basename(file.name, ext)
+  const nameWithoutExt = path.basename(file.name, originalExt)
     .toLowerCase()
     .replace(/[^a-z0-9]/g, "-")
     .replace(/-+/g, "-")
     .substring(0, 30);
   
-  const uniqueName = `${nameWithoutExt}-${Date.now()}-${Math.round(Math.random() * 1e4)}${ext}`;
+  const uniqueName = `${nameWithoutExt}-${Date.now()}-${Math.round(Math.random() * 1e4)}${finalExt}`;
   const key = folder ? `uploads/${folder}/${uniqueName}` : `uploads/${uniqueName}`;
 
   if (s3Client && process.env.R2_BUCKET_NAME) {
@@ -50,7 +72,7 @@ export async function uploadImage(file: File, folder = ""): Promise<string> {
         Bucket: process.env.R2_BUCKET_NAME,
         Key: key,
         Body: buffer,
-        ContentType: file.type || "image/jpeg",
+        ContentType: contentType,
       })
     );
 

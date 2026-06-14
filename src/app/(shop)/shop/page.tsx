@@ -9,7 +9,7 @@ import { getPublishedProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Browse handcrafted minimalist modern furniture by Ahbar & Co.",
+  description: "Explore precision wood art and minimalist furniture by Ahbar & Co.",
 };
 
 type ShopPageProps = {
@@ -29,7 +29,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
             Shop
           </h1>
           <p className="mt-3 max-w-xl text-sm text-text-secondary sm:text-base">
-            Handcrafted furniture designed for calm and intentional spaces.
+            Wood art and furniture engineered with precision, designed for calm and intentional spaces.
           </p>
         </div>
 
