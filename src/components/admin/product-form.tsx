@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ActionResponse } from "@/lib/admin-actions";
+import { UploadCloud } from "lucide-react";
 
 type ProductImageProps = {
   url: string;
@@ -46,6 +47,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
     initialData ? initialData.images.map((img) => img.url) : []
   );
   const [stagedFiles, setStagedFiles] = useState<{ name: string; previewUrl: string }[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
 
   useEffect(() => {
     return () => {
@@ -57,12 +59,22 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
     const files = e.target.files;
     if (!files) return;
 
+    setFileError(null);
+
     // Revoke old object URLs first
     stagedFiles.forEach((f) => URL.revokeObjectURL(f.previewUrl));
 
+    const maxSize = 15 * 1024 * 1024; // 15MB limit per file
     const newStaged: { name: string; previewUrl: string }[] = [];
+    
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+      if (file.size > maxSize) {
+        setFileError(`File "${file.name}" is too large. Maximum size per file is 15MB.`);
+        e.target.value = ""; // Reset file selection
+        setStagedFiles([]);
+        return;
+      }
       newStaged.push({
         name: file.name,
         previewUrl: URL.createObjectURL(file),
@@ -290,19 +302,44 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             </div>
           )}
 
-          <div className="pt-2 border-t border-border/40 space-y-1.5">
+          <div className="pt-2 border-t border-border/40 space-y-2">
             {/* File Upload Selector */}
             <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Upload New Images</span>
-            <input
-              id="product-image-files"
-              name="imageFiles"
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleFileChange}
-              disabled={isPending}
-              className="flex h-10 w-full rounded-sm border border-border bg-white px-3.5 py-2 text-xs shadow-xs file:border-0 file:bg-transparent file:text-xs file:font-medium text-text-secondary file:text-wood-dark hover:file:underline cursor-pointer focus-visible:outline-none focus-visible:border-wood-medium disabled:cursor-not-allowed"
-            />
+            <div className="relative">
+              <input
+                id="product-image-files"
+                name="imageFiles"
+                type="file"
+                multiple
+                accept="image/*"
+                onChange={handleFileChange}
+                disabled={isPending}
+                className="hidden"
+              />
+              <button
+                type="button"
+                onClick={() => document.getElementById("product-image-files")?.click()}
+                disabled={isPending}
+                className={`flex flex-col items-center justify-center border border-dashed border-border/80 hover:border-wood-medium/60 rounded-sm bg-white p-6 w-full transition cursor-pointer text-center group shadow-2xs hover:shadow-xs ${
+                  isPending ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
+                <div className="rounded-full bg-stone-50 p-2.5 text-text-secondary/70 group-hover:bg-wood-medium/10 group-hover:text-wood-medium transition duration-200">
+                  <UploadCloud className="size-5 stroke-[1.5]" />
+                </div>
+                <span className="mt-2 text-xs font-semibold text-wood-dark group-hover:text-wood-medium transition">
+                  Select product images
+                </span>
+                <span className="mt-1 text-[10px] text-text-secondary/60">
+                  You can select multiple files. PNG, JPG, or WEBP up to 15MB each.
+                </span>
+              </button>
+            </div>
+            {fileError && (
+              <p className="text-xs text-red-600 font-medium mt-1.5" role="alert">
+                {fileError}
+              </p>
+            )}
           </div>
         </div>
 
