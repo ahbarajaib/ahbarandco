@@ -61,12 +61,8 @@ jobs:
             if ! curl -sf http://127.0.0.1:3000 -o /dev/null; then
               echo "❌ Health check failed! Verbose connection details:"
               curl -iv http://127.0.0.1:3000 || true
-              echo "=== app container logs ==="
-              docker compose -f docker-compose.prod.yml logs --tail 100 app || true
-              echo "=== db container logs ==="
-              docker compose -f docker-compose.prod.yml logs --tail 100 db || true
-              echo "=== migrate container logs ==="
-              docker compose -f docker-compose.prod.yml logs --tail 100 migrate || true
+              echo "=== app container logs (last 20 lines) ==="
+              docker compose -f docker-compose.prod.yml logs --tail 20 app || true
               exit 1
             fi
 
