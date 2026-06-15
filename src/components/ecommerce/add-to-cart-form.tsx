@@ -5,6 +5,7 @@ import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { addProductToCart } from "@/lib/cart-actions";
+import { useCartDrawer } from "@/components/providers/cart-drawer-provider";
 
 type AddToCartFormProps = {
   productId: string;
@@ -15,6 +16,7 @@ export function AddToCartForm({ productId, inStock }: AddToCartFormProps) {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
+  const { open } = useCartDrawer();
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,6 +28,7 @@ export function AddToCartForm({ productId, inStock }: AddToCartFormProps) {
         setMessage(result.error);
       } else {
         setMessage("Added to cart.");
+        open();
       }
     });
   }

@@ -21,17 +21,27 @@ export async function addProductToCart(productId: string, quantity = 1) {
 }
 
 export async function updateProductInCart(productId: string, quantity: number) {
-  await updateCartItem(productId, quantity);
-  revalidatePath("/cart");
-  revalidatePath("/checkout");
-  return { success: true };
+  try {
+    await updateCartItem(productId, quantity);
+    revalidatePath("/cart");
+    revalidatePath("/checkout");
+    return { success: true };
+  } catch (error) {
+    console.error("updateProductInCart error:", error);
+    return { error: "Failed to update quantity." };
+  }
 }
 
 export async function removeProductFromCart(productId: string) {
-  await updateCartItem(productId, 0);
-  revalidatePath("/cart");
-  revalidatePath("/checkout");
-  return { success: true };
+  try {
+    await updateCartItem(productId, 0);
+    revalidatePath("/cart");
+    revalidatePath("/checkout");
+    return { success: true };
+  } catch (error) {
+    console.error("removeProductFromCart error:", error);
+    return { error: "Failed to remove item." };
+  }
 }
 
 export async function getCartWithProducts() {

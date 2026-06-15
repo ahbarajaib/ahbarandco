@@ -7,7 +7,7 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { Button } from "@/components/ui/button";
 import { SITE_NAME } from "@/lib/constants";
 import { getCart } from "@/lib/cart";
-import { ShoppingBag } from "lucide-react";
+import { CartIconTrigger } from "@/components/layout/cart-icon-trigger";
 
 export async function SiteHeader() {
   const session = await auth();
@@ -50,18 +50,7 @@ export async function SiteHeader() {
           >
             Search
           </Button>
-          <Link
-            href="/cart"
-            className="relative flex items-center justify-center rounded-full p-2 text-background-primary/70 hover:bg-background-primary/10 hover:text-background-primary transition-all duration-200 cursor-pointer"
-            aria-label={`Cart with ${cartItemCount} items`}
-          >
-            <ShoppingBag className="h-5 w-5 stroke-[1.5]" />
-            {cartItemCount > 0 && (
-              <span className="absolute top-0.5 right-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-wood-medium px-1 text-[9px] font-bold text-white ring-2 ring-wood-dark">
-                {cartItemCount}
-              </span>
-            )}
-          </Link>
+          <CartIconTrigger initialCount={cartItemCount} />
 
           {/* Thin vertical separator */}
           <div className="mx-1 hidden h-5 w-px bg-background-primary/20 md:block" aria-hidden="true" />
