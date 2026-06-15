@@ -51,7 +51,7 @@ export function CartDrawer() {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="mt-2 border-background-primary/20 hover:bg-background-primary/10 text-background-primary"
+                    className="mt-2 bg-transparent border-background-primary/20 hover:bg-background-primary/10 text-background-primary hover:text-background-primary"
                   >
                     Continue Shopping
                   </Button>
