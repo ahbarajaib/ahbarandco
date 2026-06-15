@@ -114,10 +114,11 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID=    # Same as KEY_ID for client widget
 | `Account` | OAuth provider accounts |
 | `Session` | Database sessions (OAuth) |
 | `Collection` | Product groupings |
-| `Product` | Furniture items |
-| `ProductImage` | Multiple images per product |
+| `Product` | Furniture items, with optional delivery cost |
+| `ProductVariant` | Choices for material/color with custom prices, stock, and images |
+| `ProductImage` | Multiple images per product or specific product variants |
 | `Order` | Purchase orders with Razorpay refs |
-| `OrderItem` | Line items |
+| `OrderItem` | Line items mapped to product and variant |
 | `JournalPost` | Blog content (planned) |
 | `NewsletterSubscriber` | Email list (planned) |
 

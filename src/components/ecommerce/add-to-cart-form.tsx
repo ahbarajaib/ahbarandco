@@ -10,9 +10,10 @@ import { useCartDrawer } from "@/components/providers/cart-drawer-provider";
 type AddToCartFormProps = {
   productId: string;
   inStock: boolean;
+  variantId?: string;
 };
 
-export function AddToCartForm({ productId, inStock }: AddToCartFormProps) {
+export function AddToCartForm({ productId, inStock, variantId }: AddToCartFormProps) {
   const [quantity, setQuantity] = useState(1);
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -23,7 +24,7 @@ export function AddToCartForm({ productId, inStock }: AddToCartFormProps) {
     setMessage(null);
 
     startTransition(async () => {
-      const result = await addProductToCart(productId, quantity);
+      const result = await addProductToCart(productId, quantity, variantId);
       if (result.error) {
         setMessage(result.error);
       } else {

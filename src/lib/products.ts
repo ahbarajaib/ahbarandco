@@ -54,6 +54,12 @@ export async function getProductBySlug(slug: string) {
     include: {
       images: { orderBy: { sortOrder: "asc" } },
       collection: true,
+      variants: {
+        orderBy: { price: "asc" },
+        include: {
+          images: { orderBy: { sortOrder: "asc" } },
+        },
+      },
     },
   });
 }

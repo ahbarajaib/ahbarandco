@@ -121,6 +121,17 @@ Use the `Section` component (`src/components/layout/section.tsx`):
 - **Mobile Menu Drawer**: Triggered via hamburger icon. Replaces block highlights with elegant, large Cormorant Garamond headings (`text-2xl`) and an underline active state. Features a text-based italic user greeting at the top ("Welcome, Mohammed") and anchors thin-stroke line icons (`ShoppingBag`, `User`, `LogOut`) and secondary items to the bottom of the tray.
 - **Slide-Over Cart Drawer**: Slides from the right edge upon clicking the cart icon or successfully adding an item. Designed in matching dark wood styling (`bg-wood-dark` / `text-background-primary`) with transparent buttons, thumbnail grids, subtotal tallies, and direct checkout actions.
 
+### Product Variants & Delivery Cost Indicators
+
+- **Variant Selector**:
+  - Rendered as structured horizontal rows of elegant pill buttons.
+  - Active Variant: Styled with `border-wood-medium bg-background-secondary text-text-primary` for prominent yet understated focus.
+  - Inactive Variant: Styled with a soft gray outline `border-border text-text-secondary hover:border-wood-medium/40 hover:text-text-primary`.
+  - Simple Products: The variant selector is completely omitted from the DOM, allowing description and add-to-cart elements to flow cleanly.
+- **Delivery Cost Display**:
+  - Complimentary Shipping (Free): Rendered as `"COMPLIMENTARY SHIPPING"` in uppercase walnut medium-wood tones (`text-wood-medium text-[11px] font-semibold tracking-widest uppercase`).
+  - Paid Shipping: Rendered as `"Shipping: ₹500"` in muted secondary text body (`text-text-secondary text-xs font-medium tracking-wide`).
+
 ### Footer
 
 Dark wood background with navigation, social links, newsletter, and copyright.

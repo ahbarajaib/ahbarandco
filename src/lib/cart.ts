@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 export type CartItem = {
   productId: string;
+  variantId?: string;
   quantity: number;
 };
 
@@ -30,27 +31,33 @@ export async function setCart(items: CartItem[]) {
   });
 }
 
-export async function addToCart(productId: string, quantity = 1) {
+export async function addToCart(productId: string, quantity = 1, variantId?: string) {
   const cart = await getCart();
-  const existing = cart.find((item) => item.productId === productId);
+  const existing = cart.find(
+    (item) => item.productId === productId && item.variantId === variantId
+  );
 
   if (existing) {
     existing.quantity += quantity;
   } else {
-    cart.push({ productId, quantity });
+    cart.push({ productId, quantity, ...(variantId ? { variantId } : {}) });
   }
 
   await setCart(cart);
   return cart;
 }
 
-export async function updateCartItem(productId: string, quantity: number) {
+export async function updateCartItem(productId: string, quantity: number, variantId?: string) {
   const cart = await getCart();
   const next =
     quantity <= 0
-      ? cart.filter((item) => item.productId !== productId)
+      ? cart.filter(
+          (item) => !(item.productId === productId && item.variantId === variantId)
+        )
       : cart.map((item) =>
-          item.productId === productId ? { ...item, quantity } : item
+          item.productId === productId && item.variantId === variantId
+            ? { ...item, quantity }
+            : item
         );
 
   await setCart(next);

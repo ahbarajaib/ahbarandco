@@ -11,10 +11,22 @@ type Product = {
   images: Array<{ url: string }>;
 };
 
+type ProductVariant = {
+  id: string;
+  productId: string;
+  name: string;
+  price: number;
+  compareAtPrice: number | null;
+  stock: number;
+  images: Array<{ url: string }>;
+};
+
 type CartItemWithProduct = {
   productId: string;
+  variantId?: string;
   quantity: number;
   product: Product;
+  variant: ProductVariant | null;
 };
 
 type CartDrawerContextType = {
@@ -24,8 +36,8 @@ type CartDrawerContextType = {
   cartItems: CartItemWithProduct[];
   isLoading: boolean;
   refreshCart: () => Promise<void>;
-  updateQuantity: (productId: string, quantity: number) => Promise<void>;
-  removeItem: (productId: string) => Promise<void>;
+  updateQuantity: (productId: string, quantity: number, variantId?: string) => Promise<void>;
+  removeItem: (productId: string, variantId?: string) => Promise<void>;
 };
 
 const CartDrawerContext = createContext<CartDrawerContextType | undefined>(undefined);
@@ -71,9 +83,9 @@ export function CartDrawerProvider({ children }: { children: React.ReactNode }) 
   };
   const close = () => setIsOpen(false);
 
-  const updateQuantity = async (productId: string, quantity: number) => {
+  const updateQuantity = async (productId: string, quantity: number, variantId?: string) => {
     if (quantity <= 0) {
-      await removeItem(productId);
+      await removeItem(productId, variantId);
       return;
     }
 
@@ -81,12 +93,14 @@ export function CartDrawerProvider({ children }: { children: React.ReactNode }) 
     const previousItems = [...cartItems];
     setCartItems((prev) =>
       prev.map((item) =>
-        item.productId === productId ? { ...item, quantity } : item
+        item.productId === productId && item.variantId === variantId
+          ? { ...item, quantity }
+          : item
       )
     );
 
     startTransition(async () => {
-      const res = await updateProductInCart(productId, quantity);
+      const res = await updateProductInCart(productId, quantity, variantId);
       if (res.error) {
         setCartItems(previousItems); // Rollback on error
       } else {
@@ -95,12 +109,16 @@ export function CartDrawerProvider({ children }: { children: React.ReactNode }) 
     });
   };
 
-  const removeItem = async (productId: string) => {
+  const removeItem = async (productId: string, variantId?: string) => {
     const previousItems = [...cartItems];
-    setCartItems((prev) => prev.filter((item) => item.productId !== productId));
+    setCartItems((prev) =>
+      prev.filter(
+        (item) => !(item.productId === productId && item.variantId === variantId)
+      )
+    );
 
     startTransition(async () => {
-      const res = await removeProductFromCart(productId);
+      const res = await removeProductFromCart(productId, variantId);
       if (res.error) {
         setCartItems(previousItems); // Rollback on error
       } else {

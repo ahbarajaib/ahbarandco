@@ -36,10 +36,13 @@ export async function createCheckoutOrder(shippingAddress: z.infer<typeof Addres
   }
 
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
+    (sum, item) => sum + (item.variant ? item.variant.price : item.product.price) * item.quantity,
     0
   );
-  const shipping = subtotal >= 500000 ? 0 : 150000;
+  const shipping = cartItems.reduce(
+    (sum, item) => sum + (item.product.deliveryCost || 0) * item.quantity,
+    0
+  );
   const total = subtotal + shipping;
   const orderNumber = generateOrderNumber();
 
@@ -54,8 +57,9 @@ export async function createCheckoutOrder(shippingAddress: z.infer<typeof Addres
       items: {
         create: cartItems.map((item) => ({
           productId: item.productId,
+          variantId: item.variantId,
           quantity: item.quantity,
-          unitPrice: item.product.price,
+          unitPrice: item.variant ? item.variant.price : item.product.price,
         })),
       },
     },

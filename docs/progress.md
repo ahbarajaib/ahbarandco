@@ -104,6 +104,8 @@ Last updated: June 9, 2026
 | Product card component | ✅ Complete | Image, name, price, quick view hover |
 | Add to cart (server action + cookie cart) | ✅ Complete | `src/lib/cart.ts` |
 | Slide-Over Cart Drawer implementation | ✅ Complete | Instant add-to-cart slider drawer, optimistic quantity updater, and `/api/cart` route syncing |
+| Product Variant Support | ✅ Complete | Interactive select tabs, dynamic pricing, and gallery image swapping based on variant selection |
+| Product Delivery Costs | ✅ Complete | Optional delivery fees integrated with order checkout calculations, displaying complimentary shipping prominently |
 | Cart page with quantity controls | ✅ Complete | `src/app/cart/page.tsx` |
 | Checkout page (auth required) | ✅ Complete | Order summary + payment |
 | Order detail page | ✅ Complete | `/orders/[orderNumber]` |

@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { AddToCartForm } from "@/components/ecommerce/add-to-cart-form";
 import { ProductCard } from "@/components/ecommerce/product-card";
-import { ProductGallery } from "@/components/ecommerce/product-gallery";
+import { ProductDetails } from "@/components/ecommerce/product-details";
 import { Section } from "@/components/layout/section";
 import {
-  formatPrice,
   getProductBySlug,
   getRelatedProducts,
 } from "@/lib/products";
@@ -64,65 +61,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Section variant="surface">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <ProductGallery images={product.images} productName={product.name} />
-
-          <div className="flex flex-col">
-            {product.collection && (
-              <Link
-                href={`/${product.collection.slug}`}
-                className="text-xs font-medium uppercase tracking-widest text-wood-medium hover:underline"
-              >
-                {product.collection.name}
-              </Link>
-            )}
-            <h1 className="mt-2 font-heading text-3xl font-medium sm:text-4xl lg:text-5xl">
-              {product.name}
-            </h1>
-            <div className="mt-4 flex flex-wrap items-baseline gap-3">
-              <span className="text-xl font-medium text-text-primary sm:text-2xl">
-                {formatPrice(product.price, product.currency)}
-              </span>
-              {product.compareAtPrice && product.compareAtPrice > product.price && (
-                <>
-                  <span className="text-sm line-through text-text-secondary sm:text-base">
-                    {formatPrice(product.compareAtPrice, product.currency)}
-                  </span>
-                  <span className="inline-flex items-center rounded-sm bg-wood-medium/10 px-2.5 py-0.5 text-xs font-semibold tracking-wider text-wood-medium uppercase">
-                    Save {Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100)}%
-                  </span>
-                </>
-              )}
-            </div>
-            {product.shortDesc && (
-              <p className="mt-6 text-base leading-relaxed text-text-secondary sm:text-lg">
-                {product.shortDesc}
-              </p>
-            )}
-
-            <dl className="mt-8 space-y-4 border-t border-border pt-8 text-sm sm:text-base">
-              {product.material && (
-                <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <dt className="text-text-secondary">Material</dt>
-                  <dd>{product.material}</dd>
-                </div>
-              )}
-              {product.dimensions && (
-                <div className="grid grid-cols-[120px_1fr] gap-4">
-                  <dt className="text-text-secondary">Dimensions</dt>
-                  <dd>{product.dimensions}</dd>
-                </div>
-              )}
-            </dl>
-
-            <div className="mt-8">
-              <AddToCartForm
-                productId={product.id}
-                inStock={product.stock > 0}
-              />
-            </div>
-          </div>
-        </div>
+        <ProductDetails product={product} />
       </Section>
 
       {(product.description || product.careGuide) && (

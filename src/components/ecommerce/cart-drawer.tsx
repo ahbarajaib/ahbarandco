@@ -11,7 +11,7 @@ export function CartDrawer() {
   const { isOpen, close, cartItems, isLoading, updateQuantity, removeItem } = useCartDrawer();
 
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
+    (sum, item) => sum + (item.variant ? item.variant.price : item.product.price) * item.quantity,
     0
   );
   
@@ -61,16 +61,20 @@ export function CartDrawer() {
           ) : (
             <div className="divide-y divide-background-primary/10">
               {cartItems.map((item) => {
-                const firstImage = item.product.images?.[0]?.url;
+                const firstImage = item.variant?.images?.[0]?.url || item.product.images?.[0]?.url;
+                const displayName = item.variant ? `${item.product.name} (${item.variant.name})` : item.product.name;
+                const displayPrice = item.variant ? item.variant.price : item.product.price;
+                const itemKey = `${item.productId}-${item.variantId || "base"}`;
+
                 return (
-                  <div key={item.productId} className="flex gap-4 py-4 first:pt-0 last:pb-0 group">
+                  <div key={itemKey} className="flex gap-4 py-4 first:pt-0 last:pb-0 group">
                     {/* Thumbnail */}
                     <div className="relative size-20 shrink-0 bg-background-primary/5 border border-background-primary/10 rounded-xs overflow-hidden">
                       {firstImage ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img 
                           src={firstImage} 
-                          alt={item.product.name} 
+                          alt={displayName} 
                           className="h-full w-full object-cover"
                         />
                       ) : (
@@ -82,10 +86,10 @@ export function CartDrawer() {
                     <div className="flex-grow flex flex-col justify-between">
                       <div className="space-y-0.5">
                         <h4 className="text-sm font-medium text-background-primary line-clamp-1">
-                          {item.product.name}
+                          {displayName}
                         </h4>
                         <p className="text-xs font-semibold text-background-primary/80">
-                          {formatPrice(item.product.price)}
+                          {formatPrice(displayPrice)}
                         </p>
                       </div>
 
@@ -94,7 +98,7 @@ export function CartDrawer() {
                         <div className="flex items-center border border-background-primary/20 rounded-xs bg-background-primary/5 h-7">
                           <button
                             type="button"
-                            onClick={() => updateQuantity(item.productId, item.quantity - 1)}
+                            onClick={() => updateQuantity(item.productId, item.quantity - 1, item.variantId)}
                             className="px-2 h-full flex items-center justify-center hover:bg-background-primary/10 text-background-primary/70 hover:text-background-primary transition cursor-pointer"
                             aria-label="Decrease quantity"
                           >
@@ -105,7 +109,7 @@ export function CartDrawer() {
                           </span>
                           <button
                             type="button"
-                            onClick={() => updateQuantity(item.productId, item.quantity + 1)}
+                            onClick={() => updateQuantity(item.productId, item.quantity + 1, item.variantId)}
                             className="px-2 h-full flex items-center justify-center hover:bg-background-primary/10 text-background-primary/70 hover:text-background-primary transition cursor-pointer"
                             aria-label="Increase quantity"
                           >
@@ -116,7 +120,7 @@ export function CartDrawer() {
                         {/* Remove */}
                         <button
                           type="button"
-                          onClick={() => removeItem(item.productId)}
+                          onClick={() => removeItem(item.productId, item.variantId)}
                           className="text-background-primary/40 hover:text-red-400 transition cursor-pointer p-1"
                           aria-label="Remove item"
                         >
