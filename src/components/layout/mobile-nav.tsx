@@ -1,6 +1,6 @@
 "use client";
 
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, ShoppingBag, User, LogOut } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -24,7 +24,6 @@ type MobileNavProps = {
 export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const userInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -34,29 +33,23 @@ export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNa
       >
         <MenuIcon className="size-5" />
       </SheetTrigger>
-      <SheetContent side="left" className="w-full max-w-xs bg-wood-dark text-background-primary flex flex-col">
-        <SheetHeader className="border-b border-background-primary/10 pb-4">
-          <SheetTitle className="font-heading text-left text-sm uppercase tracking-[0.2em] text-background-primary">
+      <SheetContent side="left" className="w-full max-w-xs bg-wood-dark text-background-primary flex flex-col p-6 border-r border-background-primary/10">
+        <SheetHeader className="border-b border-background-primary/10 pb-5">
+          <SheetTitle className="font-heading text-left text-lg uppercase tracking-[0.15em] text-background-primary">
             {SITE_NAME}
           </SheetTitle>
         </SheetHeader>
 
         {/* User greeting if signed in */}
         {isAuthenticated && (
-          <div className="mt-4 flex items-center gap-3 rounded-sm bg-background-primary/10 px-3 py-3">
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-wood-medium text-sm font-semibold text-background-primary">
-              {userInitial}
-            </span>
-            <div>
-              <p className="text-sm font-medium text-background-primary leading-tight truncate max-w-[160px]">
-                {userName || "My Account"}
-              </p>
-              <p className="text-[10px] uppercase tracking-wider text-background-primary/50 mt-0.5">Signed in</p>
-            </div>
+          <div className="pt-4 pb-2 border-b border-background-primary/10">
+            <p className="font-heading italic text-base text-background-primary/95">
+              Welcome, {userName || "Guest"}
+            </p>
           </div>
         )}
 
-        <nav className="mt-6 flex flex-col gap-0.5 flex-1" aria-label="Mobile">
+        <nav className="mt-8 flex flex-col gap-1.5 flex-1" aria-label="Mobile">
           {NAV_LINKS.map((link) => {
             const isActive =
               pathname === link.href ||
@@ -66,46 +59,56 @@ export function MobileNav({ isAuthenticated, userName, cartItemCount }: MobileNa
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`rounded-sm px-3 py-3 text-base font-medium transition-colors ${
+                className={`py-2 text-2xl font-heading font-medium tracking-wide transition-all ${
                   isActive
-                    ? "bg-background-primary/10 text-background-primary font-semibold"
-                    : "text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
+                    ? "text-background-primary border-b border-background-primary/20 w-fit"
+                    : "text-background-primary/50 hover:text-background-primary"
                 }`}
               >
                 {link.label}
               </Link>
             );
           })}
-          <div className="my-3 border-t border-background-primary/10" />
-          <Link
-            href="/cart"
-            onClick={() => setOpen(false)}
-            className="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
-          >
-            <span>Cart</span>
-            {cartItemCount !== undefined && cartItemCount > 0 && (
-              <span className="flex size-5 items-center justify-center rounded-full bg-wood-medium text-[10px] font-bold text-white">
-                {cartItemCount}
+          
+          {/* Utility / Secondary links group forced to the bottom */}
+          <div className="mt-auto pt-6 border-t border-background-primary/10 space-y-3">
+            <Link
+              href="/cart"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-between text-xs font-medium uppercase tracking-[0.15em] text-background-primary/60 hover:text-background-primary transition-colors py-2"
+            >
+              <span className="flex items-center gap-2.5">
+                <ShoppingBag className="size-4 stroke-[1.5]" />
+                Cart
               </span>
+              {cartItemCount !== undefined && cartItemCount > 0 && (
+                <span className="flex size-5 items-center justify-center rounded-full bg-wood-medium text-[9px] font-bold text-white ring-1 ring-wood-dark">
+                  {cartItemCount}
+                </span>
+              )}
+            </Link>
+            
+            <Link
+              href={isAuthenticated ? "/account" : "/login"}
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.15em] text-background-primary/60 hover:text-background-primary transition-colors py-2"
+            >
+              <User className="size-4 stroke-[1.5]" />
+              {isAuthenticated ? "My Account" : "Sign In"}
+            </Link>
+            
+            {isAuthenticated && (
+              <form action={signOutUser} className="w-full">
+                <button
+                  type="submit"
+                  className="flex w-full items-center gap-2.5 text-left text-xs font-medium uppercase tracking-[0.15em] text-background-primary/60 hover:text-background-primary transition-colors py-2 cursor-pointer"
+                >
+                  <LogOut className="size-4 stroke-[1.5]" />
+                  Sign Out
+                </button>
+              </form>
             )}
-          </Link>
-          <Link
-            href={isAuthenticated ? "/account" : "/login"}
-            onClick={() => setOpen(false)}
-            className="rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary"
-          >
-            {isAuthenticated ? "My Orders & Account" : "Sign In"}
-          </Link>
-          {isAuthenticated && (
-            <form action={signOutUser} className="w-full">
-              <button
-                type="submit"
-                className="w-full text-left rounded-sm px-3 py-3 text-base font-medium text-background-primary/80 hover:bg-background-primary/10 hover:text-background-primary cursor-pointer"
-              >
-                Sign Out
-              </button>
-            </form>
-          )}
+          </div>
         </nav>
       </SheetContent>
     </Sheet>
