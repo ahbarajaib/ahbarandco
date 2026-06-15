@@ -85,11 +85,13 @@ All tokens are defined as CSS custom properties in `src/app/globals.css`.
 - **Weight:** 500–600
 - **Usage:** Hero headlines, collection titles, editorial content
 
-### Body
+### Body & Interface
 
 - **Font:** Inter (`font-sans`)
 - **Weight:** 400–500
-- **Usage:** Navigation, product descriptions, UI elements
+- **Usage:** Product descriptions, UI buttons, table cells
+- **Navigation (Desktop):** Tracked uppercase Inter (`text-[11px] uppercase tracking-[0.18em]`)
+- **Navigation (Mobile Drawer utilities):** Tracked uppercase Inter (`text-xs uppercase tracking-[0.15em]`)
 
 ---
 
@@ -115,7 +117,9 @@ Use the `Section` component (`src/components/layout/section.tsx`):
 
 ### Navigation
 
-Dark wood (`bg-wood-dark`) header with ivory text. Links: Home, Shop, Collections, Journal, About, Search, Cart.
+- **Desktop Header Navigation**: Dark wood (`bg-wood-dark`) header with ivory text. Main nav items use tracked uppercase styling (`text-[11px] uppercase tracking-[0.18em]`) with a 1px bottom border hover slide transition.
+- **Mobile Menu Drawer**: Triggered via hamburger icon. Replaces block highlights with elegant, large Cormorant Garamond headings (`text-2xl`) and an underline active state. Features a text-based italic user greeting at the top ("Welcome, Mohammed") and anchors thin-stroke line icons (`ShoppingBag`, `User`, `LogOut`) and secondary items to the bottom of the tray.
+- **Slide-Over Cart Drawer**: Slides from the right edge upon clicking the cart icon or successfully adding an item. Designed in matching dark wood styling (`bg-wood-dark` / `text-background-primary`) with transparent buttons, thumbnail grids, subtotal tallies, and direct checkout actions.
 
 ### Footer
 

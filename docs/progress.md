@@ -48,6 +48,8 @@ Last updated: June 9, 2026
 | Task | Status | Notes |
 |------|--------|-------|
 | Mobile navigation (hamburger + sheet drawer) | ✅ Complete | `src/components/layout/mobile-nav.tsx` |
+| Redesign mobile menu drawer layout & styling | ✅ Complete | Replaced dashboard blocks with elegant Cormorant Garamond headings and bottom line utilities |
+| Upgrade desktop navigation typography | ✅ Complete | Added tracked uppercase Inter styling (`text-[11px] tracking-[0.18em] uppercase`) |
 | Responsive header (compact on mobile) | ✅ Complete | Hidden desktop nav below `lg`, mobile menu below `md` |
 | Responsive section spacing | ✅ Complete | `py-12` mobile → `py-28` desktop |
 | Responsive typography scale | ✅ Complete | All pages use `sm:` / `md:` / `lg:` breakpoints |
@@ -64,7 +66,7 @@ Last updated: June 9, 2026
 | Task | Status | Notes |
 |------|--------|-------|
 | `docker-compose.yml` with PostgreSQL 16 | ✅ Complete | Free local DB, no cloud cost |
-| `Dockerfile` for production app image | ✅ Complete | Multi-stage, standalone Next.js output |
+| `Dockerfile` for production app image | ✅ Complete | Multi-stage standalone Next.js image, sharp pipeline compiled natively |
 | `.dockerignore` | ✅ Complete | Excludes node_modules, .env |
 | Docker healthcheck for Postgres | ✅ Complete | `pg_isready` check |
 | `npm run docker:up` script | ✅ Complete | Starts DB container only |
@@ -101,6 +103,7 @@ Last updated: June 9, 2026
 | Thumbnail navigation (4+ images) | ✅ Complete | Client-side image switching |
 | Product card component | ✅ Complete | Image, name, price, quick view hover |
 | Add to cart (server action + cookie cart) | ✅ Complete | `src/lib/cart.ts` |
+| Slide-Over Cart Drawer implementation | ✅ Complete | Instant add-to-cart slider drawer, optimistic quantity updater, and `/api/cart` route syncing |
 | Cart page with quantity controls | ✅ Complete | `src/app/cart/page.tsx` |
 | Checkout page (auth required) | ✅ Complete | Order summary + payment |
 | Order detail page | ✅ Complete | `/orders/[orderNumber]` |

@@ -123,9 +123,12 @@ NEXT_PUBLIC_RAZORPAY_KEY_ID=    # Same as KEY_ID for client widget
 
 Prices stored as integers in paise (INR smallest unit).
 
-## Cart
+## Cart & Slide-Over Drawer
 
-Cookie-based cart (`ahbar_cart` httpOnly cookie). Server actions in `src/lib/cart-actions.ts` manage add/update/remove. Cart persists across sessions but checkout requires authentication.
+- **Storage**: Cookie-based storage via an encrypted `ahbar_cart` HTTP-only cookie. Server actions inside [cart-actions.ts](file:///Users/ahbarajaib/iCloud%20Drive%20%28Archive%29/Documents/Documents%20-%20MacBook%20Air%20M3/Projects/ahbarandco/src/lib/cart-actions.ts) manipulate additions and updates directly on the server.
+- **Client Synchronization**: A dynamic API route `/api/cart` ([route.ts](file:///Users/ahbarajaib/iCloud%20Drive%20%28Archive%29/Documents/Documents%20-%20MacBook%20Air%20M3/Projects/ahbarandco/src/app/api/cart/route.ts)) fetches the current cart with populated product data (names, prices, images).
+- **State Management**: A React Context provider `CartDrawerProvider` ([cart-drawer-provider.tsx](file:///Users/ahbarajaib/iCloud%20Drive%20%28Archive%29/Documents/Documents%20-%20MacBook%20Air%20M3/Projects/ahbarandco/src/components/providers/cart-drawer-provider.tsx)) wraps the layout, exposing open/close states and optimistic update actions (`updateQuantity`, `removeItem`) for fast, local layout updates while coordinating mutations behind the scenes.
+- **UI Element**: The slide-over drawer [CartDrawer](file:///Users/ahbarajaib/iCloud%20Drive%20%28Archive%29/Documents/Documents%20-%20MacBook%20Air%20M3/Projects/ahbarandco/src/components/ecommerce/cart-drawer.tsx) ([cart-drawer.tsx](file:///Users/ahbarajaib/iCloud%20Drive%20%28Archive%29/Documents/Documents%20-%20MacBook%20Air%20M3/Projects/ahbarandco/src/components/ecommerce/cart-drawer.tsx)) handles overlay, scrollable items, quantity selectors, and direct checkout routes.
 
 ## Directory Structure
 
@@ -133,6 +136,7 @@ Cookie-based cart (`ahbar_cart` httpOnly cookie). Server actions in `src/lib/car
 src/
 ├── app/
 │   ├── api/auth/[...nextauth]/     # Auth.js route handler
+│   ├── api/cart/                 # Dynamic cart details API
 │   ├── api/webhooks/razorpay/    # Payment webhook
 │   ├── products/[slug]/          # Product detail + gallery
 │   ├── shop/ cart/ checkout/     # Commerce
@@ -140,8 +144,9 @@ src/
 │   └── orders/[orderNumber]/     # Order details
 ├── components/
 │   ├── auth/                     # Forms, Google button
-│   ├── ecommerce/                # ProductCard, Gallery, Razorpay
-│   └── layout/                   # Header, Footer, MobileNav
+│   ├── ecommerce/                # ProductCard, Gallery, Razorpay, CartDrawer
+│   ├── layout/                   # Header, Footer, MobileNav, CartIconTrigger
+│   └── providers/                # CartDrawerProvider context
 ├── lib/
 │   ├── prisma.ts                 # DB client singleton
 │   ├── products.ts               # Catalog queries

@@ -39,7 +39,7 @@ Premium ecommerce website for precision minimalist modern wood art and furniture
 - Use `Section` component for page sections
 - Prisma client via `src/lib/prisma.ts` (server only)
 - Prices in paise (integers)
-- Cart stored in httpOnly cookie
+- Cart stored in httpOnly cookie (interfaced dynamically in client components using `CartDrawerProvider` and `/api/cart` route)
 
 ## Auth
 
