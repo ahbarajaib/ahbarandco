@@ -47,6 +47,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder /app/node_modules/@prisma/client ./node_modules/@prisma/client
 COPY --from=builder /app/src/generated ./src/generated
 
+# Sharp native dependencies for Next.js image optimization and storage pipeline
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/sharp ./node_modules/sharp
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@img ./node_modules/@img
+
 USER nextjs
 EXPOSE 3000
 ENV PORT=3000
