@@ -75,7 +75,7 @@ export default async function JournalPostPage({ params }: Props) {
       "name": "Ahbar & Co.",
       "logo": {
         "@type": "ImageObject",
-        "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://ahbarandco.com"}/logo-dark.png`
+        "url": `${process.env.NEXT_PUBLIC_SITE_URL || "https://ahbarandco.com"}/logo-dark.png?v=2`
       }
     }
   };
