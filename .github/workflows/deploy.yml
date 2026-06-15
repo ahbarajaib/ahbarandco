@@ -48,6 +48,7 @@ jobs:
             fi
 
             echo "🐳 Rebuilding and restarting containers..."
+            docker rm -f ahbarandco-migrate || true
             docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
 
             echo "⏳ Waiting for app to be healthy (30s)..."
