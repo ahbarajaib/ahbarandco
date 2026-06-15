@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Search as SearchIcon, X as XIcon } from "lucide-react";
 
-import { AdBanner } from "@/components/ads/ad-banner";
 import { ProductCard } from "@/components/ecommerce/product-card";
 import { Section } from "@/components/layout/section";
 import { getPublishedProducts } from "@/lib/products";
@@ -57,7 +56,6 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         </form>
       </div>
 
-      <AdBanner slotId="shop-listing-top-ad" />
 
       {products.length === 0 ? (
         <div className="mt-10 py-10 text-center border border-dashed border-border/80 rounded-sm bg-white p-6 space-y-4">

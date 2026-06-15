@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { estimateReadingTime } from "@/lib/markdown";
-import { AdBanner } from "@/components/ads/ad-banner";
 import { Section } from "@/components/layout/section";
 
 export const dynamic = "force-dynamic";
@@ -39,9 +38,7 @@ export default async function JournalPage() {
         </p>
       </div>
 
-      <div className="mb-12">
-        <AdBanner slotId="journal-index-top-ad" />
-      </div>
+
 
       {posts.length === 0 ? (
         <div className="text-center py-20 border border-dashed border-border rounded-sm max-w-2xl mx-auto bg-background-secondary/5">

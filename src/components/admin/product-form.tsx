@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState, useState, useEffect } from "react";
+import React, { useActionState, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -89,9 +89,10 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
 
           // Add newly uploaded URL to existing list
           setExistingImages((prev) => [...prev, data.url]);
-        } catch (err: any) {
+        } catch (err) {
           console.error("Product image upload error:", err);
-          setFileError(`Failed to upload "${file.name}": ${err.message || "Unknown error"}`);
+          const errorMsg = err instanceof Error ? err.message : "Unknown error";
+          setFileError(`Failed to upload "${file.name}": ${errorMsg}`);
         } finally {
           // Remove from uploading list
           setUploadingFiles((prev) => prev.filter((f) => f.id !== tempId));

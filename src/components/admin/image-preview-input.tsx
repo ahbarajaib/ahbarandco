@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { UploadCloud, Trash2 } from "lucide-react";
 
@@ -28,10 +28,11 @@ export function ImagePreviewInput({
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Sync with default value if it changes
-  useEffect(() => {
+  const [prevDefaultValue, setPrevDefaultValue] = useState(defaultValue);
+  if (defaultValue !== prevDefaultValue) {
+    setPrevDefaultValue(defaultValue);
     setUrl(defaultValue);
-  }, [defaultValue]);
+  }
 
   const preferredSizeDesc = preferredDimensions || (
     aspectRatio === "portrait" ? "4:5 (e.g. 1200 × 1500 px)" :
@@ -70,9 +71,10 @@ export function ImagePreviewInput({
       }
 
       setUrl(data.url);
-    } catch (err: any) {
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : "Failed to upload image.";
       console.error("Upload error:", err);
-      setError(err.message || "Failed to upload image.");
+      setError(errorMsg);
     } finally {
       setIsUploading(false);
       e.target.value = ""; // Clear file input selection

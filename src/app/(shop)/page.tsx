@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { AdBanner } from "@/components/ads/ad-banner";
 import { ProductCard } from "@/components/ecommerce/product-card";
 import { Section } from "@/components/layout/section";
 import { Button } from "@/components/ui/button";
@@ -62,8 +61,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
-      
-      <AdBanner slotId="home-hero-bottom-ad" />
+
 
       <Section variant="primary">
         <div className="mb-8 sm:mb-12">
@@ -125,7 +123,7 @@ export default async function HomePage() {
         </div>
       </Section>
 
-      <AdBanner slotId="home-featured-products-top-ad" />
+
 
       {featuredProducts.length > 0 && (
         <Section>
