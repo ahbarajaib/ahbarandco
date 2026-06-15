@@ -58,7 +58,17 @@ jobs:
             docker compose -f docker-compose.prod.yml run --rm --no-deps migrate
 
             echo "✅ Running health check..."
-            curl -sf http://localhost:3000 -o /dev/null || (echo "❌ Health check failed!" && exit 1)
+            if ! curl -sf http://127.0.0.1:3000 -o /dev/null; then
+              echo "❌ Health check failed! Verbose connection details:"
+              curl -iv http://127.0.0.1:3000 || true
+              echo "=== app container logs ==="
+              docker compose -f docker-compose.prod.yml logs --tail 100 app || true
+              echo "=== db container logs ==="
+              docker compose -f docker-compose.prod.yml logs --tail 100 db || true
+              echo "=== migrate container logs ==="
+              docker compose -f docker-compose.prod.yml logs --tail 100 migrate || true
+              exit 1
+            fi
 
             echo "🧹 Cleaning up unused Docker images..."
             docker image prune -f
