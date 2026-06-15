@@ -7,10 +7,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ActionResponse } from "@/lib/admin-actions";
-import { UploadCloud, Trash2 } from "lucide-react";
+import { UploadCloud, Trash2, Plus } from "lucide-react";
 
 type ProductImageProps = {
   url: string;
+};
+
+type ProductVariantProps = {
+  id?: string;
+  name: string;
+  price: number;
+  compareAtPrice: number | null;
+  stock: number;
+  images: { url: string }[];
 };
 
 type ProductFormProps = {
@@ -29,25 +38,58 @@ type ProductFormProps = {
     published: boolean;
     collectionId: string | null;
     images: ProductImageProps[];
+    deliveryCost: number;
+    variants?: ProductVariantProps[];
   };
   collections: { id: string; name: string }[];
   submitAction: (formData: FormData) => Promise<ActionResponse>;
   title: string;
 };
 
+type FormVariant = {
+  id?: string;
+  name: string;
+  price: string;
+  compareAtPrice: string;
+  stock: number;
+  images: string[]; // URLs
+};
+
 export function ProductForm({ initialData, collections, submitAction, title }: ProductFormProps) {
   const router = useRouter();
 
-  // Price conversion (initialData.price is in paise, so divide by 100 for user display)
+  // Price and Delivery Cost conversion
   const displayPrice = initialData ? (initialData.price / 100).toString() : "";
   const displayCompareAtPrice = initialData?.compareAtPrice 
     ? (initialData.compareAtPrice / 100).toString() 
     : "";
+  const displayDeliveryCost = initialData?.deliveryCost
+    ? (initialData.deliveryCost / 100).toString()
+    : "0";
+
+  const [deliveryCost, setDeliveryCost] = useState<string>(displayDeliveryCost);
   const [existingImages, setExistingImages] = useState<string[]>(
     initialData ? initialData.images.map((img) => img.url) : []
   );
   const [uploadingFiles, setUploadingFiles] = useState<{ id: string; name: string }[]>([]);
   const [fileError, setFileError] = useState<string | null>(null);
+
+  // Variants management states
+  const [hasVariants, setHasVariants] = useState<boolean>(
+    !!(initialData?.variants && initialData.variants.length > 0)
+  );
+  const [variants, setVariants] = useState<FormVariant[]>(
+    initialData?.variants
+      ? initialData.variants.map((v) => ({
+          id: v.id,
+          name: v.name,
+          price: (v.price / 100).toString(),
+          compareAtPrice: v.compareAtPrice ? (v.compareAtPrice / 100).toString() : "",
+          stock: v.stock,
+          images: v.images.map((img) => img.url),
+        }))
+      : []
+  );
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -56,7 +98,6 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
     setFileError(null);
     const maxSize = 15 * 1024 * 1024; // 15MB limit
 
-    // Process files in parallel
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       if (file.size > maxSize) {
@@ -64,13 +105,9 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
         continue;
       }
 
-      // Generate a temporary unique ID for tracking progress
       const tempId = Math.random().toString(36).substring(7);
-      
-      // Add to uploading list
       setUploadingFiles((prev) => [...prev, { id: tempId, name: file.name }]);
 
-      // Start uploading immediately
       (async () => {
         try {
           const formData = new FormData();
@@ -87,30 +124,101 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             throw new Error(data.error || "Upload failed");
           }
 
-          // Add newly uploaded URL to existing list
           setExistingImages((prev) => [...prev, data.url]);
         } catch (err) {
           console.error("Product image upload error:", err);
           const errorMsg = err instanceof Error ? err.message : "Unknown error";
           setFileError(`Failed to upload "${file.name}": ${errorMsg}`);
         } finally {
-          // Remove from uploading list
           setUploadingFiles((prev) => prev.filter((f) => f.id !== tempId));
         }
       })();
     }
 
-    e.target.value = ""; // Clear file selector
+    e.target.value = "";
   };
 
-
-
   const handleRemoveExisting = (indexToRemove: number) => {
+    const removedUrl = existingImages[indexToRemove];
     setExistingImages((prev) => prev.filter((_, idx) => idx !== indexToRemove));
+
+    // Remove the URL from any variant-to-image association
+    setVariants((prev) =>
+      prev.map((v) => ({
+        ...v,
+        images: v.images.filter((url) => url !== removedUrl),
+      }))
+    );
+  };
+
+  // Variants functions
+  const handleAddVariant = () => {
+    setVariants((prev) => [
+      ...prev,
+      {
+        name: "",
+        price: "",
+        compareAtPrice: "",
+        stock: 0,
+        images: [],
+      },
+    ]);
+  };
+
+  const handleRemoveVariant = (index: number) => {
+    setVariants((prev) => prev.filter((_, idx) => idx !== index));
+  };
+
+  const handleVariantFieldChange = (index: number, field: keyof FormVariant, value: string | number) => {
+    setVariants((prev) =>
+      prev.map((v, idx) => (idx === index ? { ...v, [field]: value } : v))
+    );
+  };
+
+  const handleToggleVariantImage = (variantIndex: number, imageUrl: string) => {
+    setVariants((prev) =>
+      prev.map((v, idx) => {
+        if (idx !== variantIndex) return v;
+        const alreadySelected = v.images.includes(imageUrl);
+        const newImages = alreadySelected
+          ? v.images.filter((url) => url !== imageUrl)
+          : [...v.images, imageUrl];
+        return { ...v, images: newImages };
+      })
+    );
   };
 
   const [state, formAction, isPending] = useActionState<ActionResponse, FormData>(
     async (prevState, formData) => {
+      // If the product has variants, set the main price and stock to match the first variant's details
+      if (hasVariants && variants.length > 0) {
+        formData.set("price", variants[0].price);
+        if (variants[0].compareAtPrice) {
+          formData.set("compareAtPrice", variants[0].compareAtPrice);
+        }
+        // Sum total stock from all variants
+        const totalStock = variants.reduce((sum, v) => sum + (parseInt(v.stock.toString(), 10) || 0), 0);
+        formData.set("stock", totalStock.toString());
+
+        // Serialize variants list as a JSON string
+        formData.set(
+          "variants",
+          JSON.stringify(
+            variants.map((v) => ({
+              id: v.id,
+              name: v.name,
+              price: parseFloat(v.price) || 0,
+              compareAtPrice: v.compareAtPrice ? parseFloat(v.compareAtPrice) : null,
+              stock: parseInt(v.stock.toString(), 10) || 0,
+              images: v.images,
+            }))
+          )
+        );
+      } else {
+        // Clear out variants so it behaves as a simple product
+        formData.set("variants", "[]");
+      }
+
       const result = await submitAction(formData);
       if (result.success) {
         router.push("/admin/products");
@@ -122,7 +230,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
   );
 
   return (
-    <div className="space-y-6 max-w-2xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-xs">
+    <div className="space-y-6 max-w-3xl bg-white border border-border p-6 sm:p-8 rounded-sm shadow-xs">
       <div className="border-b border-border pb-4">
         <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
       </div>
@@ -167,44 +275,20 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           </div>
         </div>
 
-        {/* Pricing, Stock, and Collection */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-4">
+        {/* Delivery Cost & Collection */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="space-y-2">
-            <Label htmlFor="price" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Price (INR) *</Label>
+            <Label htmlFor="deliveryCost" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Delivery Cost (INR)</Label>
             <Input
-              id="price"
-              name="price"
+              id="deliveryCost"
+              name="deliveryCost"
               type="number"
               step="0.01"
-              defaultValue={displayPrice}
-              required
-              disabled={isPending}
-              placeholder="e.g. 24999.00"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="compareAtPrice" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Compare At Price (INR)</Label>
-            <Input
-              id="compareAtPrice"
-              name="compareAtPrice"
-              type="number"
-              step="0.01"
-              defaultValue={displayCompareAtPrice}
-              disabled={isPending}
-              placeholder="e.g. 29999.00"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="stock" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Inventory / Stock *</Label>
-            <Input
-              id="stock"
-              name="stock"
-              type="number"
               min="0"
-              defaultValue={initialData?.stock ?? 0}
-              required
+              value={deliveryCost}
+              onChange={(e) => setDeliveryCost(e.target.value)}
               disabled={isPending}
-              placeholder="e.g. 10"
+              placeholder="e.g. 500.00 (Enter 0 for complimentary shipping)"
             />
           </div>
           <div className="space-y-2">
@@ -225,6 +309,194 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
             </select>
           </div>
         </div>
+
+        {/* Has Variants Toggle */}
+        <div className="pt-2 pb-1 border-t border-b border-stone-100">
+          <label className="flex items-center gap-2.5 text-xs font-semibold text-wood-dark hover:text-text-primary transition-colors cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={hasVariants}
+              onChange={(e) => setHasVariants(e.target.checked)}
+              disabled={isPending}
+              className="size-4 rounded-xs border-border text-wood-medium focus:ring-wood-medium/20 focus:ring-offset-0 cursor-pointer accent-wood-medium"
+            />
+            <span>This product has multiple variants (e.g. Acacia vs Teak wood)</span>
+          </label>
+        </div>
+
+        {/* Simple Product Configuration (Hidden if hasVariants is active) */}
+        {!hasVariants && (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 p-4 bg-stone-50/50 border border-border/40 rounded-sm">
+            <div className="space-y-2">
+              <Label htmlFor="price" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Price (INR) *</Label>
+              <Input
+                id="price"
+                name="price"
+                type="number"
+                step="0.01"
+                defaultValue={displayPrice}
+                required={!hasVariants}
+                disabled={isPending}
+                placeholder="e.g. 24999.00"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="compareAtPrice" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Compare At Price (INR)</Label>
+              <Input
+                id="compareAtPrice"
+                name="compareAtPrice"
+                type="number"
+                step="0.01"
+                defaultValue={displayCompareAtPrice}
+                disabled={isPending}
+                placeholder="e.g. 29999.00"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="stock" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Inventory / Stock *</Label>
+              <Input
+                id="stock"
+                name="stock"
+                type="number"
+                min="0"
+                defaultValue={initialData?.stock ?? 0}
+                required={!hasVariants}
+                disabled={isPending}
+                placeholder="e.g. 10"
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Variable Product Configuration */}
+        {hasVariants && (
+          <div className="space-y-4 p-4 bg-stone-50/50 border border-border/40 rounded-sm">
+            <div className="flex items-center justify-between border-b border-border/20 pb-2">
+              <Label className="text-[10px] font-semibold uppercase tracking-wider text-wood-dark block">Product Variants</Label>
+              <button
+                type="button"
+                onClick={handleAddVariant}
+                disabled={isPending}
+                className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-wood-medium hover:text-wood-dark transition cursor-pointer disabled:opacity-50"
+              >
+                <Plus className="size-3.5" />
+                Add Variant
+              </button>
+            </div>
+
+            {variants.length === 0 ? (
+              <p className="text-xs text-text-secondary/60 text-center py-6">
+                No variants added yet. Click &quot;Add Variant&quot; to define your options.
+              </p>
+            ) : (
+              <div className="space-y-4 divide-y divide-border/30">
+                {variants.map((variant, index) => (
+                  <div key={index} className="space-y-3 pt-4 first:pt-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-text-secondary">
+                        Variant #{index + 1}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveVariant(index)}
+                        disabled={isPending}
+                        className="text-red-600 hover:text-red-800 transition cursor-pointer"
+                        title="Remove Variant"
+                      >
+                        <Trash2 className="size-4" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-4">
+                      <div className="space-y-1 sm:col-span-1">
+                        <Label className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary/70">Name *</Label>
+                        <Input
+                          value={variant.name}
+                          onChange={(e) => handleVariantFieldChange(index, "name", e.target.value)}
+                          required
+                          disabled={isPending}
+                          placeholder="e.g. Acacia"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary/70">Price (INR) *</Label>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          value={variant.price}
+                          onChange={(e) => handleVariantFieldChange(index, "price", e.target.value)}
+                          required
+                          disabled={isPending}
+                          placeholder="e.g. 12000.00"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary/70">Compare Price (INR)</Label>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          value={variant.compareAtPrice}
+                          onChange={(e) => handleVariantFieldChange(index, "compareAtPrice", e.target.value)}
+                          disabled={isPending}
+                          placeholder="e.g. 15000.00"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary/70">Stock *</Label>
+                        <Input
+                          type="number"
+                          min="0"
+                          value={variant.stock}
+                          onChange={(e) => handleVariantFieldChange(index, "stock", parseInt(e.target.value, 10) || 0)}
+                          required
+                          disabled={isPending}
+                          placeholder="e.g. 5"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Image Selector for Variant */}
+                    <div className="space-y-1.5 pt-1">
+                      <span className="text-[9px] font-semibold uppercase tracking-wider text-text-secondary/70 block">
+                        Associate Variant Images
+                      </span>
+                      {existingImages.length === 0 ? (
+                        <p className="text-[10px] text-text-secondary/50 italic">
+                          Upload product images below first to assign them here.
+                        </p>
+                      ) : (
+                        <div className="flex flex-wrap gap-2">
+                          {existingImages.map((url) => {
+                            const isSelected = variant.images.includes(url);
+                            return (
+                              <button
+                                key={url}
+                                type="button"
+                                onClick={() => handleToggleVariantImage(index, url)}
+                                disabled={isPending}
+                                className={`relative size-12 rounded-xs border overflow-hidden transition cursor-pointer ${
+                                  isSelected ? "border-wood-medium ring-2 ring-wood-medium/20" : "border-border hover:border-wood-medium/40"
+                                }`}
+                              >
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={url} alt="Variant thumb" className="h-full w-full object-cover" />
+                                {isSelected && (
+                                  <div className="absolute inset-0 bg-wood-dark/30 flex items-center justify-center">
+                                    <div className="size-4.5 bg-wood-medium rounded-full flex items-center justify-center text-[8px] text-white">✓</div>
+                                  </div>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Details: Material, Dimensions, Care */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -268,7 +540,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
               Pref. size: 1:1 or 4:5 (Min 1600px width)
             </span>
           </div>
-                   {/* Grid of existing/added images and uploading placeholders */}
+
           {(existingImages.length > 0 || uploadingFiles.length > 0) && (
             <div className="space-y-2">
               <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Images</span>
@@ -286,6 +558,7 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
                     <button
                       type="button"
                       onClick={() => handleRemoveExisting(idx)}
+                      disabled={isPending}
                       className="absolute top-1.5 right-1.5 size-7 rounded-sm bg-red-600/90 text-white flex items-center justify-center hover:bg-red-700 transition opacity-0 group-hover:opacity-100 focus:opacity-100 cursor-pointer shadow-sm"
                       title="Remove image"
                     >
@@ -314,7 +587,6 @@ export function ProductForm({ initialData, collections, submitAction, title }: P
           )}
 
           <div className="pt-2 border-t border-border/40 space-y-2">
-            {/* File Upload Selector */}
             <span className="text-[9px] font-bold uppercase tracking-wider text-text-secondary block">Upload New Images</span>
             <div className="relative">
               <input

@@ -96,6 +96,22 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
   const featured = formData.get("featured") === "true";
   const published = formData.get("published") === "true";
 
+  const deliveryCostFloat = parseFloat(String(formData.get("deliveryCost") ?? "0"));
+  const variantsRaw = String(formData.get("variants") ?? "[]");
+  let variants: {
+    id?: string;
+    name: string;
+    price: number;
+    compareAtPrice: number | null;
+    stock: number;
+    images: string[];
+  }[] = [];
+  try {
+    variants = JSON.parse(variantsRaw);
+  } catch (err) {
+    console.error("Failed to parse variants JSON in create:", err);
+  }
+
   // Upload new image files
   const files = (formData.getAll("imageFiles") as File[]).filter(f => f.size > 0);
   const uploadedUrls: string[] = [];
@@ -105,7 +121,7 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
       uploadedUrls.push(url);
     }
   } catch (err) {
-    console.error("Error uploading product images during update:", err);
+    console.error("Error uploading product images during create:", err);
     for (const url of uploadedUrls) {
       await deleteImage(url);
     }
@@ -130,6 +146,8 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
     published,
     collectionId,
     images: imageUrls,
+    deliveryCost: deliveryCostFloat,
+    variants,
   });
 
   if (!validation.success) {
@@ -142,6 +160,7 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
   const validated = validation.data;
   const price = Math.round(validated.price * 100); // convert to paise
   const compareAtPrice = validated.compareAtPrice ? Math.round(validated.compareAtPrice * 100) : null;
+  const deliveryCost = Math.round(validated.deliveryCost * 100); // convert to paise
   const productData = {
     name: validated.name,
     shortDesc: validated.shortDesc,
@@ -154,6 +173,7 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
     published: validated.published,
     collectionId: validated.collectionId,
     compareAtPrice,
+    deliveryCost,
   };
 
   let slug = slugify(validated.name);
@@ -164,19 +184,54 @@ export async function createProduct(formData: FormData): Promise<ActionResponse>
   }
 
   try {
-    await prisma.product.create({
-      data: {
-        ...productData,
-        price,
-        slug,
-        images: {
-          create: validated.images.map((url, index) => ({
-            url,
-            alt: `${validated.name} — view ${index + 1}`,
-            sortOrder: index,
-          })),
+    await prisma.$transaction(async (tx) => {
+      // 1. Create the product
+      const product = await tx.product.create({
+        data: {
+          ...productData,
+          price,
+          slug,
+          images: {
+            create: validated.images.map((url, index) => ({
+              url,
+              alt: `${validated.name} — view ${index + 1}`,
+              sortOrder: index,
+            })),
+          },
         },
-      },
+        include: {
+          images: true,
+        },
+      });
+
+      // 2. Create the variants if any
+      if (validated.variants && validated.variants.length > 0) {
+        for (const variant of validated.variants) {
+          const createdVariant = await tx.productVariant.create({
+            data: {
+              productId: product.id,
+              name: variant.name,
+              price: Math.round(variant.price * 100),
+              compareAtPrice: variant.compareAtPrice ? Math.round(variant.compareAtPrice * 100) : null,
+              stock: variant.stock,
+            },
+          });
+
+          // 3. Link variant-specific images
+          if (variant.images && variant.images.length > 0) {
+            const imageIdsToLink = product.images
+              .filter((img) => variant.images.includes(img.url))
+              .map((img) => img.id);
+
+            if (imageIdsToLink.length > 0) {
+              await tx.productImage.updateMany({
+                where: { id: { in: imageIdsToLink } },
+                data: { variantId: createdVariant.id },
+              });
+            }
+          }
+        }
+      }
     });
 
     revalidateProductPaths(slug);
@@ -209,6 +264,22 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
   const featured = formData.get("featured") === "true";
   const published = formData.get("published") === "true";
 
+  const deliveryCostFloat = parseFloat(String(formData.get("deliveryCost") ?? "0"));
+  const variantsRaw = String(formData.get("variants") ?? "[]");
+  let variants: {
+    id?: string;
+    name: string;
+    price: number;
+    compareAtPrice: number | null;
+    stock: number;
+    images: string[];
+  }[] = [];
+  try {
+    variants = JSON.parse(variantsRaw);
+  } catch (err) {
+    console.error("Failed to parse variants JSON in update:", err);
+  }
+
   // Upload new image files
   const files = (formData.getAll("imageFiles") as File[]).filter(f => f.size > 0);
   const uploadedUrls: string[] = [];
@@ -218,7 +289,7 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
       uploadedUrls.push(url);
     }
   } catch (err) {
-    console.error("Error uploading product images during create:", err);
+    console.error("Error uploading product images during update:", err);
     for (const url of uploadedUrls) {
       await deleteImage(url);
     }
@@ -243,6 +314,8 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
     published,
     collectionId,
     images: imageUrls,
+    deliveryCost: deliveryCostFloat,
+    variants,
   });
 
   if (!validation.success) {
@@ -255,6 +328,7 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
   const validated = validation.data;
   const price = Math.round(validated.price * 100); // convert to paise
   const compareAtPrice = validated.compareAtPrice ? Math.round(validated.compareAtPrice * 100) : null;
+  const deliveryCost = Math.round(validated.deliveryCost * 100); // convert to paise
   const productData = {
     name: validated.name,
     shortDesc: validated.shortDesc,
@@ -267,6 +341,7 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
     published: validated.published,
     collectionId: validated.collectionId,
     compareAtPrice,
+    deliveryCost,
   };
 
   try {
@@ -291,13 +366,16 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
       }
     }
 
-    // Wrap in transaction to delete and recreate images clean
+    // Wrap in transaction to delete and recreate images and variants clean
     await prisma.$transaction(async (tx) => {
+      // Delete old variants
+      await tx.productVariant.deleteMany({ where: { productId: id } });
+
       // Delete old images relation
       await tx.productImage.deleteMany({ where: { productId: id } });
 
       // Update product details and create new images
-      await tx.product.update({
+      const updatedProduct = await tx.product.update({
         where: { id },
         data: {
           ...productData,
@@ -311,7 +389,39 @@ export async function updateProduct(id: string, formData: FormData): Promise<Act
             })),
           },
         },
+        include: {
+          images: true,
+        },
       });
+
+      // Create new variants
+      if (validated.variants && validated.variants.length > 0) {
+        for (const variant of validated.variants) {
+          const createdVariant = await tx.productVariant.create({
+            data: {
+              productId: id,
+              name: variant.name,
+              price: Math.round(variant.price * 100),
+              compareAtPrice: variant.compareAtPrice ? Math.round(variant.compareAtPrice * 100) : null,
+              stock: variant.stock,
+            },
+          });
+
+          // Link variant-specific images
+          if (variant.images && variant.images.length > 0) {
+            const imageIdsToLink = updatedProduct.images
+              .filter((img) => variant.images.includes(img.url))
+              .map((img) => img.id);
+
+            if (imageIdsToLink.length > 0) {
+              await tx.productImage.updateMany({
+                where: { id: { in: imageIdsToLink } },
+                data: { variantId: createdVariant.id },
+              });
+            }
+          }
+        }
+      }
     });
 
     // Clean up physically deleted local images (original URLs not in existingImages)

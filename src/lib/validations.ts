@@ -41,6 +41,17 @@ export const ProductSchema = z.object({
   published: z.boolean().default(true),
   collectionId: z.string().optional().nullable(),
   images: z.array(ImageSchema).min(1, "At least one product image is required"),
+  deliveryCost: z.number().nonnegative("Delivery cost cannot be negative").default(0),
+  variants: z.array(
+    z.object({
+      id: z.string().optional(),
+      name: z.string().min(1, "Variant name is required"),
+      price: z.number().positive("Variant price must be a positive number"),
+      compareAtPrice: z.number().positive("Variant compare price must be a positive number").optional().nullable(),
+      stock: z.number().int().nonnegative("Variant stock cannot be negative"),
+      images: z.array(z.string()).default([]),
+    })
+  ).optional(),
 });
 
 // Collection CRUD Validation Schema

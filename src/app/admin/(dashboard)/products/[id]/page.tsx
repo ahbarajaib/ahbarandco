@@ -21,6 +21,15 @@ export default async function AdminEditProductPage({ params }: EditProductPagePr
       images: {
         orderBy: { sortOrder: "asc" },
       },
+      variants: {
+        orderBy: { createdAt: "asc" },
+        include: {
+          images: {
+            orderBy: { sortOrder: "asc" },
+            select: { url: true },
+          },
+        },
+      },
     },
   });
 
