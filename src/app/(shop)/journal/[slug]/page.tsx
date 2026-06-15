@@ -121,7 +121,7 @@ export default async function JournalPostPage({ params }: Props) {
 
         {/* Cover Image */}
         {post.coverImageUrl && (
-          <div className="relative aspect-[16/9] w-full overflow-hidden bg-background-secondary rounded-sm border border-border/10 mb-12 sm:mb-16 shadow-sm">
+          <div className="relative aspect-[3/2] w-full overflow-hidden bg-background-secondary rounded-sm border border-border/10 mb-12 sm:mb-16 shadow-sm">
             <img
               src={post.coverImageUrl}
               alt={post.title}

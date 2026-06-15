@@ -36,7 +36,7 @@ export function ImagePreviewInput({
   const preferredSizeDesc = preferredDimensions || (
     aspectRatio === "portrait" ? "4:5 (e.g. 1200 × 1500 px)" :
     aspectRatio === "square" ? "1:1 (e.g. 1600 × 1600 px)" :
-    aspectRatio === "video" ? "3:2 or 16:9 (e.g. 1600 × 1066 px or 2400 × 1350 px)" :
+    aspectRatio === "video" ? "3:2 (e.g. 1600 × 1066 px)" :
     aspectRatio === "wide" ? "21:9 (e.g. 2560 × 1100 px)" :
     undefined
   );
