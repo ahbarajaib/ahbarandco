@@ -22,7 +22,7 @@ export default async function AdminLayout({
           <img
             src="/logo-dark.png"
             alt="Ahbar & Co. Logo"
-            className="h-9 w-auto object-contain rounded-sm"
+            className="h-5 w-auto object-contain"
           />
           <span className="font-sans text-xs font-normal text-text-secondary">/ admin</span>
         </Link>
@@ -37,7 +37,7 @@ export default async function AdminLayout({
             <img
               src="/logo-dark.png"
               alt="Ahbar & Co. Logo"
-              className="h-24 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </Link>
           <div className="mt-1 text-[10px] uppercase tracking-wider text-text-secondary font-medium">
