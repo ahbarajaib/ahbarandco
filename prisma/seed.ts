@@ -179,8 +179,20 @@ async function main() {
       stock: 5,
       collectionSlug: "living-room",
       variants: [
-        { name: "C.P. Teakwood", price: 1699900, compareAtPrice: 1999900, stock: 5 },
-        { name: "Sheesham Wood", price: 1549900, compareAtPrice: 1799900, stock: 5 },
+        {
+          name: "C.P. Teakwood",
+          description: "Crafted from premium golden-brown C.P. Teakwood (Sagwan), known for its high natural oil content, exceptional weather resistance, and straight honey-colored grain lines. Perfect for warm minimalist aesthetics.",
+          price: 1699900,
+          compareAtPrice: 1999900,
+          stock: 5
+        },
+        {
+          name: "Sheesham Wood",
+          description: "Crafted from rich Indian Rosewood (Sheesham), featuring deep chocolate and dark amber swirls with a highly contrasted wavy grain. Brings a bold, rustic luxury character to modern rooms.",
+          price: 1549900,
+          compareAtPrice: 1799900,
+          stock: 5
+        },
       ],
     },
     {
@@ -447,8 +459,18 @@ async function main() {
       stock: 5,
       collectionSlug: "ambient",
       variants: [
-        { name: "Teakwood (Set of 3)", price: 299900, stock: 5 },
-        { name: "Sheesham Wood (Set of 3)", price: 279900, stock: 5 },
+        {
+          name: "Teakwood (Set of 3)",
+          description: "A set of three columns cut from golden C.P. Teakwood, showing a uniform honey grain pattern that casts a warm, soft reflection under candlelight.",
+          price: 299900,
+          stock: 5
+        },
+        {
+          name: "Sheesham Wood (Set of 3)",
+          description: "A set of three columns cut from premium dark Sheesham wood, featuring dramatic dark streaks and high grain contrast that pairs beautifully with moody lighting.",
+          price: 279900,
+          stock: 5
+        },
       ],
     },
     {

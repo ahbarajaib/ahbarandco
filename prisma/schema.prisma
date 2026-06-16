@@ -134,6 +134,7 @@ model ProductVariant {
   productId      String
   product        Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
   name           String         // e.g. "Acacia" or "Teak"
+  description    String?        // variant-specific description/details
   price          Int            // variant-specific price in paise
   compareAtPrice Int?           // variant-specific compare price in paise
   stock          Int            @default(0) // variant-specific inventory
