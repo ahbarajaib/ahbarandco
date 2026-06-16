@@ -43,7 +43,7 @@ async function main() {
       name: "The Workspace Collection",
       slug: "workspace",
       description: "A curated collection of structural office goods designed to elevate your desk environment. Engineered with geometric precision and routed details, these desktop instruments clean up wire clutter and focus the mind.",
-      imageUrl: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 1,
       published: true,
     },
@@ -51,7 +51,7 @@ async function main() {
       name: "The Living Room Accents",
       slug: "living-room",
       description: "Functional living room furniture and accents that blend architectural simplicity with daily utility, featuring knockdown joints for flat-pack shipping.",
-      imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 2,
       published: true,
     },
@@ -59,7 +59,7 @@ async function main() {
       name: "The Entryway Organizer",
       slug: "entryway",
       description: "Wall-mounted organizers and mirrors designed to turn entryways into functional, clean visual portals.",
-      imageUrl: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 3,
       published: true,
     },
@@ -67,7 +67,7 @@ async function main() {
       name: "The Entertaining & Tabletop Goods",
       slug: "tabletop",
       description: "Low-profile serving accents and tabletop products designed to enhance dining rituals and highlight raw wood grains.",
-      imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 4,
       published: true,
     },
@@ -75,7 +75,7 @@ async function main() {
       name: "The Keepsakes & Storage",
       slug: "keepsakes",
       description: "Small storage boxes and wall bars featuring fine woodworking details like miters and embedded magnets.",
-      imageUrl: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 5,
       published: true,
     },
@@ -83,7 +83,7 @@ async function main() {
       name: "The Lighting & Ambient Accents",
       slug: "ambient",
       description: "Ambient candle pillars, acoustic docks, and stands designed to bring warmth and quiet structure to modern rooms.",
-      imageUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1200&q=80",
+      imageUrl: null,
       sortOrder: 6,
       published: true,
     },
@@ -115,7 +115,6 @@ async function main() {
       published: true,
       stock: 12,
       collectionSlug: "workspace",
-      imageUrl: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=80",
     },
     {
       name: "Routed Sheesham Valet Tray",
@@ -131,7 +130,6 @@ async function main() {
       published: true,
       stock: 15,
       collectionSlug: "workspace",
-      imageUrl: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
     },
     {
       name: "Vertical Teak Laptop Stand",
@@ -147,7 +145,6 @@ async function main() {
       published: true,
       stock: 10,
       collectionSlug: "workspace",
-      imageUrl: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80",
     },
     {
       name: "Sheesham Pen & Card Caddy",
@@ -163,7 +160,6 @@ async function main() {
       published: true,
       stock: 20,
       collectionSlug: "workspace",
-      imageUrl: "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1200&q=80",
     },
 
     // ─── Living Room Accents ────────────────────────────────────────────────
@@ -181,7 +177,6 @@ async function main() {
       published: true,
       stock: 5,
       collectionSlug: "living-room",
-      imageUrl: "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80",
     },
     {
       name: "Floating Sheesham Picture Ledges",
@@ -197,7 +192,6 @@ async function main() {
       published: true,
       stock: 15,
       collectionSlug: "living-room",
-      imageUrl: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?w=1200&q=80",
     },
     {
       name: "Half-Lap Sheesham Magazine Rack",
@@ -213,7 +207,6 @@ async function main() {
       published: true,
       stock: 8,
       collectionSlug: "living-room",
-      imageUrl: "https://images.unsplash.com/photo-1592078615290-033ee584e267?w=1200&q=80",
     },
     {
       name: "Dual-Tone Hexagonal Coaster Set",
@@ -229,7 +222,6 @@ async function main() {
       published: true,
       stock: 25,
       collectionSlug: "living-room",
-      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
     },
 
     // ─── Entryway Organizer ─────────────────────────────────────────────────
@@ -247,7 +239,6 @@ async function main() {
       published: true,
       stock: 12,
       collectionSlug: "entryway",
-      imageUrl: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=1200&q=80",
     },
     {
       name: "Entryway Teak Console Shelf",
@@ -263,7 +254,6 @@ async function main() {
       published: true,
       stock: 8,
       collectionSlug: "entryway",
-      imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
     },
     {
       name: "Interlocking Acacia Plant Stand",
@@ -279,7 +269,6 @@ async function main() {
       published: true,
       stock: 18,
       collectionSlug: "entryway",
-      imageUrl: "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=1200&q=80",
     },
     {
       name: "Floating Sheesham Mirror",
@@ -295,7 +284,6 @@ async function main() {
       published: true,
       stock: 6,
       collectionSlug: "entryway",
-      imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
     },
 
     // ─── Entertaining & Tabletop Goods ──────────────────────────────────────
@@ -313,7 +301,6 @@ async function main() {
       published: true,
       stock: 10,
       collectionSlug: "tabletop",
-      imageUrl: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=80",
     },
     {
       name: "Balanced Acacia Wine Holder",
@@ -329,7 +316,6 @@ async function main() {
       published: true,
       stock: 30,
       collectionSlug: "tabletop",
-      imageUrl: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1200&q=80",
     },
     {
       name: "Brick-Pattern Teak & Sheesham Board",
@@ -345,7 +331,6 @@ async function main() {
       published: true,
       stock: 8,
       collectionSlug: "tabletop",
-      imageUrl: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=1200&q=80",
     },
     {
       name: "Interlocking Sheesham Trivet Set",
@@ -361,7 +346,6 @@ async function main() {
       published: true,
       stock: 22,
       collectionSlug: "tabletop",
-      imageUrl: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1200&q=80",
     },
 
     // ─── Keepsakes & Storage ────────────────────────────────────────────────
@@ -379,7 +363,6 @@ async function main() {
       published: true,
       stock: 14,
       collectionSlug: "keepsakes",
-      imageUrl: "https://images.unsplash.com/photo-1512909006721-3d6018887383?w=1200&q=80",
     },
     {
       name: "Teakwood Watch Display Box",
@@ -395,7 +378,6 @@ async function main() {
       published: true,
       stock: 6,
       collectionSlug: "keepsakes",
-      imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=1200&q=80",
     },
     {
       name: "Magnetic Acacia Knife Block",
@@ -411,7 +393,6 @@ async function main() {
       published: true,
       stock: 12,
       collectionSlug: "keepsakes",
-      imageUrl: "https://images.unsplash.com/photo-1606857521015-7f9fcf423740?w=1200&q=80",
     },
     {
       name: "Acacia Desk Drawer Organizer Tray",
@@ -427,7 +408,6 @@ async function main() {
       published: true,
       stock: 20,
       collectionSlug: "keepsakes",
-      imageUrl: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1200&q=80",
     },
 
     // ─── Lighting & Ambient Accents ─────────────────────────────────────────
@@ -445,7 +425,6 @@ async function main() {
       published: true,
       stock: 15,
       collectionSlug: "ambient",
-      imageUrl: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
     },
     {
       name: "Modular Teak Tea Light Holders",
@@ -461,7 +440,6 @@ async function main() {
       published: true,
       stock: 18,
       collectionSlug: "ambient",
-      imageUrl: "https://images.unsplash.com/photo-1507504038482-7621437eea5c?w=1200&q=80",
     },
     {
       name: "Teak Wall-Sconce Candle Holder",
@@ -477,7 +455,6 @@ async function main() {
       published: true,
       stock: 8,
       collectionSlug: "ambient",
-      imageUrl: "https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=1200&q=80",
     },
     {
       name: "Sheesham Headphone Stand",
@@ -493,27 +470,17 @@ async function main() {
       published: true,
       stock: 10,
       collectionSlug: "ambient",
-      imageUrl: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=1200&q=80",
     },
   ];
 
   for (const prod of productsData) {
-    const { collectionSlug, imageUrl, ...data } = prod;
+    const { collectionSlug, ...data } = prod;
     const collectionId = collectionsMap[collectionSlug];
 
     await prisma.product.create({
       data: {
         ...data,
         collectionId,
-        images: {
-          create: [
-            {
-              url: imageUrl,
-              alt: `${prod.name} — conceptual view`,
-              sortOrder: 0,
-            },
-          ],
-        },
       },
     });
   }
