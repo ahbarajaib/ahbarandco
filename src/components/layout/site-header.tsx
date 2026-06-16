@@ -20,7 +20,7 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-wood-dark/80 bg-wood-dark text-background-primary backdrop-blur-sm">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 sm:h-16 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:h-20 sm:px-6 lg:px-8">
         {/* Left: Mobile menu + Logo */}
         <div className="flex items-center gap-2 sm:gap-4">
           <MobileNav isAuthenticated={isAuthenticated} userName={userName} cartItemCount={cartItemCount} />
@@ -32,7 +32,7 @@ export async function SiteHeader() {
             <img
               src="/logo-light.png?v=3"
               alt={SITE_NAME}
-              className="h-8 sm:h-11 w-auto object-contain"
+              className="h-10 sm:h-14 w-auto object-contain"
             />
           </Link>
         </div>
