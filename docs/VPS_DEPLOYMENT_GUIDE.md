@@ -185,11 +185,11 @@ Build and run the services:
 # Start Postgres and build the Next.js Standalone app
 docker compose -f docker-compose.prod.yml up -d --build
 
-# Run Prisma schema migration inside the app container
-docker exec -it ahbarandco-app npx prisma db push
+# Run Prisma schema migration (applies migrations to DB)
+docker compose -f docker-compose.prod.yml run --rm migrate
 
-# Seed the database (creates catalog and default admin)
-docker exec -it ahbarandco-app npm run db:seed
+# Seed the database (creates catalog collections, products, and default admin)
+docker compose -f docker-compose.prod.yml run --rm migrate npx prisma db seed
 ```
 
 Your website is now live, secured under SSL HTTPS at `https://ahbarandco.com`!
