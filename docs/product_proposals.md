@@ -18,6 +18,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan), Solid Brass hardware
 5. **Care Guide**: Wipe clean with a soft dry cloth. Avoid exposure to water or damp cleaning solutions. Reapply clear wood wax once a year to maintain the matte lustre.
 6. **Image Idea**: A close-up side angle of the monitor riser supporting a sleek metal display, showing the clean beveled edge profile and space for a keyboard underneath.
+7. **Approximate Price**: ₹8,499.00
+8. **Dimensions**: 23" W × 9" D × 4" H (58 cm × 23 cm × 10 cm)
 
 ---
 
@@ -28,6 +30,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Merino Wool Felt lining
 5. **Care Guide**: Clean with a dry microfiber cloth. Keep electrical components dry.
 6. **Image Idea**: A smartphone resting in the left pocket of the tray, glowing with a charging indicator, next to a brass mechanical pencil.
+7. **Approximate Price**: ₹4,899.00
+8. **Dimensions**: 11.5" W × 7.5" D × 1.2" H (29 cm × 19 cm × 3 cm)
 
 ---
 
@@ -38,6 +42,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood, Merino Wool Felt
 5. **Care Guide**: Wipe with a dry cloth. Use a lint roller to clean dust out of the felt lining.
 6. **Image Idea**: A closed dark grey aluminum laptop sitting vertically inside the golden teak slot, shot from a desk-level perspective.
+7. **Approximate Price**: ₹3,499.00
+8. **Dimensions**: 7.5" W × 4" D × 3" H (19 cm × 10 cm × 7.5 cm)
 
 ---
 
@@ -48,6 +54,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Brushed Solid Brass
 5. **Care Guide**: Polish the wood with dry cloth. The brass base is raw and will develop a beautiful dark patina over time; polish with metal cleaner if you prefer a bright shine.
 6. **Image Idea**: A set of high-end brass pens resting in the caddy on a concrete desk, caught in soft side-lighting.
+7. **Approximate Price**: ₹2,899.00
+8. **Dimensions**: 6" W × 3.5" D × 2.5" H (15 cm × 9 cm × 6.3 cm)
 
 ---
 
@@ -65,6 +73,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan)
 5. **Care Guide**: Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.
 6. **Image Idea**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug.
+7. **Approximate Price**: ₹14,999.00
+8. **Dimensions**: 18" W × 12" D × 22" H (46 cm × 30 cm × 56 cm)
 
 ---
 
@@ -75,6 +85,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham)
 5. **Care Guide**: Dust with a feather duster. Ensure anchors are firmly set into wall studs before overloading.
 6. **Image Idea**: Three ledges stacked vertically on an off-white wall, displaying art prints and small notebooks.
+7. **Approximate Price**: ₹3,899.00
+8. **Dimensions**: 24" W × 3.5" D × 2" H (61 cm × 9 cm × 5 cm)
 
 ---
 
@@ -85,6 +97,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham)
 5. **Care Guide**: Wipe with a clean, slightly damp cloth and dry immediately.
 6. **Image Idea**: A record rack filled with vinyl sleeves sitting on top of a low teak credenza, catching window light.
+7. **Approximate Price**: ₹5,499.00
+8. **Dimensions**: 14" W × 10" D × 12" H (35 cm × 25 cm × 30 cm)
 
 ---
 
@@ -95,6 +109,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham) and C.P. Teakwood
 5. **Care Guide**: If coasters get wet, dry them off. Clean with a damp cloth and apply a drop of mineral oil if the wood looks dry.
 6. **Image Idea**: Six hexagonal coasters stacked inside their wooden cradle on a concrete dining table, with one coaster lying flat holding a water glass.
+7. **Approximate Price**: ₹2,299.00
+8. **Dimensions**: 4" W × 4" D × 0.4" H (10 cm × 10 cm × 1 cm) each
 
 ---
 
@@ -112,6 +128,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Acacia Wood (Babool)
 5. **Care Guide**: Wipe down with a dry cloth. Max load 10kg per peg.
 6. **Image Idea**: A natural Acacia rail holding a linen tote bag and a grey felt hat on a white wall.
+7. **Approximate Price**: ₹3,299.00
+8. **Dimensions**: 24" W × 3" D × 4" H (61 cm × 7.6 cm × 10 cm)
 
 ---
 
@@ -122,6 +140,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan)
 5. **Care Guide**: Polish with a dry cloth. Avoid placing wet keys on the console.
 6. **Image Idea**: A teak console shelf near a door, holding brass keys, sunglasses, and mail.
+7. **Approximate Price**: ₹6,499.00
+8. **Dimensions**: 20" W × 6" D × 5" H (50 cm × 15 cm × 12.7 cm)
 
 ---
 
@@ -132,6 +152,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Acacia Wood
 5. **Care Guide**: Wipe water splashes immediately. Ensure the pot fits within the stand's dimensions.
 6. **Image Idea**: A minimalist terracotta pot containing a snake plant sitting inside the warm Acacia stand.
+7. **Approximate Price**: ₹2,499.00
+8. **Dimensions**: 10" W × 10" D × 12" H (25 cm × 25 cm × 30 cm)
 
 ---
 
@@ -142,6 +164,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Glass Mirror
 5. **Care Guide**: Clean the mirror with glass cleaner. Wipe the wood frame with a dry cloth.
 6. **Image Idea**: A waist-up reflection in the mirror against a warm cream wall, showing keys resting on the Sheesham ledge.
+7. **Approximate Price**: ₹9,899.00
+8. **Dimensions**: 20" Diameter × 1.5" Depth (50 cm × 3.8 cm)
 
 ---
 
@@ -159,6 +183,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan)
 5. **Care Guide**: Wipe clean. Never submerge in water or place in the dishwasher.
 6. **Image Idea**: A lazy susan rotating with small condiment jars, shot mid-turn to capture the rotating teakwood grain.
+7. **Approximate Price**: ₹6,899.00
+8. **Dimensions**: 16" Diameter × 1.2" Height (40 cm × 3 cm)
 
 ---
 
@@ -169,6 +195,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Acacia Wood
 5. **Care Guide**: Wipe clean with a soft dry cloth.
 6. **Image Idea**: A bottle of red wine floating horizontally inside the angled Acacia holder on a dark dining table.
+7. **Approximate Price**: ₹1,899.00
+8. **Dimensions**: 11" W × 3.5" D × 1" H (28 cm × 9 cm × 2.5 cm)
 
 ---
 
@@ -179,6 +207,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood and Indian Rosewood (Sheesham)
 5. **Care Guide**: Hand wash with warm soapy water, dry immediately. Re-oil with food-safe mineral oil once a month.
 6. **Image Idea**: A thick block serving board loaded with sliced sourdough and cheese, shot in rich morning light.
+7. **Approximate Price**: ₹5,499.00
+8. **Dimensions**: 16" W × 10" D × 1.5" H (40 cm × 25 cm × 3.8 cm)
 
 ---
 
@@ -189,6 +219,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham)
 5. **Care Guide**: Wipe off grease with a damp soapy cloth. Do not soak.
 6. **Image Idea**: A hot cast-iron pan resting on the nested wooden trivets, with steam rising against a dark backsplash.
+7. **Approximate Price**: ₹2,499.00
+8. **Dimensions**: 7" W × 7" D × 0.8" H (17.8 cm × 17.8 cm × 2 cm) nested
 
 ---
 
@@ -199,13 +231,15 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 5.1: Splined-Miter Sheeship Keepsake Box
+### Product 5.1: Splined-Miter Sheesham Keepsake Box
 1. **Product Name**: Splined-Miter Sheesham Keepsake Box
 2. **Short Description**: A small storage box with mitered corners reinforced with contrasting wood splines.
 3. **Detailed Description**: A classic box to store letters, jewelry, or tea. Miters are cut at 45 degrees into solid Sheesham wood, and a custom spline jig is used to cut slots for golden Teakwood splines, which provide both structural integrity and a beautiful contrasting visual detail.
 4. **Main Material**: Solid Indian Rosewood (Sheesham) with C.P. Teakwood Splines
 5. **Care Guide**: Wipe clean with a dry cloth. Keep away from highly humid environments.
 6. **Image Idea**: The box open, showing tea bags organized inside, highlighting the splined corners on the dark Sheesham body.
+7. **Approximate Price**: ₹4,299.00
+8. **Dimensions**: 9" W × 6" D × 4" H (23 cm × 15 cm × 10 cm)
 
 ---
 
@@ -216,6 +250,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan), Grey Felt, Clear Acrylic
 5. **Care Guide**: Dust with microfiber. Clean acrylic only with a soft cloth to avoid scratches.
 6. **Image Idea**: Two watches with leather straps sitting in the display tray, shot through the clear acrylic lid.
+7. **Approximate Price**: ₹6,499.00
+8. **Dimensions**: 12" W × 8" D × 3.5" H (30 cm × 20 cm × 9 cm)
 
 ---
 
@@ -226,6 +262,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Acacia Wood
 5. **Care Guide**: Wipe clean with a damp cloth. Dry immediately.
 6. **Image Idea**: Three chef knives sticking invisibly to the clean Acacia wall bar, highlighting the natural wood grain against a tiled backsplash.
+7. **Approximate Price**: ₹3,899.00
+8. **Dimensions**: 18" W × 2.2" D × 1" H (46 cm × 5.6 cm × 2.5 cm)
 
 ---
 
@@ -236,6 +274,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Acacia Wood (Babool)
 5. **Care Guide**: Dust with a soft brush or dry cloth.
 6. **Image Idea**: A desk drawer open from above, showcasing the geometric modular trays holding writing instruments.
+7. **Approximate Price**: ₹3,499.00
+8. **Dimensions**: 12" W × 9" D × 2" H (30 cm × 23 cm × 5 cm) total nested size
 
 ---
 
@@ -253,6 +293,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Brass socket, Fabric cord
 5. **Care Guide**: Unplug before cleaning. Wipe the wood block with a dry cloth.
 6. **Image Idea**: The warm glowing Edison filament bulb shining on the Sheesham block lamp, highlighting the natural grain lines in a dark bedroom setting.
+7. **Approximate Price**: ₹4,899.00
+8. **Dimensions**: 4.5" W × 4.5" D × 4.5" H (11.5 cm × 11.5 cm × 11.5 cm)
 
 ---
 
@@ -263,6 +305,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan)
 5. **Care Guide**: Never leave burning candles unattended. Wipe wax spills immediately.
 6. **Image Idea**: A set of three teak candle pillars arranged diagonally on a mantelpiece with tea lights lit, casting a warm glow.
+7. **Approximate Price**: ₹2,899.00
+8. **Dimensions**: 2.2" W × 2.2" D × 2" / 4" / 6" H (5.6 cm × 5.6 cm × 5 / 10 / 15 cm)
 
 ---
 
@@ -273,6 +317,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan), Raw Brass plate
 5. **Care Guide**: Clean brass with metal polish if you prefer it bright; otherwise, let it patina.
 6. **Image Idea**: The teak sconce mounted on a plaster wall, with the candle lit, showing the brass plate reflecting the flame.
+7. **Approximate Price**: ₹3,899.00
+8. **Dimensions**: 4" W × 3.5" D × 12" H (10 cm × 9 cm × 30 cm)
 
 ---
 
@@ -283,3 +329,5 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Solid Brass rod
 5. **Care Guide**: Wipe down with a dry cloth.
 6. **Image Idea**: A pair of high-end headphones resting on the curved Sheesham stand, sitting next to a desk setup.
+7. **Approximate Price**: ₹4,499.00
+8. **Dimensions**: 6" W × 5" D × 11.5" H (15 cm × 12.7 cm × 29 cm)
