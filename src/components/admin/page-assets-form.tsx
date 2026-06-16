@@ -34,9 +34,17 @@ export function PageAssetsForm({
 
   return (
     <div className="space-y-6 bg-white border border-border p-6 sm:p-8 rounded-sm shadow-sm">
-      <div className="border-b border-border pb-4">
-        <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
-        <p className="text-sm text-text-secondary mt-1">{description}</p>
+      <div className="border-b border-border pb-4 flex items-center justify-between gap-4">
+        <div>
+          <h2 className="font-heading text-2xl font-medium text-wood-dark">{title}</h2>
+          <p className="text-sm text-text-secondary mt-1">{description}</p>
+        </div>
+        {isPending && (
+          <span className="text-[10px] font-bold uppercase tracking-widest text-wood-medium animate-pulse flex items-center gap-2 bg-stone-50 border border-stone-200/60 px-3 py-1.5 rounded-sm">
+            <span className="size-1.5 bg-wood-medium rounded-full animate-ping"></span>
+            Saving...
+          </span>
+        )}
       </div>
 
       <form action={formAction} className="space-y-6">
@@ -49,6 +57,7 @@ export function PageAssetsForm({
             defaultValue={slot.defaultValue}
             aspectRatio={slot.aspectRatio}
             folder="pages"
+            autoSubmitForm={true}
           />
         ))}
 
@@ -63,16 +72,6 @@ export function PageAssetsForm({
             Images updated successfully!
           </p>
         )}
-
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
-          <Button
-            type="submit"
-            disabled={isPending}
-            className="h-10 px-5 bg-wood-dark text-background-primary hover:bg-wood-medium transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer"
-          >
-            {isPending ? "Saving changes..." : "Save Images"}
-          </Button>
-        </div>
       </form>
     </div>
   );

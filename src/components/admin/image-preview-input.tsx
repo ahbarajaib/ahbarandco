@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { UploadCloud, Trash2 } from "lucide-react";
 
@@ -13,6 +13,7 @@ type ImagePreviewInputProps = {
   aspectRatio?: "video" | "square" | "portrait" | "wide";
   preferredDimensions?: string;
   folder?: string;
+  autoSubmitForm?: boolean;
 };
 
 export function ImagePreviewInput({
@@ -23,6 +24,7 @@ export function ImagePreviewInput({
   aspectRatio = "video",
   preferredDimensions,
   folder = "uploads",
+  autoSubmitForm = false,
 }: ImagePreviewInputProps) {
   const [url, setUrl] = useState(defaultValue);
   const [isUploading, setIsUploading] = useState(false);
@@ -33,6 +35,15 @@ export function ImagePreviewInput({
     setPrevDefaultValue(defaultValue);
     setUrl(defaultValue);
   }
+
+  useEffect(() => {
+    if (autoSubmitForm && url !== defaultValue) {
+      const inputEl = document.getElementById(id) as HTMLInputElement | null;
+      if (inputEl && inputEl.form) {
+        inputEl.form.requestSubmit();
+      }
+    }
+  }, [url, defaultValue, id, autoSubmitForm]);
 
   const preferredSizeDesc = preferredDimensions || (
     aspectRatio === "portrait" ? "4:5 (e.g. 1200 × 1500 px)" :
