@@ -42,7 +42,7 @@ export default async function AboutPage() {
       <Section className="py-24 lg:py-32">
         <div className="mx-auto max-w-4xl text-center">
           <blockquote className="font-heading text-2xl sm:text-3xl lg:text-4xl italic text-wood-medium leading-normal max-w-3xl mx-auto">
-            "In an age of temporary things, we design permanent objects. Functional art, engineered with technical precision."
+            &ldquo;In an age of temporary things, we design permanent objects. Functional art, engineered with technical precision.&rdquo;
           </blockquote>
           <div className="mt-16 grid gap-10 md:grid-cols-2 md:gap-16 text-left border-t border-border/40 pt-16">
             <div>
