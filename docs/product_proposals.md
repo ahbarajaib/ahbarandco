@@ -20,6 +20,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A close-up side angle of the monitor riser supporting a sleek metal display, showing the clean beveled edge profile and space for a keyboard underneath.
 7. **Approximate Price**: ₹8,999.00
 8. **Dimensions**: 23" W × 9" D × 4" H (58 cm × 23 cm × 10 cm)
+9. **Estimated Delivery Cost**: ₹450.00 (Insured Ground Courier)
 
 ---
 
@@ -32,6 +33,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A smartphone resting in the left pocket of the tray, glowing with a charging indicator, next to a brass mechanical pencil.
 7. **Approximate Price**: ₹5,899.00
 8. **Dimensions**: 11.5" W × 7.5" D × 1.2" H (29 cm × 19 cm × 3 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -44,6 +46,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A closed dark grey aluminum laptop sitting vertically inside the golden teak slot, shot from a desk-level perspective.
 7. **Approximate Price**: ₹3,899.00
 8. **Dimensions**: 7.5" W × 4" D × 3" H (19 cm × 10 cm × 7.5 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -56,6 +59,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A set of high-end brass pens resting in the caddy on a concrete desk, caught in soft side-lighting.
 7. **Approximate Price**: ₹2,999.00
 8. **Dimensions**: 6" W × 3.5" D × 2.5" H (15 cm × 9 cm × 6.3 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -75,6 +79,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug.
 7. **Approximate Price**: ₹16,999.00
 8. **Dimensions**: 18" W × 12" D × 22" H (46 cm × 30 cm × 56 cm)
+9. **Estimated Delivery Cost**: ₹950.00 (Insured Heavy Cargo Ground Shipping)
 
 ---
 
@@ -87,6 +92,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: Three ledges stacked vertically on an off-white wall, displaying art prints and small notebooks.
 7. **Approximate Price**: ₹3,999.00
 8. **Dimensions**: 24" W × 3.5" D × 2" H (61 cm × 9 cm × 5 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
 
@@ -99,6 +105,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A record rack filled with vinyl sleeves sitting on top of a low teak credenza, catching window light.
 7. **Approximate Price**: ₹5,899.00
 8. **Dimensions**: 14" W × 10" D × 12" H (35 cm × 25 cm × 30 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
 
@@ -111,6 +118,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: Six hexagonal coasters stacked inside their wooden cradle on a concrete dining table, with one coaster lying flat holding a water glass.
 7. **Approximate Price**: ₹2,499.00
 8. **Dimensions**: 4" W × 4" D × 0.4" H (10 cm × 10 cm × 1 cm) each
+9. **Estimated Delivery Cost**: ₹150.00 (Insured Air Shipping)
 
 ---
 
@@ -130,6 +138,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A natural Acacia rail holding a linen tote bag and a grey felt hat on a white wall.
 7. **Approximate Price**: ₹3,499.00
 8. **Dimensions**: 24" W × 3" D × 4" H (61 cm × 7.6 cm × 10 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -142,6 +151,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A teak console shelf near a door, holding brass keys, sunglasses, and mail.
 7. **Approximate Price**: ₹6,999.00
 8. **Dimensions**: 20" W × 6" D × 5" H (50 cm × 15 cm × 12.7 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
 
@@ -154,6 +164,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A minimalist terracotta pot containing a snake plant sitting inside the warm Acacia stand.
 7. **Approximate Price**: ₹2,699.00
 8. **Dimensions**: 10" W × 10" D × 12" H (25 cm × 25 cm × 30 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -166,6 +177,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A waist-up reflection in the mirror against a warm cream wall, showing keys resting on the Sheesham ledge.
 7. **Approximate Price**: ₹11,499.00
 8. **Dimensions**: 20" Diameter × 1.5" Depth (50 cm × 3.8 cm)
+9. **Estimated Delivery Cost**: ₹650.00 (Insured Fragile/Glass Shipping)
 
 ---
 
@@ -185,6 +197,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A lazy susan rotating with small condiment jars, shot mid-turn to capture the rotating teakwood grain.
 7. **Approximate Price**: ₹7,299.00
 8. **Dimensions**: 16" Diameter × 1.2" Height (40 cm × 3 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
 
@@ -197,6 +210,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A bottle of red wine floating horizontally inside the angled Acacia holder on a dark dining table.
 7. **Approximate Price**: ₹1,999.00
 8. **Dimensions**: 11" W × 3.5" D × 1" H (28 cm × 9 cm × 2.5 cm)
+9. **Estimated Delivery Cost**: ₹150.00 (Insured Air Shipping)
 
 ---
 
@@ -209,6 +223,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A thick block serving board loaded with sliced sourdough and cheese, shot in rich morning light.
 7. **Approximate Price**: ₹6,899.00
 8. **Dimensions**: 16" W × 10" D × 1.5" H (40 cm × 25 cm × 3.8 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
 
@@ -221,6 +236,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A hot cast-iron pan resting on the nested wooden trivets, with steam rising against a dark backsplash.
 7. **Approximate Price**: ₹2,699.00
 8. **Dimensions**: 7" W × 7" D × 0.8" H (17.8 cm × 17.8 cm × 2 cm) nested
+9. **Estimated Delivery Cost**: ₹150.00 (Insured Air Shipping)
 
 ---
 
@@ -240,6 +256,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: The box open, showing tea bags organized inside, highlighting the splined corners on the dark Sheesham body.
 7. **Approximate Price**: ₹4,999.00
 8. **Dimensions**: 9" W × 6" D × 4" H (23 cm × 15 cm × 10 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -252,6 +269,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: Two watches with leather straps sitting in the display tray, shot through the clear acrylic lid.
 7. **Approximate Price**: ₹6,999.00
 8. **Dimensions**: 12" W × 8" D × 3.5" H (30 cm × 20 cm × 9 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Fragile/Acrylic Shipping)
 
 ---
 
@@ -264,6 +282,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: Three chef knives sticking invisibly to the clean Acacia wall bar, highlighting the natural wood grain against a tiled backsplash.
 7. **Approximate Price**: ₹4,299.00
 8. **Dimensions**: 18" W × 2.2" D × 1" H (46 cm × 5.6 cm × 2.5 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -276,6 +295,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A desk drawer open from above, showcasing the geometric modular trays holding writing instruments.
 7. **Approximate Price**: ₹3,699.00
 8. **Dimensions**: 12" W × 9" D × 2" H (30 cm × 23 cm × 5 cm) total nested size
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -295,6 +315,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: The warm glowing Edison filament bulb shining on the Sheesham block lamp, highlighting the natural grain lines in a dark bedroom setting.
 7. **Approximate Price**: ₹5,299.00
 8. **Dimensions**: 4.5" W × 4.5" D × 4.5" H (11.5 cm × 11.5 cm × 11.5 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -307,6 +328,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A set of three teak candle pillars arranged diagonally on a mantelpiece with tea lights lit, casting a warm glow.
 7. **Approximate Price**: ₹2,999.00
 8. **Dimensions**: 2.2" W × 2.2" D × 2" / 4" / 6" H (5.6 cm × 5.6 cm × 5 / 10 / 15 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -319,6 +341,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: The teak sconce mounted on a plaster wall, with the candle lit, showing the brass plate reflecting the flame.
 7. **Approximate Price**: ₹4,299.00
 8. **Dimensions**: 4" W × 3.5" D × 12" H (10 cm × 9 cm × 30 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
@@ -331,3 +354,4 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 6. **Image Idea**: A pair of high-end headphones resting on the curved Sheesham stand, sitting next to a desk setup.
 7. **Approximate Price**: ₹4,899.00
 8. **Dimensions**: 6" W × 5" D × 11.5" H (15 cm × 12.7 cm × 29 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
