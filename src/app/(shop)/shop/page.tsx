@@ -32,25 +32,25 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </p>
         </div>
 
-        {/* Premium Search Bar */}
-        <form method="GET" action="/shop" className="relative w-full max-w-md">
+        {/* Luxury Underline Search Bar */}
+        <form method="GET" action="/shop" className="relative w-full max-w-xs md:max-w-sm">
           <input
             type="text"
             name="q"
             defaultValue={q || ""}
-            placeholder="Search catalog, materials, items..."
-            className="h-10 w-full rounded-sm border border-border bg-white pl-10 pr-10 text-sm transition-all placeholder:text-text-secondary/40 outline-none hover:border-wood-medium/20 focus:border-wood-medium focus:ring-2 focus:ring-wood-medium/10"
+            placeholder="Search catalog..."
+            className="h-10 w-full rounded-none border-b border-border/80 bg-transparent pl-7 pr-7 text-xs uppercase tracking-wider text-text-primary transition-all duration-300 placeholder:text-text-secondary/40 placeholder:uppercase placeholder:tracking-[0.18em] placeholder:text-[10px] outline-none hover:border-wood-medium/40 focus:border-wood-dark"
           />
-          <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-text-secondary/50">
-            <SearchIcon className="h-4 w-4 stroke-[1.5]" />
+          <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none text-text-secondary/60">
+            <SearchIcon className="h-3.5 w-3.5 stroke-[1.5]" />
           </div>
           {q && (
             <Link
               href="/shop"
-              className="absolute inset-y-0 right-3 flex items-center text-text-secondary/60 hover:text-wood-dark transition-colors"
+              className="absolute inset-y-0 right-0 flex items-center text-text-secondary/60 hover:text-wood-dark transition-colors"
               title="Clear search"
             >
-              <XIcon className="h-4 w-4 stroke-[1.5]" />
+              <XIcon className="h-3.5 w-3.5 stroke-[1.5]" />
             </Link>
           )}
         </form>
