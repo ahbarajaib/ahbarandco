@@ -17,7 +17,7 @@ export function DesktopNav() {
           <Link
             key={link.href}
             href={link.href}
-            className={`relative text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:h-[1px] after:transition-all after:duration-300 ${
+            className={`relative text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:transition-all after:duration-300 ${
               isActive
                 ? "text-background-primary after:w-full after:bg-background-primary"
                 : "text-background-primary/70 hover:text-background-primary after:w-0 after:bg-background-primary/60 hover:after:w-full"

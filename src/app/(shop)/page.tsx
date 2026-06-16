@@ -36,7 +36,7 @@ export default async function HomePage() {
   return (
     <>
       {/* Expansive Hero Section */}
-      <section className="relative flex min-h-[75vh] items-end bg-background-secondary sm:min-h-[85vh] overflow-hidden">
+      <section className="relative flex min-h-[75vh] items-end bg-background-secondary sm:min-h-[85vh] overflow-hidden mt-[-64px] sm:mt-[-80px] pt-[64px] sm:pt-[80px]">
         {assets.hero_bg && (
           <Image
             src={assets.hero_bg}
@@ -44,10 +44,10 @@ export default async function HomePage() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center brightness-[0.85] transition-transform duration-10000 ease-out hover:scale-105"
+            className="object-cover object-center brightness-[0.85] animate-ken-burns"
           />
         )}
-        <div className="absolute inset-0 bg-wood-dark/35" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-wood-dark/70 via-wood-dark/40 to-transparent" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 text-background-primary z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background-primary/90 sm:text-sm">
             Precision Wood Art

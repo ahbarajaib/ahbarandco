@@ -136,3 +136,16 @@
     @apply font-heading font-medium tracking-tight text-text-primary;
   }
 }
+
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
