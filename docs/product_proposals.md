@@ -6,7 +6,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ## 1. Collection: The Workspace Collection
 1. **Collection Name**: The Workspace Collection
-2. **Collection Description**: A curated collection of structural office goods designed to elevate your desk environment. Engineered with geometric precision and routed details, these desktop instruments clean up desk clutter and focus the mind.
+2. **Collection Description**: A curated collection of structural office goods designed to elevate your desk environment. Engineered with geometric precision and routed details, these desktop instruments clean up wire clutter and focus the mind.
 3. **Image Idea**: A high-angle flatlay of a clean wooden desk containing a laptop, a notebook, and the desk accessories. Natural morning light casts soft horizontal shadows across the warm teakwood grain.
 
 ---
@@ -26,26 +26,26 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ### Product 1.2: Routed Sheesham Valet Tray
 1. **Product Name**: Routed Sheesham Valet Tray
-2. **Short Description**: A multi-compartment Indian Rosewood (Sheesham) organizer tray with a slanted slot to dock smartphones.
-3. **Detailed Description**: A premium desk tray carved from a single block of Sheesham. It features a precision-slanted slot to hold a phone upright for viewing notifications, a routed dish for keys and coins, and a groove for writing instruments. The compartments are routed to a uniform depth, sanded to an ultra-smooth 800-grit finish, and treated with natural oils to highlight the rich Sheesham grain. Lying flat or sitting on the desk shelf, it keeps essential gear grouped elegantly.
-4. **Main Material**: Solid Indian Rosewood (Sheesham)
-5. **Care Guide**: Clean with a dry microfiber cloth or soft brush. Avoid exposure to water or wet items.
-6. **Image Idea**: A smartphone resting upright in the slanted groove of the valet tray, next to brass keys and coins in the routed compartments.
+2. **Short Description**: A multi-compartment Indian Rosewood (Sheesham) organizer tray with a slanted slot to dock smartphones and a merino wool felt-lined pocket.
+3. **Detailed Description**: A premium desk tray carved from a single block of Sheesham. It features a precision-slanted slot to hold a phone upright for viewing notifications, a routed dish for keys and coins, and a groove for writing instruments. The largest pocket is lined with premium merino wool felt to protect glasses and accessories from scratching. Lying flat or sitting on the desk shelf, it keeps essential gear grouped elegantly.
+4. **Main Material**: Solid Indian Rosewood (Sheesham), Merino Wool Felt lining
+5. **Care Guide**: Clean with a dry microfiber cloth or soft brush. Use a lint roller to dust the felt.
+6. **Image Idea**: A smartphone resting upright in the slanted groove of the valet tray, next to brass keys and a mechanical pencil in the felt-lined tray.
 7. **Approximate Price**: ₹3,899.00
 8. **Dimensions**: 11.5" W × 7.5" D × 1.2" H (29 cm × 19 cm × 3 cm)
 9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
-### Product 1.3: Teak & Brass Mail Organizer
-1. **Product Name**: Teak & Brass Mail Organizer
-2. **Short Description**: A desktop mail and document organizer featuring a solid Teakwood base and solid brass partition arches.
-3. **Detailed Description**: A premium desktop storage system. The solid C.P. Teak base features three routed grooves where solid brass wire arches are press-fitted to create vertical storage slots. Perfect for organizing incoming mail, notebooks, and letters, keeping your workspace clean and minimal.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan), Solid Brass rods
-5. **Care Guide**: Wipe wood with dry cloth. Polish brass arches if you prefer a bright finish; otherwise, let them patina naturally.
-6. **Image Idea**: Letters and a wood-covered journal organized vertically inside the brass arches on the teakwood base.
-7. **Approximate Price**: ₹3,699.00
-8. **Dimensions**: 8" W × 5" D × 5" H (20 cm × 12.7 cm × 12.7 cm)
+### Product 1.3: Vertical Teak Laptop Stand
+1. **Product Name**: Vertical Teak Laptop Stand
+2. **Short Description**: A heavy, space-saving vertical stand designed to store laptops upright when closed.
+3. **Detailed Description**: Cut from a heavy block of solid golden Teakwood, this stand features a precise 0.75-inch slot lined with premium adhesive merino wool felt. It keeps your laptop upright and secure, freeing up desk space for analog tasks. The bottom features non-slip silicone feet for stability.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan), Merino Wool Felt
+5. **Care Guide**: Wipe with a dry cloth. Use a lint roller to clean dust out of the felt lining.
+6. **Image Idea**: A closed dark grey aluminum laptop sitting vertically inside the golden teak slot, shot from a desk-level perspective.
+7. **Approximate Price**: ₹3,899.00
+8. **Dimensions**: 7.5" W × 4" D × 3" H (19 cm × 10 cm × 7.5 cm)
 9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
@@ -72,11 +72,11 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ### Product 2.1: Interlocking Teak Side Table
 1. **Product Name**: Interlocking Teak Side Table
-2. **Short Description**: A knockdown sofa-arm side table designed to pack flat and slide over seat cushions, utilizing traditional wood joinery.
-3. **Detailed Description**: A masterclass in traditional woodworking joinery. This table features a top shelf, a single support column, and a stable base connected via a classic tusk-tenon system with hand-carved wooden wedges. Crafted from golden C.P. Teakwood, it can be assembled or disassembled in under two minutes without any metal hardware, allowing it to ship in a compact flat container.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan)
+2. **Short Description**: A knockdown sofa-arm side table designed to pack flat and slide over seat cushions.
+3. **Detailed Description**: A masterclass in flat-pack joinery. This table features a top shelf, single support column, and stable base connected via robust knockdown connectors (Zipbolts). Crafted from golden C.P. Teakwood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan), Steel knockdown hardware
 5. **Care Guide**: Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.
-6. **Image Idea**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug, displaying the beautiful wooden wedge joints.
+6. **Image Idea**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug, showing the clean joint detail.
 7. **Approximate Price**: ₹16,999.00
 8. **Dimensions**: 18" W × 12" D × 22" H (46 cm × 30 cm × 56 cm)
 9. **Estimated Delivery Cost**: ₹950.00 (Insured Heavy Cargo Ground Shipping)
@@ -109,22 +109,22 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 2.4: Slotted Sheesham Coaster Set
-1. **Product Name**: Slotted Sheesham Coaster Set
-2. **Short Description**: A set of 6 geometric coasters in a slotted wooden storage cradle.
-3. **Detailed Description**: Clean geometric lines for your tabletop. This set includes 6 hexagonal coasters cut on a precise table saw, alternating between golden Teakwood and dark Sheesham wood. The matching Sheesham storage cradle features individual vertical slots that hold the coasters upright and organized.
-4. **Main Material**: Solid Indian Rosewood (Sheesham) and C.P. Teakwood
-5. **Care Guide**: If coasters get wet, dry them off immediately. Clean with a damp cloth.
-6. **Image Idea**: Six hexagonal coasters resting vertically in their slotted wooden cradle on a dining table.
+### Product 2.4: Dual-Tone Hexagonal Coaster Set
+1. **Product Name**: Dual-Tone Hexagonal Coaster Set
+2. **Short Description**: A set of 6 geometric coasters in a magnetic Sheesham storage cradle.
+3. **Detailed Description**: Clean geometric lines for your tabletop. This set includes 6 hexagonal coasters cut on a precise table saw sled, alternating between golden Teakwood and dark Sheesham wood. The matching Sheesham storage cradle holds them in place with small rare-earth magnets embedded invisibly under the wood grain.
+4. **Main Material**: Solid Indian Rosewood (Sheesham) and C.P. Teakwood, Rare-earth magnets
+5. **Care Guide**: If coasters get wet, dry them off. Clean with a damp cloth and apply a drop of mineral oil if the wood looks dry.
+6. **Image Idea**: Six hexagonal coasters stacked inside their wooden cradle on a concrete dining table, with one coaster lying flat holding a water glass.
 7. **Approximate Price**: ₹2,499.00
-8. **Dimensions**: 4" W × 4" D × 4" H (10 cm × 10 cm × 10 cm) cradle size
+8. **Dimensions**: 4" W × 4" D × 0.4" H (10 cm × 10 cm × 1 cm) each
 9. **Estimated Delivery Cost**: ₹150.00 (Insured Air Shipping)
 
 ---
 
 ## 3. Collection: The Entryway Organizer
 1. **Collection Name**: The Entryway Organizer
-2. **Collection Description**: Wall-mounted organizers and key hooks designed to turn entryways into functional, clean visual portals.
+2. **Collection Description**: Wall-mounted organizers and mirrors designed to turn entryways into functional, clean visual portals.
 3. **Image Idea**: A close-up view of a clean entryway hallway, showcasing a plant stand and coat peg rail against a textured plaster wall.
 
 ---
@@ -168,16 +168,16 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 3.4: Sheesham & Brass Key Hook Rail
-1. **Product Name**: Sheesham & Brass Key Hook Rail
-2. **Short Description**: A wall-mounted key hook rail featuring a solid Sheesham board and 5 hand-turned brass hooks.
-3. **Detailed Description**: Keep entryway essentials organized. This rail is crafted from a solid block of Sheesham wood with beveled edges and keyhole slots routed into the back for a flush mount. It features 5 solid brass hooks screwed into pre-drilled holes, perfect for holding keys, lanyards, or small bags.
-4. **Main Material**: Solid Indian Rosewood (Sheesham), Solid Brass hooks
-5. **Care Guide**: Wipe wood with a dry cloth. Hand-tighten hooks if they ever loosen.
-6. **Image Idea**: Several sets of keys hanging from the golden brass hooks on the dark Sheesham board near an entryway.
-7. **Approximate Price**: ₹3,899.00
-8. **Dimensions**: 14" W × 2" D × 3" H (35 cm × 5 cm × 7.6 cm)
-9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
+### Product 3.4: Floating Sheesham Mirror
+1. **Product Name**: Floating Sheesham Mirror
+2. **Short Description**: A round mirror recessed into a solid Sheesham frame with an integrated key ledge.
+3. **Detailed Description**: A highly functional entryway mirror. We route a circular pocket into solid Sheesham wood to recess the glass, leaving a structural ledge at the bottom. Perfect for last-minute checks and keeping keys accessible.
+4. **Main Material**: Solid Indian Rosewood (Sheesham), Glass Mirror
+5. **Care Guide**: Clean the mirror with glass cleaner. Wipe the wood frame with a dry cloth.
+6. **Image Idea**: A waist-up reflection in the mirror against a warm cream wall, showing keys resting on the Sheesham ledge.
+7. **Approximate Price**: ₹11,499.00
+8. **Dimensions**: 20" Diameter × 1.5" Depth (50 cm × 3.8 cm)
+9. **Estimated Delivery Cost**: ₹650.00 (Insured Fragile/Glass Shipping)
 
 ---
 
@@ -188,15 +188,15 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 4.1: Teak & Brass Serving Platter
-1. **Product Name**: Teak & Brass Serving Platter
-2. **Short Description**: A rectangular solid Teakwood serving tray accented with two solid brass handles.
-3. **Detailed Description**: A minimalist tray designed for serving drinks or displaying tabletop items. Crafted from a single select plank of C.P. Teakwood, it features a raised lip to prevent items from sliding off. Fitted with two custom-milled solid brass handles on the ends, secured with brass screws.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan), Solid Brass handles
-5. **Care Guide**: Wipe clean with a damp cloth. Never soak or submerge in water.
-6. **Image Idea**: A serving tray holding two ceramic cups and a brass sugar bowl, shot from a warm side angle.
-7. **Approximate Price**: ₹6,499.00
-8. **Dimensions**: 18" W × 12" D × 2" H (46 cm × 30 cm × 5 cm)
+### Product 4.1: Teakwood Rotating Lazy Susan
+1. **Product Name**: Teakwood Rotating Lazy Susan
+2. **Short Description**: A circular serving plate rotating on an invisibly recessed steel bearing.
+3. **Detailed Description**: A rotating serving tray that sits flat on your dining table. Using a router circle jig, we cut a clean solid C.P. Teakwood disk and route a circular pocket underneath to hide the bearing plate, keeping it just 5mm off the table.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan), Steel ball-bearing swivel plate
+5. **Care Guide**: Wipe clean. Never submerge in water or place in the dishwasher.
+6. **Image Idea**: A lazy susan rotating with small condiment jars, shot mid-turn to capture the rotating teakwood grain.
+7. **Approximate Price**: ₹7,299.00
+8. **Dimensions**: 16" Diameter × 1.2" Height (40 cm × 3 cm)
 9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
 
 ---
@@ -242,8 +242,8 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ## 5. Collection: The Keepsakes & Storage
 1. **Collection Name**: The Keepsakes & Storage
-2. **Collection Description**: Small storage boxes and stands featuring fine woodworking details like miters and custom brass fixtures.
-3. **Image Idea**: A close-up view of a dresser top, showing watch stands and miter box corners catching low-key evening lighting.
+2. **Collection Description**: Small storage boxes and wall bars featuring fine woodworking details like miters and embedded magnets.
+3. **Image Idea**: A close-up view of a dresser top, showing watch slots and miter box corners catching low-key evening lighting.
 
 ---
 
@@ -260,29 +260,29 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 5.2: Teak & Brass Watch Stand
-1. **Product Name**: Teak & Brass Watch Stand
-2. **Short Description**: A desktop display stand for watches featuring a solid Teak base and a heavy brass bar.
-3. **Detailed Description**: An elegant resting place for watches and bracelets. A solid brass bar, wrapped in natural oil-finished teak doweling, is supported by a solid brass rod mounted onto a routed C.P. Teakwood base. The base contains a dish to hold cufflinks, rings, or daily accessories.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan), Solid Brass hardware
-5. **Care Guide**: Dust with dry cloth. Polish brass with metal cleaner if needed.
-6. **Image Idea**: Two premium watches resting on the teak and brass bar, with rings in the routed base tray below.
-7. **Approximate Price**: ₹4,999.00
-8. **Dimensions**: 8" W × 4" D × 5" H (20 cm × 10 cm × 12.7 cm)
-9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
+### Product 5.2: Teakwood Watch Display Box
+1. **Product Name**: Teakwood Watch Display Box
+2. **Short Description**: A felt-lined tray with watch slots covered by a slide-in acrylic lid.
+3. **Detailed Description**: A premium watch and glasses display. The slots are routed smoothly into solid C.P. Teakwood and lined with adhesive grey merino wool felt. A precision slot accepts a slide-in clear acrylic lid to protect accessories from dust.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan), Grey Merino Wool Felt, Clear Acrylic
+5. **Care Guide**: Dust with microfiber. Clean acrylic only with a soft cloth to avoid scratches.
+6. **Image Idea**: Two watches with leather straps sitting in the display tray, shot through the clear acrylic lid.
+7. **Approximate Price**: ₹6,999.00
+8. **Dimensions**: 12" W × 8" D × 3.5" H (30 cm × 20 cm × 9 cm)
+9. **Estimated Delivery Cost**: ₹350.00 (Insured Fragile/Acrylic Shipping)
 
 ---
 
-### Product 5.3: Slotted Acacia Countertop Knife Block
-1. **Product Name**: Slotted Acacia Countertop Knife Block
-2. **Short Description**: An angled countertop block featuring 6 slotted chambers to hold chef knives.
-3. **Detailed Description**: Organize and protect your kitchen knives safely. This countertop block is constructed by laminating slabs of solid Acacia wood together, with angled slots routed into the inner faces before assembly. The raw weight of the heavy block keeps it perfectly stable on the counter.
-4. **Main Material**: Solid Indian Acacia Wood
-5. **Care Guide**: Wipe down with a damp cloth and dry immediately. Make sure knives are fully dry before inserting.
-6. **Image Idea**: The angled Acacia block holding several steel knives on a kitchen countertop.
-7. **Approximate Price**: ₹3,999.00
-8. **Dimensions**: 9" H × 4" W × 8" D (23 cm × 10 cm × 20 cm)
-9. **Estimated Delivery Cost**: ₹350.00 (Insured Courier)
+### Product 5.3: Magnetic Acacia Knife Block
+1. **Product Name**: Magnetic Acacia Knife Block
+2. **Short Description**: A wall-mounted Acacia bar that holds kitchen knives invisibly.
+3. **Detailed Description**: Keep countertops clean. This wall bar has deep slots drilled from the backside of a solid Acacia wood block, leaving only 1.5mm of wood thickness. Powerful neodymium magnets are glued inside to hold kitchen knives invisibly. Includes hidden mounting hardware.
+4. **Main Material**: Solid Indian Acacia Wood, Neodymium magnets
+5. **Care Guide**: Wipe clean with a damp cloth. Dry immediately.
+6. **Image Idea**: Three chef knives sticking invisibly to the clean Acacia wall bar, highlighting the natural wood grain against a tiled backsplash.
+7. **Approximate Price**: ₹4,299.00
+8. **Dimensions**: 18" W × 2.2" D × 1" H (46 cm × 5.6 cm × 2.5 cm)
+9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
 
