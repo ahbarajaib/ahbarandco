@@ -132,7 +132,7 @@ export default async function JournalPostPage({ params }: Props) {
 
         {/* Article Content */}
         <article 
-          className="prose prose-stone max-w-2xl mx-auto border-t border-border/40 pt-10 sm:pt-14 text-left"
+          className="prose prose-stone prose-headings:font-heading prose-headings:font-medium prose-headings:text-wood-dark prose-p:text-text-secondary prose-p:leading-relaxed prose-a:text-wood-medium hover:prose-a:text-wood-dark max-w-2xl mx-auto border-t border-border/40 pt-10 sm:pt-14 text-left"
           dangerouslySetInnerHTML={{ __html: parsedContent }}
         />
 
