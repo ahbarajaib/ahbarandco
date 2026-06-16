@@ -95,9 +95,9 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ### Product 2.1: Interlocking Teak Side Table
 1. **Product Name**: Interlocking Teak Side Table
-2. **Short Description**: A knockdown sofa-arm side table designed to pack flat and slide over seat cushions.
-3. **Detailed Description**: A masterclass in flat-pack joinery. This table features a top shelf, single support column, and stable base connected via robust knockdown connectors (Zipbolts). Crafted from golden C.P. Teakwood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan) or Sheesham, Steel knockdown hardware
+2. **Short Description**: A knockdown sofa-arm side table designed to pack flat and slide over seat cushions, available in C.P. Teakwood or Indian Rosewood (Sheesham).
+3. **Detailed Description**: A masterclass in flat-pack joinery. This table features a top shelf, a single support column, and a stable base connected via robust knockdown connectors (Zipbolts). Available in golden C.P. Teakwood or rich Sheesham wood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan) or Solid Indian Rosewood (Sheesham), Steel knockdown hardware
 5. **Care Guide**: Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.
 6. **Image Ideas**:
     *   **Hero Angle**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug, showing the clean joint detail.
@@ -109,9 +109,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 10. **Initial Stock**: 5 (Per Variant)
 11. **Available Variants**:
     *   **C.P. Teakwood**: Price: ₹16,999.00 (Compare-At Price: ₹19,999.00, Stock: 5)
-        *Description*: Crafted from premium golden-brown C.P. Teakwood (Sagwan), known for its high natural oil content, exceptional weather resistance, and straight honey-colored grain lines. Perfect for warm minimalist aesthetics.
     *   **Sheesham Wood**: Price: ₹15,499.00 (Compare-At Price: ₹17,999.00, Stock: 5)
-        *Description*: Crafted from rich Indian Rosewood (Sheesham), featuring deep chocolate and dark amber swirls with a highly contrasted wavy grain. Brings a bold, rustic luxury character to modern rooms.
 
 ---
 
@@ -275,7 +273,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 ### Product 4.2: Balanced Acacia Wine Holder
 1. **Product Name**: Balanced Acacia Wine Holder
 2. **Short Description**: A single angled block of wood that balances a full bottle of wine horizontally in mid-air through gravity.
-3. **Detailed Description**: A unique dining conversation piece. Cut at a precise 45-degree angle from solid Acacia wood with a 1.25" hole drilled near the top. Using tension and balance, it floats a standard bottle of wine horizontally in mid-air.
+3. **Detailed Description**: A unique dining conversation piece. Let's balance a bottle of wine horizontally in mid-air. Cut at a precise 45-degree angle from solid Acacia wood with a 1.25" hole drilled near the top. Using tension and balance, it floats a standard bottle of wine horizontally in mid-air.
 4. **Main Material**: Solid Indian Acacia Wood
 5. **Care Guide**: Wipe clean with a soft dry cloth.
 6. **Image Ideas**:
@@ -328,7 +326,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 2. **Collection Description**: Small storage boxes and wall bars featuring fine woodworking details like miters and embedded magnets.
 3. **Image Ideas**:
     *   **Hero Angle**: A close-up view of a dresser top, showing watch slots and miter box corners catching low-key evening lighting.
-    *   **Detail Close-up**: A macro shot of the contrasting teak splines reinforcing the dark mitered corners of the keepsake box.
+    *   **Detail Close-up**: A macro shot of the contrasting teak splines reinforcing the mitered corners of the keepsake box.
     *   **Alternative Angle**: A chef's knife sticking to the magnetic acacia block on a beautifully tiled backsplash.
 
 ---
@@ -430,9 +428,9 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ### Product 6.2: Modular Teak Tea Light Holders
 1. **Product Name**: Modular Teak Tea Light Holders
-2. **Short Description**: A set of 3 wooden pillars of different heights holding tea light candles.
-3. **Detailed Description**: Modular warmth for dining tables or mantels. These three columns (2", 4", and 6" tall) cut from solid C.P. Teakwood have shallow recesses drilled at the top to fit standard metal tea light cups.
-4. **Main Material**: Solid C.P. Teakwood (Sagwan) or Sheesham
+2. **Short Description**: A set of 3 wooden pillars of different heights holding tea light candles, available in C.P. Teakwood or Indian Rosewood (Sheesham).
+3. **Detailed Description**: Modular warmth for dining tables or mantels. These three columns (2", 4", and 6" tall) have shallow recesses drilled at the top to fit standard metal tea light cups. Available in C.P. Teakwood or Sheesham, they highlight the raw, organic beauty of premium timber grains under candlelight.
+4. **Main Material**: Solid C.P. Teakwood (Sagwan) or Solid Indian Rosewood (Sheesham)
 5. **Care Guide**: Never leave burning candles unattended. Wipe wax spills immediately.
 6. **Image Ideas**:
     *   **Hero Angle**: A set of three teak candle pillars arranged diagonally on a mantelpiece with tea lights lit, casting a warm glow.
@@ -444,9 +442,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 10. **Initial Stock**: 5 (Per Variant)
 11. **Available Variants**:
     *   **Teakwood (Set of 3)**: Price: ₹2,999.00 (Stock: 5)
-        *Description*: A set of three columns cut from golden C.P. Teakwood, showing a uniform honey grain pattern that casts a warm, soft reflection under candlelight.
     *   **Sheesham Wood (Set of 3)**: Price: ₹2,799.00 (Stock: 5)
-        *Description*: A set of three columns cut from premium dark Sheesham wood, featuring dramatic dark streaks and high grain contrast that pairs beautifully with moody lighting.
 
 ---
 

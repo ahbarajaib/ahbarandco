@@ -167,10 +167,10 @@ async function main() {
     {
       name: "Interlocking Teak Side Table",
       slug: "interlocking-teak-side-table",
-      shortDesc: "A knockdown sofa-arm side table designed to pack flat and slide over seat cushions.",
-      description: "A masterclass in flat-pack joinery. This table features a top shelf, single support column, and stable base connected via robust knockdown connectors (Zipbolts). Crafted from golden C.P. Teakwood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.",
+      shortDesc: "A knockdown sofa-arm side table designed to pack flat and slide over seat cushions, available in C.P. Teakwood or Indian Rosewood (Sheesham).",
+      description: "A masterclass in flat-pack joinery. This table features a top shelf, a single support column, and a stable base connected via robust knockdown connectors (Zipbolts). Available in golden C.P. Teakwood or rich Sheesham wood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.",
       price: 1549900, // Starting price matching Sheesham variant
-      material: "Solid C.P. Teakwood (Sagwan) or Sheesham, Steel knockdown hardware",
+      material: "Solid C.P. Teakwood (Sagwan) or Solid Indian Rosewood (Sheesham), Steel knockdown hardware",
       dimensions: "18\" W × 12\" D × 22\" H (46 cm × 30 cm × 56 cm)",
       careGuide: "Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.",
       deliveryCost: 95000,
@@ -181,14 +181,12 @@ async function main() {
       variants: [
         {
           name: "C.P. Teakwood",
-          description: "Crafted from premium golden-brown C.P. Teakwood (Sagwan), known for its high natural oil content, exceptional weather resistance, and straight honey-colored grain lines. Perfect for warm minimalist aesthetics.",
           price: 1699900,
           compareAtPrice: 1999900,
           stock: 5
         },
         {
           name: "Sheesham Wood",
-          description: "Crafted from rich Indian Rosewood (Sheesham), featuring deep chocolate and dark amber swirls with a highly contrasted wavy grain. Brings a bold, rustic luxury character to modern rooms.",
           price: 1549900,
           compareAtPrice: 1799900,
           stock: 5
@@ -447,10 +445,10 @@ async function main() {
     {
       name: "Modular Teak Tea Light Holders",
       slug: "modular-teak-tea-light-holders",
-      shortDesc: "A set of 3 wooden pillars of different heights holding tea light candles.",
-      description: "Modular warmth for dining tables or mantels. These three columns (2\", 4\", and 6\" tall) cut from solid C.P. Teakwood have shallow recesses drilled at the top to fit standard metal tea light cups.",
+      shortDesc: "A set of 3 wooden pillars of different heights holding tea light candles, available in C.P. Teakwood or Indian Rosewood (Sheesham).",
+      description: "Modular warmth for dining tables or mantels. These three columns (2\", 4\", and 6\" tall) have shallow recesses drilled at the top to fit standard metal tea light cups. Available in C.P. Teakwood or Sheesham, they highlight the raw, organic beauty of premium timber grains under candlelight.",
       price: 279900, // Starting price matching Sheesham variant
-      material: "Solid C.P. Teakwood (Sagwan) or Sheesham",
+      material: "Solid C.P. Teakwood (Sagwan) or Solid Indian Rosewood (Sheesham)",
       dimensions: "2.2\" W × 2.2\" D × 2\" / 4\" / 6\" H (5.6 cm × 5.6 cm × 5 / 10 / 15 cm)",
       careGuide: "Never leave burning candles unattended. Wipe wax spills immediately.",
       deliveryCost: 25000,
@@ -461,13 +459,11 @@ async function main() {
       variants: [
         {
           name: "Teakwood (Set of 3)",
-          description: "A set of three columns cut from golden C.P. Teakwood, showing a uniform honey grain pattern that casts a warm, soft reflection under candlelight.",
           price: 299900,
           stock: 5
         },
         {
           name: "Sheesham Wood (Set of 3)",
-          description: "A set of three columns cut from premium dark Sheesham wood, featuring dramatic dark streaks and high grain contrast that pairs beautifully with moody lighting.",
           price: 279900,
           stock: 5
         },
