@@ -11,7 +11,7 @@ export function SiteFooter() {
             <Link href="/" className="hover:opacity-80 transition-opacity inline-block mb-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logo-light.png?v=2"
+                src="/logo-light.png?v=3"
                 alt={SITE_NAME}
                 className="h-12 w-auto object-contain"
               />

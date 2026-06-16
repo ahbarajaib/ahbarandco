@@ -20,7 +20,7 @@ export default async function AdminLayout({
         <Link href="/admin" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo-dark.png?v=2"
+            src="/logo-dark.png?v=3"
             alt="Ahbar & Co. Logo"
             className="h-5 w-auto object-contain"
           />
@@ -35,7 +35,7 @@ export default async function AdminLayout({
           <Link href="/" className="hover:opacity-80 transition-opacity block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo-dark.png?v=2"
+              src="/logo-dark.png?v=3"
               alt="Ahbar & Co. Logo"
               className="h-14 w-auto object-contain"
             />
