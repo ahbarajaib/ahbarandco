@@ -6,7 +6,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ## 1. Collection: The Workspace Collection
 1. **Collection Name**: The Workspace Collection
-2. **Collection Description**: A curated collection of structural office goods designed to elevate your desk environment. Engineered with geometric precision and routed details, these desktop instruments clean up wire clutter and focus the mind.
+2. **Collection Description**: A curated collection of structural office goods designed to elevate your desk environment. Engineered with geometric precision and routed details, these desktop instruments clean up desk clutter and focus the mind.
 3. **Image Idea**: A high-angle flatlay of a clean wooden desk containing a laptop, a notebook, and the desk accessories. Natural morning light casts soft horizontal shadows across the warm teakwood grain.
 
 ---
@@ -24,14 +24,14 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ---
 
-### Product 1.2: Qi-Charging Sheesham Valet Tray
-1. **Product Name**: Qi-Charging Sheesham Valet Tray
-2. **Short Description**: A dual-compartment Indian Rosewood (Sheesham) valet tray with an invisibly embedded wireless charging coil.
-3. **Detailed Description**: A premium desk tray for keys, pens, and coins with a hidden wireless charger. Using a precision handheld template guide, the compartments are smoothly routed into solid Sheesham wood to a uniform depth, while a pocket is drilled from the underside to house a Qi charging coil with only 2mm of remaining wood thickness. Comes with a braided cotton cable.
+### Product 1.2: Routed Sheesham Valet Tray
+1. **Product Name**: Routed Sheesham Valet Tray
+2. **Short Description**: A multi-compartment Indian Rosewood (Sheesham) organizer tray with a slanted slot to dock smartphones.
+3. **Detailed Description**: A premium desk tray carved from a single block of Sheesham. It features a precision-slanted slot to hold a phone upright for viewing notifications, a routed dish for keys and coins, and a groove for writing instruments. The largest pocket is lined with premium merino wool felt to protect objects from scratching. Lying flat or sitting on the desk shelf, it keeps essential gear grouped elegantly.
 4. **Main Material**: Solid Indian Rosewood (Sheesham), Merino Wool Felt lining
-5. **Care Guide**: Clean with a dry microfiber cloth. Keep electrical components dry.
-6. **Image Idea**: A smartphone resting in the left pocket of the tray, glowing with a charging indicator, next to a brass mechanical pencil.
-7. **Approximate Price**: ₹5,899.00
+5. **Care Guide**: Clean with a dry microfiber cloth or soft brush. Avoid exposure to water or wet items.
+6. **Image Idea**: A smartphone resting upright in the slanted groove of the valet tray, next to brass keys and a mechanical pencil in the felt-lined tray.
+7. **Approximate Price**: ₹3,899.00
 8. **Dimensions**: 11.5" W × 7.5" D × 1.2" H (29 cm × 19 cm × 3 cm)
 9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
@@ -301,20 +301,20 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 
 ## 6. Collection: The Lighting & Ambient Accents
 1. **Collection Name**: The Lighting & Ambient Accents
-2. **Collection Description**: Ambient light blocks and stands designed to cast warm lighting across modern rooms.
-3. **Image Idea**: A dim room layout showing a warm glowing Edison lamp on a bedside table, creating a cozy ambient atmosphere.
+2. **Collection Description**: Ambient candle holders, acoustic docks, and stands designed to bring warmth and quiet structure to modern rooms.
+3. **Image Idea**: A soft-lit bedside setup featuring a burning tea light pillar and a smartphone docked in a sculptural Sheesham acoustic amplifier, casting long warm shadows.
 
 ---
 
-### Product 6.1: Sheesham Edison Block Lamp
-1. **Product Name**: Sheesham Edison Block Lamp
-2. **Short Description**: A solid wood block lamp featuring a vintage Edison bulb and a brass dimmer switch.
-3. **Detailed Description**: Ambient lighting at its simplest. Routed from a solid block of Sheesham, this lamp houses a brass bulb socket and features an integrated rotary dimmer knob. Complete with a premium braided fabric cord.
-4. **Main Material**: Solid Indian Rosewood (Sheesham), Brass socket, Fabric cord
-5. **Care Guide**: Unplug before cleaning. Wipe the wood block with a dry cloth.
-6. **Image Idea**: The warm glowing Edison filament bulb shining on the Sheesham block lamp, highlighting the natural grain lines in a dark bedroom setting.
-7. **Approximate Price**: ₹5,299.00
-8. **Dimensions**: 4.5" W × 4.5" D × 4.5" H (11.5 cm × 11.5 cm × 11.5 cm)
+### Product 6.1: Sheesham Acoustic Phone Dock
+1. **Product Name**: Sheesham Acoustic Phone Dock
+2. **Short Description**: A passive sound-amplifying smartphone dock carved from solid Sheesham wood, requiring no power or cords.
+3. **Detailed Description**: A structural desktop sculpture that functions as a passive amplifier. By routing a precise channel that guides sound from a phone's bottom speaker into a curved, horn-like acoustic chamber, it naturally increases volume and enhances tone by up to 15 decibels. Fully mechanical and cordless, it serves as a beautiful dock and natural sound amplifier for desks, kitchens, or bedside tables.
+4. **Main Material**: Solid Indian Rosewood (Sheesham)
+5. **Care Guide**: Wipe clean with a soft dry cloth. Do not allow water to gather in the sound channels.
+6. **Image Idea**: A smartphone resting inside the Sheesham acoustic dock on a concrete kitchen counter, amplifying music in natural morning light.
+7. **Approximate Price**: ₹2,999.00
+8. **Dimensions**: 5" W × 3.5" D × 3" H (12.7 cm × 9 cm × 7.6 cm)
 9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
 
 ---
