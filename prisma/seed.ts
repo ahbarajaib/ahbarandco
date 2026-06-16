@@ -28,12 +28,14 @@ async function main() {
     },
   });
 
-  // Clear existing catalog data
-  await prisma.orderItem.deleteMany();
-  await prisma.order.deleteMany();
-  await prisma.productImage.deleteMany();
-  await prisma.product.deleteMany();
-  await prisma.collection.deleteMany();
+  // Check if database already has catalog data to ensure we only seed once and protect existing data
+  const existingProductsCount = await prisma.product.count();
+  const existingCollectionsCount = await prisma.collection.count();
+
+  if (existingProductsCount > 0 || existingCollectionsCount > 0) {
+    console.log("Database already has catalog data. Skipping seed to prevent accidental data loss.");
+    return;
+  }
 
   // 1. Seed Collections
   const collectionsData = [
