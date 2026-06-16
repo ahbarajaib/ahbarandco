@@ -13,7 +13,7 @@ export function SiteFooter() {
               <img
                 src="/logo-light.png?v=3"
                 alt={SITE_NAME}
-                className="h-12 w-auto object-contain"
+                className="h-14 w-auto object-contain"
               />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-background-primary/70">

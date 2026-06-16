@@ -32,7 +32,7 @@ export async function SiteHeader() {
             <img
               src="/logo-light.png?v=3"
               alt={SITE_NAME}
-              className="h-6 sm:h-8 w-auto object-contain"
+              className="h-8 sm:h-11 w-auto object-contain"
             />
           </Link>
         </div>
