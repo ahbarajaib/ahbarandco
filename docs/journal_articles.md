@@ -7,13 +7,13 @@ This file contains 20 fully drafted, formatted articles for your website's journ
 ## Article 1
 * **Title**: The Death of Fast Furniture: Why We Build Permanent Objects
 * **Excerpt**: In an era dominated by disposable, temporary items, we examine the physical, environmental, and aesthetic costs of fast furniture, and why investing in precision-milled heirloom pieces is the only sustainable path forward.
-* **Image Suggestion**: A macro shot of solid walnut timber showing rich grain patterns, contrasted with clean minimalist room angles.
+* **Image Suggestion**: A macro shot of solid teakwood timber showing rich grain patterns, contrasted with clean minimalist room angles.
 * **Body Content (Copy & Paste below this line)**:
 In a world that moves at breakneck speed, our homes have quietly fallen victim to the culture of the temporary. We have become accustomed to flat-packed, laminated particle board furniture that is designed not to last, but to be replaced. These pieces are shipped in boxes, assembled with generic hardware, and designed with a built-in expiration date. Within a few short years, the veneer chips, the joints wobble, and the item is ultimately discarded, adding to the growing landfills of disposable design.
 
 At Ahbar & Co., we reject this cycle entirely. We believe that your home should be anchored by objects of permanence. 
 
-We choose to build furniture that does not decay, but rather grows more beautiful with time. By utilizing solid, high-grade American hardwoods like walnut and oak, we ensure that every table, shelf, and chair carries structural integrity from its core. Solid wood behaves differently than cheap composite boards; it breathes, it has weight, and it handles the natural shifts of domestic life. 
+We choose to build furniture that does not decay, but rather grows more beautiful with time. By utilizing solid, high-grade premium hardwoods like teakwood and sheesham, we ensure that every table, shelf, and chair carries structural integrity from its core. Solid wood behaves differently than cheap composite boards; it breathes, it has weight, and it handles the natural shifts of domestic life. 
 
 More importantly, permanent furniture holds memory. An heirloom table is not just a surface for dining; it is a register of family gatherings, late-night conversations, and quiet mornings. When a piece is built to endure, it transitions from a simple utility into functional art—a heritage item that you will one day pass down to the next generation. In an age of temporary things, choosing quality is a quiet act of rebellion.
 
@@ -22,14 +22,14 @@ More importantly, permanent furniture holds memory. An heirloom table is not jus
 ## Article 2
 * **Title**: Designing the Calming Interior: Elements of Warm Minimalism
 * **Excerpt**: Discover how to craft a peaceful, intentional living space using architectural lines, natural textures, and high-quality solid wood features.
-* **Image Suggestion**: A bright, sunlit room featuring an oak lounge chair against a soft ivory textured plaster wall.
+* **Image Suggestion**: A bright, sunlit room featuring a teakwood lounge chair against a soft ivory textured plaster wall.
 * **Body Content (Copy & Paste below this line)**:
 Minimalism is often misunderstood as an exercise in empty sterility. Many associate the style with cold, stark white walls, concrete floors, and a lack of human warmth. But true minimalism—what we call *warm minimalism*—is not about living in an empty gallery. It is about surrounding yourself only with things that bring quiet joy, functionality, and sensory comfort.
 
 To design a calming interior, you must focus on three core principles:
 
 - **Architectural Lines**: Choose furniture that emphasizes structure and clean lines. When the geometry of a room is simple and balanced, your eyes can rest.
-- **Organic Textures**: Replace synthetic materials with natural ones. The rough weave of a heavy linen curtain, the grain of a solid walnut shelf, and the soft touch of vegetable-tanned leather break the monotony of flat walls.
+- **Organic Textures**: Replace synthetic materials with natural ones. The rough weave of a heavy linen curtain, the grain of a solid teakwood shelf, and the soft touch of vegetable-tanned leather break the monotony of flat walls.
 - **The Power of the Void**: Allow spaces to remain empty. A wall does not always need a picture; a shelf does not always need an object. The empty spaces in your home are what allow the rest of your design to breathe.
 
 By choosing warm timber tones and focusing on premium, honest materials, you can create a sanctuary that feels both visually clean and deeply welcoming. Your home should not be a showpiece; it should be a quiet harbor from a busy world.
@@ -39,7 +39,7 @@ By choosing warm timber tones and focusing on premium, honest materials, you can
 ## Article 3
 * **Title**: Precision vs. Handcrafted: The Truth About Modern Woodworking
 * **Excerpt**: A personal look at why we trade traditional "handcrafted" methods for the micro-precision of modern cutters and routers to create stronger, cleaner, and more durable wood art.
-* **Image Suggestion**: A detailed close-up of a precision router bit cutting clean joints in walnut timber.
+* **Image Suggestion**: A detailed close-up of a precision router bit cutting clean joints in teakwood timber.
 * **Body Content (Copy & Paste below this line)**:
 For decades, the word "handcrafted" has been used as the ultimate seal of quality in furniture design. It conjures images of a solitary craftsman using only hand saws and chisels, spending weeks carving a single joint. While there is undeniable romance in that vision, the modern reality of woodworking demands a different conversation—one that balances artistic vision with absolute technical precision.
 
@@ -61,7 +61,7 @@ Floating shelves are more than simple storage solutions; they are architectural 
 Here is our step-by-step guide to curating a balanced shelf display:
 
 - **Create Varying Heights**: Avoid placing objects of the same height next to each other. Stagger your items by placing a tall ceramic vase next to a low stack of horizontally laid books.
-- **Mix Your Textures**: Combine the matte texture of raw clay pottery with the organic grain of your walnut or oak shelves. Add a trailing plant like ivy or pothos to bring soft, organic curves to the sharp lines of the timber.
+- **Mix Your Textures**: Combine the matte texture of raw clay pottery with the organic grain of your teakwood or sheesham shelves. Add a trailing plant like ivy or pothos to bring soft, organic curves to the sharp lines of the timber.
 - **Observe the Rule of Thirds**: Group objects in odd numbers—typically threes. A group of three objects (such as a book stack, a candle, and a small framed print) is naturally more pleasing to the human eye than even groupings.
 
 Remember, the most important element of styling is restraint. Do not overcrowd your shelves. Let the warm grain of the solid wood remain visible, allowing the shelf itself to serve as a key element of the design.
@@ -69,30 +69,30 @@ Remember, the most important element of styling is restraint. Do not overcrowd y
 ---
 
 ## Article 5
-* **Title**: Solid Walnut vs. White Oak: Choosing the Right Timber for Your Home
-* **Excerpt**: Compare the rich, warm tones of American Black Walnut with the durable, pale grain of White Oak to find the perfect wood for your interior palette.
-* **Image Suggestion**: A split flat-lay showing raw walnut and white oak wood blocks side by side on a linen backdrop.
+* **Title**: Solid Teakwood vs. Sheesham: Choosing the Right Timber for Your Home
+* **Excerpt**: Compare the rich, golden tones of C.P. Teakwood with the deep, dark grain of Sheesham to find the perfect wood for your interior palette.
+* **Image Suggestion**: A split flat-lay showing raw teakwood and sheesham wood blocks side by side on a linen backdrop.
 * **Body Content (Copy & Paste below this line)**:
-When investing in permanent furniture, one of the most critical decisions is selecting the timber species. The wood you choose defines the color palette, light absorption, and general mood of your space. At Ahbar & Co., we work primarily with two exceptional hardwoods: American Black Walnut and White Oak.
+When investing in permanent furniture, one of the most critical decisions is selecting the timber species. The wood you choose defines the color palette, light absorption, and general mood of your space. At Ahbar & Co., we work primarily with two exceptional hardwoods: C.P. Teakwood and Sheesham.
 
 Here is how to decide which timber fits your home:
 
-**American Black Walnut**
-Walnut is the epitome of quiet luxury. It features rich, chocolate-brown tones with occasional hints of purple and honey. The grain pattern is often dramatic, with beautiful sweeping curves known as cathedral patterns. Walnut is a softer wood than oak, but it carries an unmatched depth of color. It is ideal for spaces where you want to introduce warmth, maturity, and an editorial, premium look.
+**C.P. Teakwood**
+Teakwood is the epitome of timeless luxury. It features rich, golden-brown tones that mature into a deep luster over time. The grain pattern is typically straight and tight, occasionally presenting beautiful, dark wavy streaks. Teakwood is naturally rich in oils, making it exceptionally durable, moisture-resistant, and stable. It is ideal for spaces where you want to introduce warmth, heritage, and an editorial, premium look.
 
-**White Oak**
-White oak is the darling of modern, light-filled architecture. It boasts pale, sandy tones with a very straight, uniform grain. Oak is incredibly dense, heavy, and highly resistant to scratches and impacts. If your home embraces a Scandinavian, Japanese, or bright contemporary aesthetic, white oak reflects light beautifully and helps keep spaces feeling open and airy.
+**Sheesham**
+Sheesham (Indian Rosewood) is the darling of modern, character-rich design. It boasts dynamic, chestnut-brown tones with prominent dark grain lines that create a striking visual contrast. Sheesham is incredibly dense, heavy, and highly resistant to scratches and daily wear. If your home embraces a warm contemporary or organic minimalist aesthetic, sheesham provides deep visual texture and commands attention as a focal point.
 
-Ultimately, the choice comes down to contrast. If your walls are warm ivory and you want your furniture to stand out as sculptural art, walnut is your choice. If you prefer a seamless, organic flow of light and texture, oak will serve you perfectly.
+Ultimately, the choice comes down to contrast. If your walls are warm ivory and you want your furniture to stand out with bold, dramatic character, sheesham is your choice. If you prefer a classic, golden flow of light and premium texture, teakwood will serve you perfectly.
 
 ---
 
 ## Article 6
 * **Title**: The Anatomy of Invisible Mounting: The Magic of Floating Shelves
 * **Excerpt**: Explore the engineering and structural math behind heavy-duty, invisible steel brackets that make solid wood shelves float effortlessly on your wall.
-* **Image Suggestion**: An close-up photo showing the rear routed channel of a walnut shelf with a steel bracket inserted.
+* **Image Suggestion**: An close-up photo showing the rear routed channel of a teakwood shelf with a steel bracket inserted.
 * **Body Content (Copy & Paste below this line)**:
-There is something magical about a solid block of walnut hovering flush against a wall with no visible support. It feels light, clean, and defy gravity. But behind this minimalist aesthetic lies a rigorous exercise in structural engineering. A floating shelf is only as good as the hardware that holds it.
+There is something magical about a solid block of teakwood hovering flush against a wall with no visible support. It feels light, clean, and defy gravity. But behind this minimalist aesthetic lies a rigorous exercise in structural engineering. A floating shelf is only as good as the hardware that holds it.
 
 To achieve a true "floating" look that can support real weight—like heavy books and art—we utilize a two-part system:
 
@@ -106,7 +106,7 @@ When installed, the shelf slides over the steel rods and sits perfectly flush ag
 ## Article 7
 * **Title**: Care Guide: How to Maintain and Protect Solid Wood Furniture
 * **Excerpt**: Protect your investment. Learn how to clean, hydrate, and re-oil solid wood furniture using natural, zero-VOC oils to keep it beautiful for generations.
-* **Image Suggestion**: A hand polishing a walnut tabletop with oil, showing the deep contrast of oiled vs dry wood.
+* **Image Suggestion**: A hand polishing a teakwood tabletop with oil, showing the deep contrast of oiled vs dry wood.
 * **Body Content (Copy & Paste below this line)**:
 Solid wood is a natural, living material. Unlike veneer or laminate furniture coated in thick plastic polyurethane, our furniture is finished with natural hardwax oils that sink into the wood pores. This allows you to feel the actual texture of the timber. Because it is a natural surface, it requires basic care to stay hydrated and protected.
 
@@ -123,7 +123,7 @@ Every 1 to 2 years, you can refresh the wood by applying a thin layer of natural
 ## Article 8
 * **Title**: Architectural Simplicity: The Philosophy of Clean Joinery
 * **Excerpt**: A deep dive into the hidden joints of modern furniture, where clean lines outside conceal complex engineering inside.
-* **Image Suggestion**: A close-up of a perfectly flush mortise and tenon joint on an oak chair frame.
+* **Image Suggestion**: A close-up of a perfectly flush mortise and tenon joint on an sheesham chair frame.
 * **Body Content (Copy & Paste below this line)**:
 When you look at a premium piece of minimalist furniture, what you *don't* see is just as important as what you do see. You don't see metal screws, plastic corner brackets, or messy glue lines. Instead, you see clean, uninterrupted lines of wood transitioning smoothly from one plane to another. This is the art of clean joinery.
 
@@ -136,7 +136,7 @@ We utilize traditional joinery methods—such as mortise-and-tenon and lap joint
 ## Article 9
 * **Title**: Sensory Design: The Tactile Pleasure of Premium Materials
 * **Excerpt**: A home should be experienced with more than just the eyes. We discuss how wood textures, matte oil finishes, and soft leathers shape our emotional well-being.
-* **Image Suggestion**: A detailed close-up of fingers grazing the smooth, curved edge of a walnut lounge chair.
+* **Image Suggestion**: A detailed close-up of fingers grazing the smooth, curved edge of a teakwood lounge chair.
 * **Body Content (Copy & Paste below this line)**:
 Modern life is highly visual, dominated by flat glass screens and polished synthetic surfaces. When we return home, our senses crave something different. We need touch, warmth, and organic feedback. This is the foundation of sensory design: creating spaces that engage all human senses to promote relaxation.
 
@@ -169,12 +169,12 @@ By keeping the entryway simple, clean, and accented with warm natural wood, you 
 
 ## Article 11
 * **Title**: Sustainable Forestry: Sourcing Native Hardwoods Responsibly
-* **Excerpt**: Our materials come from the earth. Explore how we source certified sustainably harvested American hardwoods to protect natural forest ecosystems.
-* **Image Suggestion**: A wide shot of a sun-dappled forest of native oak trees.
+* **Excerpt**: Our materials come from the earth. Explore how we source certified sustainably harvested premium hardwoods to protect natural forest ecosystems.
+* **Image Suggestion**: A wide shot of a sun-dappled forest of teak trees.
 * **Body Content (Copy & Paste below this line)**:
-As makers of permanent wood furniture, our relationship with trees is deeply personal. We understand that every piece of walnut or oak we shape was once a living organism that played a vital role in its ecosystem. Because of this, sustainable sourcing is not a marketing catchphrase for us—it is an ethical necessity.
+As makers of permanent wood furniture, our relationship with trees is deeply personal. We understand that every piece of teakwood or sheesham we shape was once a living organism that played a vital role in its ecosystem. Because of this, sustainable sourcing is not a marketing catchphrase for us—it is an ethical necessity.
 
-We source our hardwoods exclusively from certified, responsibly managed forests in North America. These forests operate under strict rules:
+We source our hardwoods exclusively from certified, responsibly managed responsibly managed Indian plantations and forests. These forests operate under strict rules:
 
 - **Selective Logging**: Instead of clear-cutting large sections of land, individual trees are selected and harvested, leaving the surrounding canopy and forest floor intact.
 - **Natural Regeneration**: Harvesting is calculated to match the natural growth rate of the forest, ensuring that the timber volume harvested is replaced by new growth.
@@ -195,7 +195,7 @@ Here is how to apply minimalist principles to design a focus-driven office:
 
 - **Clear the Desk Surface**: Keep only your active tools (computer, notebook) on your desk. Move storage off your work surface.
 - **Utilize Wall Space**: Hang a solid wood floating shelf above your monitor. Use it to store reference books, archives, and a single calming plant.
-- **Choose Inspiring Materials**: A desk surface made of premium solid walnut or oak is a pleasure to work on. The tactile warmth of wood is far more grounding during a stressful workday than cold, cheap laminate.
+- **Choose Inspiring Materials**: A desk surface made of premium solid teakwood or sheesham is a pleasure to work on. The tactile warmth of wood is far more grounding during a stressful workday than cold, cheap laminate.
 
 When your workspace is quiet, clean, and anchored by natural textures, your ability to focus increases. A beautiful, minimalist desk is not a luxury; it is a tool for deep work.
 
@@ -204,7 +204,7 @@ When your workspace is quiet, clean, and anchored by natural textures, your abil
 ## Article 13
 * **Title**: The Evolution of the Lounge Chair: Sculpting Comfort in Wood
 * **Excerpt**: How the humble armchair evolved into an architectural statement. A look at the design principles behind low-profile, wood-framed lounge seating.
-* **Image Suggestion**: A low-profile oak lounge chair with natural linen cushions.
+* **Image Suggestion**: A low-profile teakwood lounge chair with natural linen cushions.
 * **Body Content (Copy & Paste below this line)**:
 The lounge chair occupies a unique space in the history of furniture design. Unlike dining chairs, which are built for upright activity, the lounge chair is designed for relaxation, contemplation, and leisure. It is an invitation to slow down.
 
@@ -220,16 +220,16 @@ A great lounge chair should not dominate a room with bulk. Instead, it should st
 
 ## Article 14
 * **Title**: Styling with Wood: How to Mix Wood Tones Like a Designer
-* **Excerpt**: You don't need to match every piece of wood in your home. Learn the designer secrets to mixing walnut, oak, and maple in a single room.
-* **Image Suggestion**: A warm modern interior showing dark walnut shelving alongside a light oak floor.
+* **Excerpt**: You don't need to match every piece of wood in your home. Learn the designer secrets to mixing teakwood, sheesham, and mango wood in a single room.
+* **Image Suggestion**: A warm modern interior showing deep sheesham shelving alongside a golden teakwood floor.
 * **Body Content (Copy & Paste below this line)**:
-One of the most common design myths is that all the wood in a room must match. People often worry that putting a walnut coffee table in a room with light oak floors is a design mistake. In reality, matching every piece of timber creates a flat, showroom-like space that lacks personality.
+One of the most common design myths is that all the wood in a room must match. People often worry that putting a sheesham coffee table in a room with golden teakwood floors is a design mistake. In reality, matching every piece of timber creates a flat, showroom-like space that lacks personality.
 
 Here are the rules to mixing wood tones like a professional interior designer:
 
-- **Find the Under-tone**: Just like paint, wood has under-tones. Walnut has cool greyish-brown or warm yellow under-tones; oak has warm golden under-tones. Try to keep the under-tones in the same family (either all warm or all cool).
+- **Find the Under-tone**: Just like paint, wood has under-tones. Teakwood has cool greyish-brown or warm yellow under-tones; sheesham has warm golden under-tones. Try to keep the under-tones in the same family (either all warm or all cool).
 - **Establish a Dominant Tone**: Choose one wood type to be the dominant tone in the room (usually your flooring or largest furniture piece). Use secondary wood tones in smaller quantities as accents.
-- **Create Contrast**: If you have light oak floors, do not use medium-light oak furniture. Create deliberate contrast by choosing a dark walnut console or floating shelves. This makes the furniture stand out as individual art pieces.
+- **Create Contrast**: If you have golden teakwood floors, do not use medium-golden teakwood furniture. Create deliberate contrast by choosing a deep sheesham console or floating shelves. This makes the furniture stand out as individual art pieces.
 
 By mixing wood tones intentionally, you introduce layers of texture and color, making your space feel curated, organic, and lived-in.
 
@@ -238,14 +238,14 @@ By mixing wood tones intentionally, you introduce layers of texture and color, m
 ## Article 15
 * **Title**: The Minimalist Bedroom: Curating a Sanctuary for Sleep
 * **Excerpt**: Remove distractions and invite sleep. Learn how to simplify your bedroom layout to encourage calm and quiet rest using warm wood aesthetics.
-* **Image Suggestion**: A peaceful bedroom view featuring a low bed frame and minimal walnut bedside shelves.
+* **Image Suggestion**: A peaceful bedroom view featuring a low bed frame and minimal teakwood bedside shelves.
 * **Body Content (Copy & Paste below this line)**:
 The bedroom should be the most sacred room in your home. It is where you begin and end each day. Yet, we often allow it to become a storage space for extra laundry, exercise equipment, and desktop charging cables. This visual noise makes it difficult for the brain to transition into deep, restorative sleep.
 
 Curating a minimalist bedroom is about editing out anything that does not contribute to rest:
 
 - **Keep Sightlines Low**: Choose low-profile furniture. A low headboard and simple, floating bedside tables keep the visual weight of the room near the floor, making the ceiling feel higher and the room feel more spacious.
-- **Focus on Natural Textures**: Instead of bright patterns, build interest through texture. Pair the organic grain of walnut bed accents with raw, rumpled linen sheets and neutral wool rugs.
+- **Focus on Natural Textures**: Instead of bright patterns, build interest through texture. Pair the organic grain of teakwood bed accents with raw, rumpled linen sheets and neutral wool rugs.
 - **Declutter the bedside**: Keep your bedside table clear of devices, cups, and loose papers. A single book and a warm, low-wattage lamp are all you need.
 
 When you remove the clutter and focus on natural, grounding materials, your bedroom transforms into a sanctuary—a quiet space designed for rest.
@@ -282,7 +282,7 @@ Here are a few creative ways to display your books using minimalist floating she
 - **Color Grouping**: If you want a clean, editorial look, group your books by the color of their spines. This creates a soft, cohesive color-blocked panel on your wall.
 - **Rotate Your Covers**: Some books have covers that are works of art. Turn a few books forward-facing on your shelf, displaying the cover design as if it were a framed print.
 
-By lifting your library onto floating walnut shelves, you save floor space while transforming your books into a dynamic, architectural art installation.
+By lifting your library onto floating teakwood shelves, you save floor space while transforming your books into a dynamic, architectural art installation.
 
 ---
 
@@ -331,6 +331,6 @@ The philosophy of *Slow Design* is an invitation to pause:
 
 - **Conscious Curation**: Slow design encourages us to build our homes slowly. Instead of buying a complete set of cheap, matching furniture, buy one piece at a time—only when you find something you truly love and need.
 - **Celebrating Imperfection**: Natural hardwoods carry the history of the tree. We celebrate the unique grain patterns, small knots, and natural color variations as marks of organic art.
-- **Deep Connection**: When you know that your table was precision-milled from sustainable walnut and finished with natural, non-toxic oils, you treat it with respect. It ceases to be a commodity and becomes a companion in your home.
+- **Deep Connection**: When you know that your table was precision-milled from sustainable teakwood and finished with natural, non-toxic oils, you treat it with respect. It ceases to be a commodity and becomes a companion in your home.
 
 Slow design is about buying less, choosing well, and letting your home grow organically. It is the path to creating a quiet, intentional space that brings you comfort every single day.
