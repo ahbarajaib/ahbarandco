@@ -107,13 +107,14 @@ async function main() {
       shortDesc: "A premium monitor stand crafted from solid golden C.P. Teakwood, designed to raise screens to eye level and create storage space below.",
       description: "Meticulously cut and edge-finished, this desk shelf is the anchor of a focused workspace. Ripped to exact proportions, it features screw-in teakwood legs mounted via threaded brass inserts, allowing it to pack flat. The clearance underneath hides a full-sized keyboard and cords, maintaining desktop order. Finished with natural matte oils to bring out the deep golden hues of the premium hardwood.",
       price: 899900,
+      compareAtPrice: 999900,
       material: "Solid C.P. Teakwood (Sagwan), Solid Brass hardware",
       dimensions: "23\" W × 9\" D × 4\" H (58 cm × 23 cm × 10 cm)",
       careGuide: "Wipe clean with a soft dry cloth. Avoid exposure to water or damp cleaning solutions. Reapply clear wood wax once a year to maintain the matte lustre.",
       deliveryCost: 45000,
       featured: true,
       published: true,
-      stock: 12,
+      stock: 5,
       collectionSlug: "workspace",
     },
     {
@@ -128,7 +129,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 15,
+      stock: 5,
       collectionSlug: "workspace",
     },
     {
@@ -143,7 +144,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 10,
+      stock: 5,
       collectionSlug: "workspace",
     },
     {
@@ -158,7 +159,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 20,
+      stock: 5,
       collectionSlug: "workspace",
     },
 
@@ -168,8 +169,8 @@ async function main() {
       slug: "interlocking-teak-side-table",
       shortDesc: "A knockdown sofa-arm side table designed to pack flat and slide over seat cushions.",
       description: "A masterclass in flat-pack joinery. This table features a top shelf, single support column, and stable base connected via robust knockdown connectors (Zipbolts). Crafted from golden C.P. Teakwood, it can be assembled or disassembled in under two minutes with a single hex key, allowing it to ship in a compact flat container.",
-      price: 1699900,
-      material: "Solid C.P. Teakwood (Sagwan), Steel knockdown hardware",
+      price: 1549900, // Starting price matching Sheesham variant
+      material: "Solid C.P. Teakwood (Sagwan) or Sheesham, Steel knockdown hardware",
       dimensions: "18\" W × 12\" D × 22\" H (46 cm × 30 cm × 56 cm)",
       careGuide: "Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.",
       deliveryCost: 95000,
@@ -177,6 +178,10 @@ async function main() {
       published: true,
       stock: 5,
       collectionSlug: "living-room",
+      variants: [
+        { name: "C.P. Teakwood", price: 1699900, compareAtPrice: 1999900, stock: 5 },
+        { name: "Sheesham Wood", price: 1549900, compareAtPrice: 1799900, stock: 5 },
+      ],
     },
     {
       name: "Floating Sheesham Picture Ledges",
@@ -190,7 +195,7 @@ async function main() {
       deliveryCost: 35000,
       featured: false,
       published: true,
-      stock: 15,
+      stock: 5,
       collectionSlug: "living-room",
     },
     {
@@ -205,7 +210,7 @@ async function main() {
       deliveryCost: 35000,
       featured: false,
       published: true,
-      stock: 8,
+      stock: 5,
       collectionSlug: "living-room",
     },
     {
@@ -220,7 +225,7 @@ async function main() {
       deliveryCost: 15000,
       featured: false,
       published: true,
-      stock: 25,
+      stock: 5,
       collectionSlug: "living-room",
     },
 
@@ -237,7 +242,7 @@ async function main() {
       deliveryCost: 25000,
       featured: true,
       published: true,
-      stock: 12,
+      stock: 5,
       collectionSlug: "entryway",
     },
     {
@@ -252,7 +257,7 @@ async function main() {
       deliveryCost: 35000,
       featured: false,
       published: true,
-      stock: 8,
+      stock: 5,
       collectionSlug: "entryway",
     },
     {
@@ -267,7 +272,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 18,
+      stock: 5,
       collectionSlug: "entryway",
     },
     {
@@ -276,13 +281,14 @@ async function main() {
       shortDesc: "A round mirror recessed into a solid Sheesham frame with an integrated key ledge.",
       description: "A highly functional entryway mirror. We route a circular pocket into solid Sheesham wood to recess the glass, leaving a structural ledge at the bottom. Perfect for last-minute checks and keeping keys accessible.",
       price: 1149900,
+      compareAtPrice: 1299900,
       material: "Solid Indian Rosewood (Sheesham), Glass Mirror",
       dimensions: "20\" Diameter × 1.5\" Depth (50 cm × 3.8 cm)",
       careGuide: "Clean the mirror with glass cleaner. Wipe the wood frame with a dry cloth.",
       deliveryCost: 65000,
       featured: false,
       published: true,
-      stock: 6,
+      stock: 5,
       collectionSlug: "entryway",
     },
 
@@ -299,7 +305,7 @@ async function main() {
       deliveryCost: 35000,
       featured: true,
       published: true,
-      stock: 10,
+      stock: 5,
       collectionSlug: "tabletop",
     },
     {
@@ -314,7 +320,7 @@ async function main() {
       deliveryCost: 15000,
       featured: false,
       published: true,
-      stock: 30,
+      stock: 5,
       collectionSlug: "tabletop",
     },
     {
@@ -329,7 +335,7 @@ async function main() {
       deliveryCost: 35000,
       featured: false,
       published: true,
-      stock: 8,
+      stock: 5,
       collectionSlug: "tabletop",
     },
     {
@@ -344,7 +350,7 @@ async function main() {
       deliveryCost: 15000,
       featured: false,
       published: true,
-      stock: 22,
+      stock: 5,
       collectionSlug: "tabletop",
     },
 
@@ -361,7 +367,7 @@ async function main() {
       deliveryCost: 25000,
       featured: true,
       published: true,
-      stock: 14,
+      stock: 5,
       collectionSlug: "keepsakes",
     },
     {
@@ -376,7 +382,7 @@ async function main() {
       deliveryCost: 35000,
       featured: false,
       published: true,
-      stock: 6,
+      stock: 5,
       collectionSlug: "keepsakes",
     },
     {
@@ -391,7 +397,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 12,
+      stock: 5,
       collectionSlug: "keepsakes",
     },
     {
@@ -406,7 +412,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 20,
+      stock: 5,
       collectionSlug: "keepsakes",
     },
 
@@ -423,7 +429,7 @@ async function main() {
       deliveryCost: 25000,
       featured: true,
       published: true,
-      stock: 15,
+      stock: 5,
       collectionSlug: "ambient",
     },
     {
@@ -431,15 +437,19 @@ async function main() {
       slug: "modular-teak-tea-light-holders",
       shortDesc: "A set of 3 wooden pillars of different heights holding tea light candles.",
       description: "Modular warmth for dining tables or mantels. These three columns (2\", 4\", and 6\" tall) cut from solid C.P. Teakwood have shallow recesses drilled at the top to fit standard metal tea light cups.",
-      price: 299900,
-      material: "Solid C.P. Teakwood (Sagwan)",
+      price: 279900, // Starting price matching Sheesham variant
+      material: "Solid C.P. Teakwood (Sagwan) or Sheesham",
       dimensions: "2.2\" W × 2.2\" D × 2\" / 4\" / 6\" H (5.6 cm × 5.6 cm × 5 / 10 / 15 cm)",
       careGuide: "Never leave burning candles unattended. Wipe wax spills immediately.",
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 18,
+      stock: 5,
       collectionSlug: "ambient",
+      variants: [
+        { name: "Teakwood (Set of 3)", price: 299900, stock: 5 },
+        { name: "Sheesham Wood (Set of 3)", price: 279900, stock: 5 },
+      ],
     },
     {
       name: "Teak Wall-Sconce Candle Holder",
@@ -453,7 +463,7 @@ async function main() {
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 8,
+      stock: 5,
       collectionSlug: "ambient",
     },
     {
@@ -462,25 +472,31 @@ async function main() {
       shortDesc: "An architectural wooden stand to display over-ear headphones.",
       description: "A dedicated resting place for premium headphones. Features a curved wooden resting cradle crafted from Sheesham wood supported by a solid brass rod and a heavy Sheesham base block.",
       price: 489900,
+      compareAtPrice: 549900,
       material: "Solid Indian Rosewood (Sheesham), Solid Brass rod",
       dimensions: "6\" W × 5\" D × 11.5\" H (15 cm × 12.7 cm × 29 cm)",
       careGuide: "Wipe down with a dry cloth.",
       deliveryCost: 25000,
       featured: false,
       published: true,
-      stock: 10,
+      stock: 5,
       collectionSlug: "ambient",
     },
   ];
 
   for (const prod of productsData) {
-    const { collectionSlug, ...data } = prod;
+    const { collectionSlug, variants, ...data } = prod;
     const collectionId = collectionsMap[collectionSlug];
 
     await prisma.product.create({
       data: {
         ...data,
         collectionId,
+        ...(variants && variants.length > 0 ? {
+          variants: {
+            create: variants
+          }
+        } : {})
       },
     });
   }

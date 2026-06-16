@@ -19,8 +19,10 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 5. **Care Guide**: Wipe clean with a soft dry cloth. Avoid exposure to water or damp cleaning solutions. Reapply clear wood wax once a year to maintain the matte lustre.
 6. **Image Idea**: A close-up side angle of the monitor riser supporting a sleek metal display, showing the clean beveled edge profile and space for a keyboard underneath.
 7. **Approximate Price**: ₹8,999.00
-8. **Dimensions**: 23" W × 9" D × 4" H (58 cm × 23 cm × 10 cm)
-9. **Estimated Delivery Cost**: ₹450.00 (Insured Ground Courier)
+8. **Compare-At Price**: ₹9,999.00
+9. **Dimensions**: 23" W × 9" D × 4" H (58 cm × 23 cm × 10 cm)
+10. **Estimated Delivery Cost**: ₹450.00 (Insured Ground Courier)
+11. **Initial Stock**: 5
 
 ---
 
@@ -77,9 +79,13 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan), Steel knockdown hardware
 5. **Care Guide**: Dust regularly. Wipe spills immediately. Avoid placing sweating glasses directly on the wood without a coaster.
 6. **Image Idea**: The side table overlapping the arm of a beige linen chair, holding a single ceramic coffee mug, showing the clean joint detail.
-7. **Approximate Price**: ₹16,999.00
+7. **Approximate Price**: ₹15,499.00 (Base starting price)
 8. **Dimensions**: 18" W × 12" D × 22" H (46 cm × 30 cm × 56 cm)
 9. **Estimated Delivery Cost**: ₹950.00 (Insured Heavy Cargo Ground Shipping)
+10. **Initial Stock**: 5 (Per Variant)
+11. **Available Variants**:
+    *   **C.P. Teakwood**: Price: ₹16,999.00 (Compare-At Price: ₹19,999.00, Stock: 5)
+    *   **Sheesham Wood**: Price: ₹15,499.00 (Compare-At Price: ₹17,999.00, Stock: 5)
 
 ---
 
@@ -176,8 +182,10 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 5. **Care Guide**: Clean the mirror with glass cleaner. Wipe the wood frame with a dry cloth.
 6. **Image Idea**: A waist-up reflection in the mirror against a warm cream wall, showing keys resting on the Sheesham ledge.
 7. **Approximate Price**: ₹11,499.00
-8. **Dimensions**: 20" Diameter × 1.5" Depth (50 cm × 3.8 cm)
-9. **Estimated Delivery Cost**: ₹650.00 (Insured Fragile/Glass Shipping)
+8. **Compare-At Price**: ₹12,999.00
+9. **Dimensions**: 20" Diameter × 1.5" Depth (50 cm × 3.8 cm)
+10. **Estimated Delivery Cost**: ₹650.00 (Insured Fragile/Glass Shipping)
+11. **Initial Stock**: 5
 
 ---
 
@@ -326,9 +334,13 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 4. **Main Material**: Solid C.P. Teakwood (Sagwan)
 5. **Care Guide**: Never leave burning candles unattended. Wipe wax spills immediately.
 6. **Image Idea**: A set of three teak candle pillars arranged diagonally on a mantelpiece with tea lights lit, casting a warm glow.
-7. **Approximate Price**: ₹2,999.00
+7. **Approximate Price**: ₹2,799.00 (Base starting price)
 8. **Dimensions**: 2.2" W × 2.2" D × 2" / 4" / 6" H (5.6 cm × 5.6 cm × 5 / 10 / 15 cm)
 9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
+10. **Initial Stock**: 5 (Per Variant)
+11. **Available Variants**:
+    *   **Teakwood (Set of 3)**: Price: ₹2,999.00 (Stock: 5)
+    *   **Sheesham Wood (Set of 3)**: Price: ₹2,799.00 (Stock: 5)
 
 ---
 
@@ -353,5 +365,7 @@ This catalog outlines **6 collections** containing **4 products each** (24 produ
 5. **Care Guide**: Wipe down with a dry cloth.
 6. **Image Idea**: A pair of high-end headphones resting on the curved Sheesham stand, sitting next to a desk setup.
 7. **Approximate Price**: ₹4,899.00
-8. **Dimensions**: 6" W × 5" D × 11.5" H (15 cm × 12.7 cm × 29 cm)
-9. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
+8. **Compare-At Price**: ₹5,499.00
+9. **Dimensions**: 6" W × 5" D × 11.5" H (15 cm × 12.7 cm × 29 cm)
+10. **Estimated Delivery Cost**: ₹250.00 (Insured Air Shipping)
+11. **Initial Stock**: 5
