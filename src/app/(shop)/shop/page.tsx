@@ -5,6 +5,7 @@ import { Search as SearchIcon, X as XIcon } from "lucide-react";
 import { ProductCard } from "@/components/ecommerce/product-card";
 import { Section } from "@/components/layout/section";
 import { getPublishedProducts } from "@/lib/products";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -12,13 +13,19 @@ export const metadata: Metadata = {
 };
 
 type ShopPageProps = {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; c?: string }>;
 };
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
   const resolvedParams = await searchParams;
   const q = typeof resolvedParams.q === "string" ? resolvedParams.q : undefined;
-  const products = await getPublishedProducts(q);
+  const c = typeof resolvedParams.c === "string" ? resolvedParams.c : undefined;
+  const products = await getPublishedProducts(q, c);
+
+  const collections = await prisma.collection.findMany({
+    where: { published: true },
+    orderBy: { sortOrder: "asc" },
+  });
 
   return (
     <Section>
@@ -34,6 +41,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
 
         {/* Luxury Underline Search Bar */}
         <form method="GET" action="/shop" className="relative w-full max-w-xs md:max-w-sm">
+          {c && <input type="hidden" name="c" value={c} />}
           <input
             type="text"
             name="q"
@@ -46,7 +54,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
           </div>
           {q && (
             <Link
-              href="/shop"
+              href={c ? `/shop?c=${c}` : "/shop"}
               className="absolute inset-y-0 right-0 flex items-center text-text-secondary/60 hover:text-wood-dark transition-colors"
               title="Clear search"
             >
@@ -56,20 +64,46 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         </form>
       </div>
 
+      {/* Horizontal Category Filters */}
+      <div className="flex items-center gap-6 overflow-x-auto pb-4 pt-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] border-b border-border/20 -mx-4 px-4 sm:mx-0 sm:px-0">
+        <Link
+          href="/shop"
+          className={`text-[10px] uppercase tracking-[0.18em] font-semibold pb-1.5 transition-all whitespace-nowrap border-b-2 ${
+            !c
+              ? "text-wood-dark border-wood-dark"
+              : "text-text-secondary/75 hover:text-wood-medium border-transparent"
+          }`}
+        >
+          All Products
+        </Link>
+        {collections.map((col) => (
+          <Link
+            key={col.id}
+            href={`/shop?c=${col.slug}${q ? `&q=${q}` : ""}`}
+            className={`text-[10px] uppercase tracking-[0.18em] font-semibold pb-1.5 transition-all whitespace-nowrap border-b-2 ${
+              c === col.slug
+                ? "text-wood-dark border-wood-dark"
+                : "text-text-secondary/75 hover:text-wood-medium border-transparent"
+            }`}
+          >
+            {col.name.replace(/Collection|Accents|Organizer|Goods/gi, "").trim()}
+          </Link>
+        ))}
+      </div>
 
       {products.length === 0 ? (
         <div className="mt-10 py-10 text-center border border-dashed border-border/80 rounded-sm bg-white p-6 space-y-4">
           <p className="text-text-secondary text-sm">
             {q
               ? `No products found matching "${q}".`
-              : "Products coming soon. Please check back later."}
+              : "No products found in this category."}
           </p>
-          {q && (
+          {(q || c) && (
             <Link
               href="/shop"
               className="inline-block h-10 px-5 border border-border hover:bg-background-secondary text-text-primary transition-all duration-200 rounded-sm text-[10px] uppercase tracking-widest font-semibold cursor-pointer py-2.5"
             >
-              Clear Search & View All
+              Clear Filters & View All
             </Link>
           )}
         </div>

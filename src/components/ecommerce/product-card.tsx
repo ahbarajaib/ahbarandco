@@ -51,11 +51,11 @@ export function ProductCard({ product }: ProductCardProps) {
       
       <div className="mt-3.5 space-y-1">
         {product.collection ? (
-          <p className="text-[10px] uppercase tracking-[0.15em] text-text-secondary/80 font-semibold">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-text-secondary/80 font-semibold truncate">
             {product.collection.name}
           </p>
         ) : (
-          <p className="text-[10px] uppercase tracking-[0.15em] text-transparent select-none font-semibold">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-transparent select-none font-semibold truncate">
             Collection
           </p>
         )}
