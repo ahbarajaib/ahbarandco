@@ -85,17 +85,22 @@ export function CartDrawer() {
                     {/* Item details */}
                     <div className="flex-grow flex flex-col justify-between">
                       <div className="space-y-0.5">
-                        <h4 className="text-sm font-medium text-background-primary line-clamp-1">
-                          {displayName}
+                        <h4 className="font-heading text-base font-medium text-background-primary truncate leading-tight">
+                          {item.product.name}
                         </h4>
-                        <p className="text-xs font-semibold text-background-primary/80">
+                        {item.variant && (
+                          <p className="text-[9px] uppercase tracking-[0.15em] text-background-primary/50 font-medium">
+                            {item.variant.name}
+                          </p>
+                        )}
+                        <p className="text-xs font-semibold text-background-primary/80 pt-0.5">
                           {formatPrice(displayPrice)}
                         </p>
                       </div>
 
                       <div className="flex items-center justify-between pt-1">
                         {/* Quantity selector */}
-                        <div className="flex items-center border border-background-primary/20 rounded-xs bg-background-primary/5 h-7">
+                        <div className="flex items-center border border-background-primary/10 rounded-xs bg-background-primary/5 h-7">
                           <button
                             type="button"
                             onClick={() => updateQuantity(item.productId, item.quantity - 1, item.variantId)}
@@ -121,10 +126,10 @@ export function CartDrawer() {
                         <button
                           type="button"
                           onClick={() => removeItem(item.productId, item.variantId)}
-                          className="text-background-primary/40 hover:text-red-400 transition cursor-pointer p-1"
+                          className="text-[9px] uppercase tracking-[0.15em] text-background-primary/45 hover:text-red-400 transition duration-300 font-semibold cursor-pointer py-1"
                           aria-label="Remove item"
                         >
-                          <Trash2 className="size-3.5" />
+                          Remove
                         </button>
                       </div>
                     </div>
@@ -152,7 +157,7 @@ export function CartDrawer() {
                 render={
                   <Link
                     href="/checkout"
-                    className="flex h-11 items-center justify-center rounded-xs bg-background-primary text-wood-dark hover:bg-background-primary/95 text-xs font-bold uppercase tracking-widest transition shadow-xs text-center cursor-pointer"
+                    className="flex h-11 items-center justify-center rounded-xs bg-background-primary text-wood-dark hover:bg-background-primary/90 text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 shadow-sm text-center cursor-pointer"
                   >
                     Proceed to Checkout
                   </Link>
@@ -163,7 +168,7 @@ export function CartDrawer() {
                 render={
                   <Link
                     href="/cart"
-                    className="flex h-10 items-center justify-center rounded-xs border border-background-primary/20 bg-transparent text-background-primary hover:bg-background-primary/10 text-[10px] font-bold uppercase tracking-widest transition text-center cursor-pointer"
+                    className="flex h-11 items-center justify-center rounded-xs border border-background-primary/20 bg-transparent text-background-primary hover:bg-background-primary/10 text-xs font-semibold uppercase tracking-[0.2em] transition duration-300 text-center cursor-pointer"
                   >
                     View Details & Cart
                   </Link>

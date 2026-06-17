@@ -52,11 +52,11 @@ export default async function JournalPage() {
         <div className="max-w-6xl mx-auto">
           {/* Featured Post (Latest) */}
           {featuredPost && (
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center border-b border-border/40 pb-20 mb-20">
+            <div className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center border-b border-border/40 pb-20 mb-20">
               <div className="lg:col-span-7">
                 <Link 
                   href={`/journal/${featuredPost.slug}`}
-                  className="relative block aspect-[16/10] w-full overflow-hidden bg-background-secondary rounded-sm border border-border/10 group shadow-sm"
+                  className="relative block aspect-[16/10] w-full overflow-hidden bg-background-secondary rounded-sm border border-border/10 shadow-sm"
                 >
                   {featuredPost.coverImageUrl ? (
                     <img
@@ -83,12 +83,12 @@ export default async function JournalPage() {
                   </time>
                 </div>
 
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-medium text-wood-dark tracking-tight leading-tight hover:text-wood-medium transition-colors duration-300">
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-medium text-wood-dark tracking-tight leading-tight group-hover:text-wood-medium transition-colors duration-300">
                   <Link href={`/journal/${featuredPost.slug}`}>{featuredPost.title}</Link>
                 </h2>
 
                 {featuredPost.excerpt && (
-                  <p className="text-sm sm:text-base leading-relaxed text-text-secondary font-serif">
+                  <p className="text-sm sm:text-base leading-relaxed text-text-secondary font-sans">
                     {featuredPost.excerpt}
                   </p>
                 )}
@@ -96,7 +96,7 @@ export default async function JournalPage() {
                 <div className="pt-4">
                   <Link
                     href={`/journal/${featuredPost.slug}`}
-                    className="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-wood-dark hover:text-wood-medium border-b border-wood-dark/40 hover:border-wood-medium/60 pb-1 transition-all duration-300 hover:translate-x-1"
+                    className="inline-flex items-center text-xs tracking-widest uppercase font-semibold text-wood-dark group-hover:text-wood-medium border-b border-wood-dark/40 group-hover:border-wood-medium/60 pb-1 transition-all duration-300 group-hover:translate-x-1"
                   >
                     Read Featured Article
                   </Link>
@@ -113,7 +113,7 @@ export default async function JournalPage() {
                 const formattedDate = formatDate(post.publishedAt || post.createdAt);
 
                 return (
-                  <article key={post.id} className="group flex flex-col space-y-4">
+                  <article key={post.id} className="group flex flex-col space-y-4 h-full">
                     {/* Cover Image */}
                     <Link 
                       href={`/journal/${post.slug}`}
@@ -147,7 +147,7 @@ export default async function JournalPage() {
                       </h3>
 
                       {post.excerpt && (
-                        <p className="text-sm leading-relaxed text-text-secondary font-serif line-clamp-3">
+                        <p className="text-sm leading-relaxed text-text-secondary font-sans line-clamp-3">
                           {post.excerpt}
                         </p>
                       )}
@@ -155,7 +155,7 @@ export default async function JournalPage() {
                       <div className="pt-2 mt-auto">
                         <Link
                           href={`/journal/${post.slug}`}
-                          className="inline-flex items-center text-xs tracking-widest uppercase font-medium text-wood-dark group-hover:text-wood-medium border-b border-wood-dark/25 group-hover:border-wood-medium/50 pb-0.5 transition-all"
+                          className="inline-flex items-center text-xs tracking-widest uppercase font-medium text-wood-dark group-hover:text-wood-medium border-b border-wood-dark/25 group-hover:border-wood-medium/50 pb-0.5 transition-all duration-300 group-hover:translate-x-1"
                         >
                           Read Article
                         </Link>

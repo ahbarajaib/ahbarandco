@@ -168,7 +168,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
     };
 
     return (
-      <div className="rounded-sm border border-border bg-white p-6 sm:p-8 shadow-xs">
+      <div className="rounded-sm border border-border bg-white p-6 sm:p-8 shadow-sm">
         <div className="flex justify-between items-center mb-6 gap-2">
           <h3 className="font-heading text-lg font-medium text-wood-dark">
             {editingAddress ? "Edit Address" : "Add New Address"}
@@ -346,76 +346,80 @@ export function AddressManager({ addresses }: AddressManagerProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <h2 className="font-heading text-2xl font-medium">Saved Addresses</h2>
-        <Button onClick={() => setIsAdding(true)} size="sm">
+        <h2 className="font-heading text-xl sm:text-2xl font-medium text-wood-dark">Saved Addresses</h2>
+        <Button
+          onClick={() => setIsAdding(true)}
+          size="sm"
+          className="text-[10px] uppercase tracking-wider font-semibold hover:bg-wood-medium hover:text-white transition-all cursor-pointer"
+        >
           Add New Address
         </Button>
       </div>
 
       {addresses.length === 0 ? (
-        <div className="text-center py-8 rounded border border-dashed border-border p-6 bg-wood-medium/5">
+        <div className="text-center py-8 rounded-sm border border-dashed border-border p-6 bg-wood-medium/[0.02]">
           <p className="text-sm text-text-secondary">No saved addresses found.</p>
           <Button onClick={() => setIsAdding(true)} variant="link" size="sm" className="mt-2 text-wood-medium">
             Add your first shipping address
           </Button>
         </div>
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="flex flex-col gap-4">
           {addresses.map((addr) => (
             <div
               key={addr.id}
-              className={`rounded-sm border p-4 flex flex-col justify-between transition-all ${
+              className={`rounded-sm border p-5 flex flex-col justify-between transition-all duration-300 shadow-2xs ${
                 addr.isDefault
-                  ? "border-wood-medium bg-wood-medium/5"
-                  : "border-border bg-white"
+                  ? "border-wood-medium/60 bg-white"
+                  : "border-border bg-white hover:border-wood-medium/20"
               }`}
             >
               <div>
                 <div className="flex justify-between items-start mb-2">
-                  <span className="font-heading text-base font-semibold text-wood-dark">
+                  <span className="font-heading text-base font-semibold text-wood-dark tracking-wide">
                     {addr.title || "Home"}
                   </span>
                   {addr.isDefault && (
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-wood-medium border border-wood-medium px-2 py-0.5 rounded-full bg-white">
+                    <span className="text-[9px] uppercase font-semibold tracking-wider text-wood-medium border border-wood-medium/20 px-2 py-0.5 rounded-sm bg-wood-medium/[0.02]">
                       Default
                     </span>
                   )}
                 </div>
-                <div className="text-xs text-text-secondary space-y-1">
-                  <p className="font-medium text-foreground text-sm">{addr.fullName}</p>
+                <div className="text-xs text-text-secondary space-y-1.5 mt-3">
+                  <p className="font-medium text-text-primary text-sm tracking-wide">{addr.fullName}</p>
                   <p>{addr.street}</p>
                   {addr.apartment && <p>{addr.apartment}</p>}
                   <p>{addr.city}, {addr.state} - {addr.postalCode}</p>
-                  <p>Phone: +91 {addr.phone}</p>
+                  <p className="pt-1 text-[11px] text-text-secondary/80">Phone: +91 {addr.phone}</p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 pt-4 border-t border-border/40 mt-4 text-xs">
-                <Button
-                  variant="outline"
-                  size="xs"
+              <div className="flex items-center gap-3 pt-3.5 border-t border-border/40 mt-4 text-[10px] uppercase tracking-wider font-semibold">
+                <button
                   onClick={() => setEditingAddress(addr)}
+                  className="text-text-primary hover:text-wood-medium transition-colors cursor-pointer"
                 >
                   Edit
-                </Button>
-                <Button
-                  variant="outline"
-                  size="xs"
-                  className="text-destructive hover:bg-destructive/10"
+                </button>
+                <span className="text-border/60 font-light">|</span>
+                <button
                   onClick={() => handleDelete(addr.id)}
+                  className="text-destructive hover:text-destructive/80 transition-colors cursor-pointer"
                 >
                   Delete
-                </Button>
+                </button>
                 {!addr.isDefault && (
-                  <Button
-                    variant="ghost"
-                    size="xs"
-                    onClick={() => handleSetDefault(addr.id)}
-                  >
-                    Set Default
-                  </Button>
+                  <>
+                    <span className="text-border/60 font-light">|</span>
+                    <button
+                      onClick={() => handleSetDefault(addr.id)}
+                      className="text-wood-medium hover:text-wood-dark transition-colors cursor-pointer"
+                    >
+                      Set Default
+                    </button>
+                  </>
                 )}
               </div>
             </div>
