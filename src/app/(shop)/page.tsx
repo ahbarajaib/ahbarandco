@@ -47,6 +47,8 @@ export default async function HomePage() {
             className="object-cover object-center brightness-[0.85] animate-ken-burns"
           />
         )}
+        {/* Top shadow overlay to guarantee transparent header text/icons readability */}
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-wood-dark/40 to-transparent pointer-events-none z-10" />
         <div className="absolute inset-0 bg-gradient-to-tr from-wood-dark/70 via-wood-dark/40 to-transparent" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36 text-background-primary z-10">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background-primary/90 sm:text-sm">
@@ -83,7 +85,11 @@ export default async function HomePage() {
       {/* Featured Collections Section */}
       <Section variant="primary" className="py-24 lg:py-32">
         <div className="mb-12 sm:mb-16">
-          <span className="text-xs uppercase tracking-widest text-wood-medium font-semibold">CATEGORIES</span>
+          <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-wood-medium font-semibold">
+            <span>01</span>
+            <span className="h-0.5 w-6 bg-wood-medium/35" />
+            <span>CATEGORIES</span>
+          </div>
           <h2 className="font-heading text-3xl font-medium sm:text-4xl text-wood-dark mt-2">
             Featured Collections
           </h2>
@@ -95,14 +101,14 @@ export default async function HomePage() {
               href={`/${collection.slug}`}
               className="group block"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-background-secondary rounded-sm border border-border/10 shadow-sm">
+              <div className="relative aspect-[4/5] overflow-hidden bg-background-secondary rounded-sm border border-border/10 shadow-2xs transition-shadow duration-300 group-hover:shadow-xs">
                 {collection.imageUrl ? (
                   <Image
                     src={collection.imageUrl}
                     alt={collection.name}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   />
                 ) : (
                   <div className="h-full w-full bg-background-secondary" />
@@ -111,6 +117,9 @@ export default async function HomePage() {
               <h3 className="mt-4 font-heading text-xl font-medium sm:mt-5 sm:text-2xl text-wood-dark group-hover:text-wood-medium transition-colors duration-300">
                 {collection.name}
               </h3>
+              <span className="mt-1 sm:mt-2 block text-[10px] font-bold uppercase tracking-widest text-wood-medium/75 group-hover:text-wood-medium transition-colors duration-300">
+                Shop Collection &rarr;
+              </span>
             </Link>
           ))}
         </div>
@@ -133,7 +142,11 @@ export default async function HomePage() {
             )}
           </div>
           <div>
-            <span className="text-xs uppercase tracking-widest text-wood-medium font-semibold">THE STUDIO</span>
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-wood-medium font-semibold">
+              <span>02</span>
+              <span className="h-0.5 w-6 bg-wood-medium/35" />
+              <span>THE STUDIO</span>
+            </div>
             <h2 className="font-heading text-3xl font-medium sm:text-4xl text-wood-dark mt-2">
               Precision as Art
             </h2>
@@ -156,7 +169,11 @@ export default async function HomePage() {
       {featuredProducts.length > 0 && (
         <Section className="py-24 lg:py-32">
           <div className="mb-12 sm:mb-16">
-            <span className="text-xs uppercase tracking-widest text-wood-medium font-semibold">CURATED SELECTION</span>
+            <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-wood-medium font-semibold">
+              <span>03</span>
+              <span className="h-0.5 w-6 bg-wood-medium/35" />
+              <span>CURATED SELECTION</span>
+            </div>
             <h2 className="font-heading text-3xl font-medium sm:text-4xl text-wood-dark mt-2">
               Featured Products
             </h2>
@@ -174,7 +191,11 @@ export default async function HomePage() {
         <Section variant="secondary" className="py-24 lg:py-32 border-t border-border/20">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 sm:mb-16">
             <div>
-              <span className="text-xs uppercase tracking-widest text-wood-medium font-semibold">STORIES & INSIGHTS</span>
+              <div className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-wood-medium font-semibold">
+                <span>04</span>
+                <span className="h-0.5 w-6 bg-wood-medium/35" />
+                <span>STORIES & INSIGHTS</span>
+              </div>
               <h2 className="font-heading text-3xl font-medium sm:text-4xl text-wood-dark mt-2">
                 The Design Journal
               </h2>
