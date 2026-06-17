@@ -196,57 +196,55 @@ export function AddressManager({ addresses }: AddressManagerProps) {
           </p>
         )}
 
-        <form id="address-form" onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="title" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Label (e.g. Home, Office)</Label>
-              <Input
-                id="title"
-                name="title"
-                defaultValue={defaultVals.title || ""}
-                placeholder="Home"
-                required
-              />
-            </div>
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="fullName" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Full Name / Recipient</Label>
-              <Input
-                id="fullName"
-                name="fullName"
-                defaultValue={defaultVals.fullName}
-                placeholder="John Doe"
-                required
-              />
-            </div>
+        <form id="address-form" onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-1.5">
+            <Label htmlFor="title" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Label (e.g. Home, Office)</Label>
+            <Input
+              id="title"
+              name="title"
+              defaultValue={defaultVals.title || ""}
+              placeholder="Home"
+              required
+            />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="phone" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">10-Digit Mobile Number</Label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                pattern="[0-9]{10}"
-                maxLength={10}
-                defaultValue={defaultVals.phone}
-                placeholder="9876543210"
-                required
-              />
-            </div>
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
-              <Label htmlFor="postalCode" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">PIN Code</Label>
-              <Input
-                id="postalCode"
-                name="postalCode"
-                type="text"
-                pattern="[1-9][0-9]{5}"
-                maxLength={6}
-                defaultValue={defaultVals.postalCode}
-                placeholder="560001"
-                required
-              />
-            </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="fullName" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">Full Name / Recipient</Label>
+            <Input
+              id="fullName"
+              name="fullName"
+              defaultValue={defaultVals.fullName}
+              placeholder="John Doe"
+              required
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="phone" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">10-Digit Mobile Number</Label>
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              pattern="[0-9]{10}"
+              maxLength={10}
+              defaultValue={defaultVals.phone}
+              placeholder="9876543210"
+              required
+            />
+          </div>
+
+          <div className="space-y-1.5">
+            <Label htmlFor="postalCode" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">PIN Code</Label>
+            <Input
+              id="postalCode"
+              name="postalCode"
+              type="text"
+              pattern="[1-9][0-9]{5}"
+              maxLength={6}
+              defaultValue={defaultVals.postalCode}
+              placeholder="560001"
+              required
+            />
           </div>
 
           <div className="space-y-1.5">
@@ -271,7 +269,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
+            <div className="space-y-1.5 col-span-1">
               <Label htmlFor="city" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">City</Label>
               <Input
                 id="city"
@@ -281,7 +279,7 @@ export function AddressManager({ addresses }: AddressManagerProps) {
                 required
               />
             </div>
-            <div className="space-y-1.5 col-span-2 sm:col-span-1">
+            <div className="space-y-1.5 col-span-1">
               <Label htmlFor="state" className="text-[10px] font-semibold uppercase tracking-wider text-text-secondary/80 mb-1.5 block">State</Label>
               <select
                 id="state"

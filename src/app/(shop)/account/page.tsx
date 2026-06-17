@@ -43,9 +43,9 @@ export default async function AccountPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-3 lg:gap-16">
+        <div className="mt-12 grid gap-12 lg:grid-cols-5 lg:gap-16">
           {/* Orders Section */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="lg:col-span-3 space-y-5">
             <h2 className="font-heading text-xl sm:text-2xl font-medium text-wood-dark">Recent Orders</h2>
             {orders.length === 0 ? (
               <div className="rounded-sm border border-dashed border-border p-8 text-center bg-wood-medium/[0.02]">
@@ -105,7 +105,7 @@ export default async function AccountPage() {
           </div>
 
           {/* Saved Addresses Section */}
-          <div className="lg:col-span-1 border-t border-border pt-8 lg:border-t-0 lg:pt-0">
+          <div className="lg:col-span-2 border-t border-border pt-8 lg:border-t-0 lg:pt-0">
             <AddressManager addresses={addresses} />
           </div>
         </div>
