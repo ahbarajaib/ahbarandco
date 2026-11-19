@@ -124,6 +124,7 @@ docs/
 
 ## Documentation
 
+- **[Local Development Guide](./HOW_TO_RUN_LOCALLY.md)** — Step-by-step local setup and VPS sync
 - **[Handoff Guide](./docs/HANDOFF.md)** — What's done and what you need to configure
 - [Progress Tracker](./docs/progress.md) — Full task status
 - [Design System](./docs/DESIGN_SYSTEM.md) — Brand, colors, responsive rules

@@ -43,3 +43,20 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+# Additional generated files
+/dist/
+/target/
+/.venv/
+/venv/
+__pycache__/
+*.log
+
+# Database dumps — NEVER commit real or production database data
+*.sql
+*.dump
+vps_dump.sql
+
+# Database dumps — NEVER commit real or production database data
+*.sql
+*.dump
+vps_dump.sql
