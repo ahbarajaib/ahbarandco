@@ -1,8 +1,7 @@
 # Deployment Guide — ahbarandco.com
 
-> **Status**: 🟡 CI/CD active — final build running  
-> **Last updated**: 2026-06-13  
-> **Server**: Hostinger VPS — `31.97.205.18`  
+> **Status**: Production Deployment Architecture  
+> **Server**: Linux VPS (Ubuntu/Debian)  
 > **Domain**: `ahbarandco.com` (Cloudflare DNS + SSL)
 
 ---
@@ -46,7 +45,6 @@ VPS — /opt/ahbarandco
 | SSL | Let's Encrypt via Certbot + Cloudflare DNS challenge |
 | CDN / DNS | Cloudflare (Full Strict mode) |
 | CI/CD | GitHub Actions → SSH deploy |
-| Other apps on VPS | `imran-accounting` on port 3005 (separate compose) |
 
 ---
 
@@ -87,8 +85,8 @@ The `migrate` service runs and **must complete successfully** before the `app` s
 
 | Secret | Description |
 |--------|-------------|
-| `VPS_HOST` | `31.97.205.18` |
-| `VPS_USER` | `root` |
+| `VPS_HOST` | `<your-vps-ip>` |
+| `VPS_USER` | `<deploy-user>` (e.g. `deploy` or `root`) |
 | `VPS_SSH_KEY` | Ed25519 private key (public key in `~/.ssh/authorized_keys` on VPS) |
 | `GH_PAT` | Fine-grained PAT — `ahbarandco` repo, Contents: Read |
 
@@ -228,8 +226,8 @@ server {
 
 | Type | Name | Content | Proxy |
 |------|------|---------|-------|
-| A | `@` | `31.97.205.18` | ✅ Proxied |
-| A | `www` | `31.97.205.18` | ✅ Proxied |
+| A | `@` | `<your-vps-ip>` | ✅ Proxied |
+| A | `www` | `<your-vps-ip>` | ✅ Proxied |
 
 ---
 
@@ -249,7 +247,7 @@ server {
 
 ### View live logs
 ```bash
-ssh root@31.97.205.18
+ssh <user>@<vps-ip>
 docker logs -f ahbarandco-app
 ```
 
@@ -260,7 +258,7 @@ docker compose -f /opt/ahbarandco/docker-compose.prod.yml restart app
 
 ### Manual deploy (without pushing to GitHub)
 ```bash
-ssh root@31.97.205.18
+ssh <user>@<vps-ip>
 cd /opt/ahbarandco
 git pull origin main
 docker compose -f docker-compose.prod.yml up -d --build --remove-orphans
@@ -275,16 +273,3 @@ docker exec ahbarandco-db pg_dump -U ahbar ahbarandco > backup_$(date +%Y%m%d_%H
 ```bash
 docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
 ```
-
----
-
-## Coexistence with Other Docker Apps
-
-The VPS also runs `imran-accounting` on port `3005`. Each app has its own:
-- Docker Compose file and project
-- Internal Docker network
-- Nginx `server {}` block
-
-Nginx routes by domain name:
-- `ahbarandco.com` → `localhost:3000`
-- `imranapi.mooo.com` → `localhost:3005`

@@ -15,11 +15,11 @@ Premium ecommerce website for precision minimalist modern wood art and furniture
 
 ## Key Docs
 
-- [Progress Tracker](./docs/progress.md) — Full task status (check before starting work)
-- [Design System](./docs/DESIGN_SYSTEM.md) — Brand, colors, responsive rules
-- [Architecture](./docs/ARCHITECTURE.md) — Auth, payments, Docker
-- [Routes](./docs/ROUTES.md) — URL structure
-- [Photography](./docs/PHOTOGRAPHY.md) — Visual direction
+- [Architecture](./docs/ARCHITECTURE.md) — Auth, payments, database models, Docker
+- [Deployment](./docs/DEPLOYMENT.md) — Production Docker, CI/CD, Nginx reverse proxy
+- [Design System](./docs/DESIGN_SYSTEM.md) — Brand tokens, typography, responsive rules
+- [Routes](./docs/ROUTES.md) — URL structure & auth requirements
+- [Production Security & Ads](./docs/PRODUCTION_SECURITY_ADS.md) — Rate-limiting, Zod schemas, AdSense layout
 
 ## Design Rules
 

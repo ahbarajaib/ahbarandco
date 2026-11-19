@@ -103,11 +103,12 @@ prisma/
 ├── schema.prisma                 # Database models
 └── seed.ts                       # Sample catalog data
 docs/
-├── progress.md                   # Detailed task tracker
-├── DESIGN_SYSTEM.md
 ├── ARCHITECTURE.md
-├── PHOTOGRAPHY.md
-└── ROUTES.md
+├── DEPLOYMENT.md
+├── DESIGN_SYSTEM.md
+├── PRODUCTION_SECURITY_ADS.md
+├── ROUTES.md
+└── VPS_DEPLOYMENT_GUIDE.md
 ```
 
 ## Scripts
@@ -119,18 +120,17 @@ docs/
 | `npm run docker:up` | Start local PostgreSQL container |
 | `npm run docker:down` | Stop containers |
 | `npm run db:push` | Apply schema to database |
-| `npm run db:seed` | Seed sample products |
 | `npm run db:studio` | Open Prisma Studio |
 
 ## Documentation
 
-- **[Local Development Guide](./HOW_TO_RUN_LOCALLY.md)** — Step-by-step local setup and VPS sync
-- **[Handoff Guide](./docs/HANDOFF.md)** — What's done and what you need to configure
-- [Progress Tracker](./docs/progress.md) — Full task status
-- [Design System](./docs/DESIGN_SYSTEM.md) — Brand, colors, responsive rules
-- [Architecture](./docs/ARCHITECTURE.md) — Auth, payments, Docker
-- [Routes](./docs/ROUTES.md) — URL structure
-- [Photography](./docs/PHOTOGRAPHY.md) — Visual direction
+- **[Local Development Guide](./HOW_TO_RUN_LOCALLY.md)** — Step-by-step local setup and test workflow
+- **[Architecture](./docs/ARCHITECTURE.md)** — Monolith architecture, auth, Prisma models, and state
+- **[Deployment Guide](./docs/DEPLOYMENT.md)** — Docker, CI/CD pipeline, and Nginx proxy
+- **[Design System](./docs/DESIGN_SYSTEM.md)** — CSS tokens, color system, typography, and breakpoints
+- **[Production Security & Ads](./docs/PRODUCTION_SECURITY_ADS.md)** — Security headers, rate-limiting, Zod schemas, and AdSense
+- **[Routes](./docs/ROUTES.md)** — API endpoints and route authentication requirements
+- **[VPS Standalone Guide](./docs/VPS_DEPLOYMENT_GUIDE.md)** — Standalone VPS deployment using Caddy Server
 
 ## License
 
