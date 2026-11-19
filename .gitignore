@@ -51,12 +51,8 @@ next-env.d.ts
 __pycache__/
 *.log
 
-# Database dumps — NEVER commit real or production database data
-*.sql
+# Database dumps and backups
 *.dump
+*.backup
 vps_dump.sql
-
-# Database dumps — NEVER commit real or production database data
-*.sql
-*.dump
-vps_dump.sql
+*_dump.sql
